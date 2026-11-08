@@ -1,6 +1,6 @@
 # Module 19 · Performance & internals
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-19.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Understand what Python does under the hood, then make code fast the right way: measure first, then fix the real hotspot.
 
@@ -26,6 +26,9 @@ Speed up three slow functions until they fit a 0.1 s budget.
 - Solution: [`solutions/ex19_make_it_fast.py`](../solutions/ex19_make_it_fast.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 19 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 19 quiz](QUIZ.md). The answer key is at the bottom.
 

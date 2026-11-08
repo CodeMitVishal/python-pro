@@ -1,6 +1,6 @@
 # Module 10 · Advanced functions
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-10.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Functions are objects. Learn to pass them around, make them remember (closures) and wrap them with new behaviour (decorators): the tools behind every Python framework.
 
@@ -28,6 +28,9 @@ python 10_advanced_functions/01_args_and_kwargs.py
 - Solution: [`solutions/ex10_decorators.py`](../solutions/ex10_decorators.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 10 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 10 quiz](QUIZ.md). The answer key is at the bottom.
 

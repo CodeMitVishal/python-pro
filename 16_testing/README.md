@@ -1,6 +1,6 @@
 # Module 16 · Testing with pytest
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-16.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Prove your code works, and keep it working. Plain asserts, fixtures, parametrize, mocks and test-driven development.
 
@@ -34,6 +34,9 @@ Your tests must catch 6 planted bugs in a password checker (mutation testing).
 - Solution: [`solutions/ex16_test_password.py`](../solutions/ex16_test_password.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 16 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 16 quiz](QUIZ.md). The answer key is at the bottom.
 

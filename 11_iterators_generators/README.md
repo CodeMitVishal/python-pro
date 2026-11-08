@@ -1,6 +1,6 @@
 # Module 11 · Iterators & generators
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-11.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Process data one item at a time. Generators let you handle a 10 GB file with the memory of a 10-line one, and build lazy pipelines.
 
@@ -27,6 +27,9 @@ python 11_iterators_generators/01_iteration_protocol.py
 - Solution: [`solutions/ex11_generators.py`](../solutions/ex11_generators.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 11 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 11 quiz](QUIZ.md). The answer key is at the bottom.
 

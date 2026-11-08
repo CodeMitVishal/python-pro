@@ -1,6 +1,6 @@
 # Module 9 · Data structures deep dive
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-09.pdf) · [Interview Q&A](INTERVIEW.md)
 
 **Pick the right container and your code stays fast.** See how lists, dicts
 and sets work inside, measure the difference with Big-O, and meet the
@@ -34,6 +34,9 @@ Fill in 6 TODOs, each with the data structure that fits the job.
 - Solution: [`solutions/ex09_library_tracker.py`](../solutions/ex09_library_tracker.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 9 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 9 quiz](QUIZ.md). The answer key is at the bottom.
 

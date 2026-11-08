@@ -1,6 +1,6 @@
 # Module 12 · Advanced OOP
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-12.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Design classes that feel built-in and stay easy to change: dunder methods, properties, class methods, the MRO, ABCs, Protocols, composition and SOLID.
 
@@ -28,6 +28,9 @@ Make `+`, `*`, `abs()`, `==`, sets, unpacking and a read-only property work.
 - Solution: [`solutions/ex12_vector.py`](../solutions/ex12_vector.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 12 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 12 quiz](QUIZ.md). The answer key is at the bottom.
 

@@ -1,6 +1,6 @@
 # Module 14 · Project structure & packaging
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-14.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Turn scripts into a real, installable project with a command-line tool: modules, imports, `pyproject.toml`, the src layout and argparse.
 
@@ -33,6 +33,9 @@ See [`tasky_project/README.md`](tasky_project/README.md) for the full walkthroug
 - Solution: [`solutions/ex14_wordtool_cli.py`](../solutions/ex14_wordtool_cli.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 14 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 14 quiz](QUIZ.md). The answer key is at the bottom.
 

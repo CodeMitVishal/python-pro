@@ -1,6 +1,6 @@
 # Module 13 · Errors, context managers & logging
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-13.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Fail safely and leave a clear trail: custom exception families, guaranteed clean-up with `with`, and logging instead of print.
 
@@ -27,6 +27,9 @@ A custom `InsufficientFunds` error and an `atomic()` context manager that rolls 
 - Solution: [`solutions/ex13_bank_transfer.py`](../solutions/ex13_bank_transfer.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 13 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 13 quiz](QUIZ.md). The answer key is at the bottom.
 

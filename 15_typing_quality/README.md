@@ -1,6 +1,6 @@
 # Module 15 · Type hints & code quality
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-15.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Catch bugs before you run the code. Type hints, mypy and ruff are what make big Python codebases maintainable.
 
@@ -36,6 +36,9 @@ Type an untyped module until `mypy --strict` passes, and fix the bug it reveals.
 - Solution: [`solutions/ex15_add_type_hints.py`](../solutions/ex15_add_type_hints.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 15 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 15 quiz](QUIZ.md). The answer key is at the bottom.
 

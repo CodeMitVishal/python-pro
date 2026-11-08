@@ -1,6 +1,6 @@
 # Module 18 · Data, APIs & databases
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-18.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Work with real data: files, CSV and JSON, web APIs, SQL databases, and your own REST API with FastAPI.
 
@@ -40,6 +40,9 @@ A `NotesRepository` class that hides all SQL behind clean methods, injection-saf
 - Solution: [`solutions/ex18_notes_repository.py`](../solutions/ex18_notes_repository.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 18 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 18 quiz](QUIZ.md). The answer key is at the bottom.
 

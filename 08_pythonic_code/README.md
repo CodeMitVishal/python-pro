@@ -1,6 +1,6 @@
 # Module 8 · Pythonic code
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-08.pdf) · [Interview Q&A](INTERVIEW.md)
 
 **Same results, half the code.** Learn the small tools that make Python
 code short, clear and idiomatic: the way experienced Python developers write it.
@@ -33,6 +33,9 @@ Nine working-but-clunky functions. Rewrite each one with the tool that fits.
 - Solution: [`solutions/ex08_refactor_to_pythonic.py`](../solutions/ex08_refactor_to_pythonic.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 8 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 8 quiz](QUIZ.md). The answer key is at the bottom.
 

@@ -1,6 +1,6 @@
 # Module 17 · Concurrency
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-17.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Do many things at once: threads for waiting, processes for calculating, asyncio for thousands of network tasks, and the GIL explained.
 
@@ -26,6 +26,9 @@ Download 10 files in under 1 s with threads AND asyncio, then count words with p
 - Solution: [`solutions/ex17_parallel_downloads.py`](../solutions/ex17_parallel_downloads.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 17 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 17 quiz](QUIZ.md). The answer key is at the bottom.
 

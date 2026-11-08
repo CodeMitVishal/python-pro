@@ -1,6 +1,6 @@
 # Module 20 · Capstone project
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-20.pdf)
 
 Everything together: `budget`, a tested, typed, packaged expense tracker with a CLI and a REST API, built in clean layers.
 
