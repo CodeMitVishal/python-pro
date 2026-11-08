@@ -1,0 +1,23 @@
+# pyproject.toml: the ONE file that describes a modern Python project.
+# pip reads it to build and install the package.
+
+[build-system]
+requires = ["setuptools>=68"]          # the tool that builds the package
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tasky"                         # the name on PyPI / in pip list
+version = "0.1.0"
+description = "A tiny to-do list for the command line (Python Pro, Module 14)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []                      # e.g. ["requests>=2.31"]; pip installs these
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]                    # pip install -e ".[dev]"
+
+[project.scripts]
+tasky = "tasky.cli:main"               # creates a `tasky` command that calls tasky/cli.py main()
+
+[tool.setuptools.packages.find]
+where = ["src"]                        # "src layout": the code lives in src/tasky/

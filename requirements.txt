@@ -1,0 +1,4 @@
+# Tools used from Module 14 on. Modules 8-13 need nothing but Python 3.10+.
+pytest>=8      # Module 16: testing
+mypy>=1.10     # Module 15: type checking
+ruff>=0.5      # Module 15: linting and formatting

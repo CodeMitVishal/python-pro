@@ -6,3 +6,15 @@ __pycache__/
 .venv/
 venv/
 .env
+
+# Packaging build output
+*.egg-info/
+build/
+dist/
+
+# Files the demos create
+tasks.json
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.db
