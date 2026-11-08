@@ -28,7 +28,15 @@ h2 { font-size: 60px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; 
 table { border-collapse: collapse; font-size: 27px; width: 100%; }
 th { text-align: left; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #6B7385; padding: 8px 14px; border-bottom: 2px solid #DCD7CA; }
 td { padding: 10px 14px; border-bottom: 1px solid #E3DFD3; vertical-align: top; }
-.foot-l { position: absolute; left: 128px; bottom: 56px; font-size: 22px; color: #6B7385; }
+/* channel branding: icon + footer on every slide */
+section::before { content: ""; position: absolute; left: 128px; bottom: 44px; width: 46px; height: 46px;
+  background: url("channel-icon.png") center / contain no-repeat; }
+.foot-l { position: absolute; left: 188px; bottom: 56px; font-size: 22px; color: #6B7385; }
+.foot-l::before { content: "CodeMitVishal  ·  "; font-weight: 700; color: #2F5E9E; white-space: pre; }
+section.dark .foot-l::before { color: #F2C14E; }
+section.cover::before { display: none; }                       /* the cover shows a big logo instead */
+section.cover .foot-l { left: 128px; }
+.brand-big { position: absolute; right: 128px; top: 100px; width: 230px; height: 230px; }
 .foot-r { position: absolute; right: 128px; bottom: 56px; font-size: 22px; color: #2F5E9E; }
 /* dark slides */
 section.dark { background: #121826; color: #C9D2E3; }
@@ -45,7 +53,8 @@ svg .mono { font-family: 'Roboto Mono', monospace; }
 </style></head><body>
 
 <!-- ============ COVER ============ -->
-<section class="dark" style="justify-content:center;gap:28px">
+<section class="dark cover" style="justify-content:center;gap:28px">
+  <img class="brand-big" src="channel-icon.png" alt="CodeMitVishal logo">
   <p class="num">CODEMITVISHAL · FREE COURSE</p>
   <h1>Python Pro</h1>
   <p style="font-size:40px;color:#E6E9F0;max-width:1300px;line-height:1.3">From Python Foundations to <b style="color:#7EE2A8">professional</b> Python and web development: clean code, OOP, testing, concurrency, FastAPI, Django, security and Azure.</p>
@@ -1788,6 +1797,7 @@ $ ruff check  All checks passed!</div></div></div>
 </section>
 
 <section class="dark" style="justify-content:center;gap:30px">
+  <img src="channel-icon.png" alt="CodeMitVishal logo" style="width:150px;height:150px">
   <p class="num">YOU MADE IT</p>
   <h1>From Foundations to Pro, and the Web 🎓</h1>
   <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, and share it on LinkedIn.</p>

@@ -783,8 +783,9 @@ S += web_slides(title, code, table, cards, exercise)
 
 # Closing slide
 S.append(f"""<section class="dark" style="justify-content:center;gap:30px">
+  <img src="channel-icon.png" alt="CodeMitVishal logo" style="width:150px;height:150px">
   <p class="num">YOU MADE IT</p>
-  <h1>From Foundations to Pro, and the Web 🎓</h1>
+  <h1>From Foundations to Pro, and the Web</h1>
   <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, and share it on LinkedIn.</p>
   <div style="display:flex;flex-direction:column;gap:14px;font-size:30px;margin-top:20px">
     <span>🎥 youtube.com/@CodeMitVishal</span><span>⭐ {REPO}</span><span>☕ buymeacoffee.com/codemitvishal</span>
