@@ -18,7 +18,7 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 | | |
 |---|---|
-| 📊 **Slides** | 322 teaching-first slides: why → picture → code with real output → common mistake → real job → interview answer. One PDF per module in [`slides/modules/`](slides/modules/), or the [full course PDF](slides/python-pro-slides.pdf) |
+| 📊 **Slides** | 327 teaching-first slides (a course intro + index, then every module): why → picture → code with real output → common mistake → real job → interview answer. One PDF per module in [`slides/modules/`](slides/modules/), or the [full course PDF](slides/python-pro-slides.pdf) |
 | 🎤 **Interview Q&A** | An `INTERVIEW.md` in every module with model answers and follow-ups, plus the [interview prep](interview_prep/README.md) section (Top 100, SQL, Git, system design) |
 | 💻 **Runnable lessons** | One small file per idea, commented line by line, with the expected output |
 | 🧪 **Exercise + solution** | A starter file with built-in checks, and a worked solution |
