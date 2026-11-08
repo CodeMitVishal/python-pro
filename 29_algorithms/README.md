@@ -1,6 +1,6 @@
 # Module 29 · Algorithms & data structures
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-29.pdf) · [Interview Q&A](INTERVIEW.md)
 
 These are the classic algorithms and patterns behind coding interviews, built from scratch in plain Python and timed so you can see Big-O happen.
 
@@ -29,6 +29,8 @@ Solve two sum, valid brackets, merge intervals, the longest unique substring, co
 - Solution: [`solutions/ex29_interview_problems.py`](../solutions/ex29_interview_problems.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 29 interview questions](INTERVIEW.md) and the [Top 100](../interview_prep/TOP_100.md).
 
 Test yourself with the [Module 29 quiz](QUIZ.md). The answer key is at the bottom.
 

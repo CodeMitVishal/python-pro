@@ -31,7 +31,6 @@ python 10_advanced_functions/01_args_and_kwargs.py
 
 Preparing for interviews? Read the [Module 10 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 10 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 11 · Iterators & generators](../11_iterators_generators/README.md) →

@@ -31,7 +31,6 @@ HTML pages + a JSON API, validation, flash messages, escaping.
 
 Preparing for interviews? Read the [Module 21 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 21 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 22 · FastAPI in depth](../22_fastapi_in_depth/README.md) →

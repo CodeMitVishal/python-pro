@@ -31,7 +31,6 @@ Cache-aside with an X-Cache header, invalidation, and WebSocket price pushes.
 
 Preparing for interviews? Read the [Module 26 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 26 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 27 · Docker, CI/CD & Azure](../27_deployment/README.md) →

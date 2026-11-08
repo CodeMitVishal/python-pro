@@ -32,7 +32,6 @@ Hashing, JWT create/verify, and role-protected endpoints.
 
 Preparing for interviews? Read the [Module 24 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 24 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 25 · Django + DRF](../25_django/README.md) →

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Python Pro</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+<style>
+@page { size: 1920px 1080px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #121826; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+section { position: relative; width: 1920px; height: 1080px; overflow: hidden; break-after: page;
+  background: #F6F4EE; color: #3F4859; font-family: 'Space Grotesk', Arial, sans-serif;
+  padding: 100px 128px 140px; display: flex; flex-direction: column; gap: 44px; }
+section:last-child { break-after: auto; }
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #2F5E9E; }
+h2 { font-size: 60px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; color: #121826; margin-top: 10px; }
+.row { display: flex; gap: 48px; align-items: flex-start; }
+.col { display: flex; flex-direction: column; gap: 22px; }
+.code { background: #1C2436; border-radius: 20px; padding: 28px 36px; font-family: 'Roboto Mono', monospace;
+  font-size: 27px; line-height: 1.5; color: #E6E9F0; white-space: pre; }
+.k { color: #F2C14E; } .s { color: #8EC5FF; } .c { color: #8A93A6; } .g { color: #7EE2A8; }
+.note { border-left: 4px solid #2F5E9E; padding: 4px 0 4px 22px; font-size: 29px; line-height: 1.4; }
+.note b, .card b, td b { color: #121826; }
+.m { font-family: 'Roboto Mono', monospace; font-size: .88em; background: #ECE8DC; padding: 1px 8px; border-radius: 6px; color: #121826; }
+.card { background: #FFFDF8; border: 1px solid #E3DFD3; border-radius: 18px; padding: 26px 30px; display: flex; flex-direction: column; gap: 10px; }
+.card h3 { font-size: 30px; color: #121826; }
+.card p { font-size: 27px; line-height: 1.4; }
+.tag { align-self: flex-start; font-size: 20px; font-weight: 700; letter-spacing: 2px; padding: 5px 14px; border-radius: 999px; background: #121826; color: #F2C14E; }
+.tip { background: #F2C14E; color: #121826; border-radius: 16px; padding: 18px 26px; font-size: 27px; line-height: 1.4; }
+table { border-collapse: collapse; font-size: 27px; width: 100%; }
+th { text-align: left; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #6B7385; padding: 8px 14px; border-bottom: 2px solid #DCD7CA; }
+td { padding: 10px 14px; border-bottom: 1px solid #E3DFD3; vertical-align: top; }
+/* channel branding: icon + footer on every slide */
+section::before { content: ""; position: absolute; left: 128px; bottom: 44px; width: 46px; height: 46px;
+  background: url("channel-icon.png") center / contain no-repeat; }
+.foot-l { position: absolute; left: 188px; bottom: 56px; font-size: 22px; color: #6B7385; }
+.foot-l::before { content: "CodeMitVishal  ·  "; font-weight: 700; color: #2F5E9E; white-space: pre; }
+section.dark .foot-l::before { color: #F2C14E; }
+section.cover::before { display: none; }                       /* the cover shows a big logo instead */
+section.cover .foot-l { left: 128px; }
+.brand-big { position: absolute; right: 128px; top: 100px; width: 230px; height: 230px; }
+.foot-r { position: absolute; right: 128px; bottom: 56px; font-size: 22px; color: #2F5E9E; }
+/* dark slides */
+section.dark { background: #121826; color: #C9D2E3; }
+section.dark h1 { font-size: 92px; line-height: 1.02; color: #fff; letter-spacing: -2px; }
+section.dark .foot-l { color: #6B7385; } section.dark .foot-r { color: #8EC5FF; }
+.num { font-size: 30px; font-weight: 700; letter-spacing: 4px; color: #F2C14E; }
+.big { font-size: 160px; font-weight: 700; color: #F2C14E; line-height: .9; }
+.toc { display: flex; flex-direction: column; gap: 4px; }
+.toc div { display: flex; justify-content: space-between; gap: 40px; font-size: 27px; padding: 12px 0; border-bottom: 1px solid #2A3550; }
+.toc span:last-child { font-family: 'Roboto Mono', monospace; font-size: 22px; color: #8EC5FF; }
+.pill { display: inline-block; font-size: 22px; padding: 6px 16px; border-radius: 999px; border: 2px solid #2F5E9E; color: #2F5E9E; font-weight: 700; margin-right: 8px; }
+svg text { font-family: 'Space Grotesk', Arial, sans-serif; }
+svg .mono { font-family: 'Roboto Mono', monospace; }
+

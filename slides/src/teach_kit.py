@@ -194,8 +194,8 @@ section.dark h1 { font-size:84px; }
 
 
 def build(slides, out_html):
-    deck = (HERE / "python-pro-slides.html").read_text(encoding="utf-8")
-    head_html = deck[:deck.index("</style>")] + EXTRA_CSS + "</style></head><body>\n"
+    base = (HERE / "base_head.html").read_text(encoding="utf-8")   # fonts + base slide CSS
+    head_html = base + EXTRA_CSS + "</style></head><body>\n"
     Path(out_html).write_text(head_html + "\n\n".join(slides) + "\n</body></html>", encoding="utf-8")
     print(f"{len(slides)} slides -> {out_html}")
 

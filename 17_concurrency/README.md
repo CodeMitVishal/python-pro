@@ -29,7 +29,6 @@ Download 10 files in under 1 s with threads AND asyncio, then count words with p
 
 Preparing for interviews? Read the [Module 17 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 17 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 18 · Data, APIs & databases](../18_data_apis_databases/README.md) →

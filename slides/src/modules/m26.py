@@ -63,17 +63,14 @@ def worker():
         time.sleep(0.2)                         # the slow part
         jobs[job_id] = {"status": "done", "url": f"/files/{job_id}.pdf"}
 threading.Thread(target=worker, daemon=True).start()
-
 @app.post("/reports", status_code=202)
 def create_report():
     job_id = uuid.uuid4().hex[:6]
     jobs[job_id] = {"status": "pending"}
     q.put(job_id)
     return {"job_id": job_id}
-
 @app.get("/jobs/{job_id}")
 def job_status(job_id: str): return jobs[job_id]
-
 c = TestClient(app)
 jid = c.post("/reports").json()["job_id"]
 print(c.get(f"/jobs/{jid}").json()["status"])

@@ -33,7 +33,6 @@ Users, posts and tags (many-to-many), queries, and no N+1.
 
 Preparing for interviews? Read the [Module 23 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 23 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 24 · Authentication & security](../24_auth_security/README.md) →

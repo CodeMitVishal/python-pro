@@ -29,7 +29,6 @@ Speed up three slow functions until they fit a 0.1 s budget.
 
 Preparing for interviews? Read the [Module 19 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 19 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 20 · Capstone project](../20_capstone/README.md) →

@@ -36,7 +36,6 @@ See [`tasky_project/README.md`](tasky_project/README.md) for the full walkthroug
 
 Preparing for interviews? Read the [Module 14 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 14 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 15 · Type hints & code quality](../15_typing_quality/README.md) →

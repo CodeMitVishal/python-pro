@@ -31,7 +31,6 @@ Make `+`, `*`, `abs()`, `==`, sets, unpacking and a read-only property work.
 
 Preparing for interviews? Read the [Module 12 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 12 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 13 · Errors, context managers & logging](../13_errors_context_logging/README.md) →

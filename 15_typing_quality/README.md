@@ -39,7 +39,6 @@ Type an untyped module until `mypy --strict` passes, and fix the bug it reveals.
 
 Preparing for interviews? Read the [Module 15 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 15 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 16 · Testing with pytest](../16_testing/README.md) →

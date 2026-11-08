@@ -1,6 +1,6 @@
 # Module 30 · AI with Python: LLM APIs, tools, RAG and agents
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-30.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Build AI features the way production teams do. You'll call an LLM, get validated JSON back, let it use tools, answer from your own documents with RAG, serve an agent with FastAPI, and keep it safe, cheap and tested.
 
@@ -42,6 +42,8 @@ Build the plain-Python parts every LLM app needs: chunking, cosine similarity, t
 - Solution: [`solutions/ex30_ai_toolkit.py`](../solutions/ex30_ai_toolkit.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 30 interview questions](INTERVIEW.md) and the [Top 100](../interview_prep/TOP_100.md).
 
 Test yourself with the [Module 30 quiz](QUIZ.md). The answer key is at the bottom.
 

@@ -30,7 +30,6 @@ python 11_iterators_generators/01_iteration_protocol.py
 
 Preparing for interviews? Read the [Module 11 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 11 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 12 · Advanced OOP](../12_advanced_oop/README.md) →

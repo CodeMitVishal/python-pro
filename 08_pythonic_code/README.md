@@ -36,7 +36,6 @@ Nine working-but-clunky functions. Rewrite each one with the tool that fits.
 
 Preparing for interviews? Read the [Module 8 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 8 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 9 · Data structures deep dive](../09_data_structures/README.md) →

@@ -30,7 +30,6 @@ uvicorn taskboard.main:app --reload
 
 Preparing for interviews? Read the [Module 28 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Take the [web development final exam](QUIZ.md): 15 questions across Modules 21–28.
 
 **Next up:** [Module 29 · Algorithms & data structures](../29_algorithms/README.md) →

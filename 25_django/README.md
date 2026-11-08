@@ -32,7 +32,6 @@ Add a Review model, admin, serializer validation, an average rating and a filter
 
 Preparing for interviews? Read the [Module 25 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 25 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 26 · WebSockets, background tasks & caching](../26_realtime_tasks_caching/README.md) →

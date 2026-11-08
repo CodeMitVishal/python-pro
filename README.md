@@ -18,7 +18,8 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 | | |
 |---|---|
-| 📊 **Slides** | 126 slides with diagrams and cheat-sheet tables: [`slides/python-pro-slides.pdf`](slides/python-pro-slides.pdf) |
+| 📊 **Slides** | 322 teaching-first slides: why → picture → code with real output → common mistake → real job → interview answer. One PDF per module in [`slides/modules/`](slides/modules/), or the [full course PDF](slides/python-pro-slides.pdf) |
+| 🎤 **Interview Q&A** | An `INTERVIEW.md` in every module with model answers and follow-ups, plus the [interview prep](interview_prep/README.md) section (Top 100, SQL, Git, system design) |
 | 💻 **Runnable lessons** | One small file per idea, commented line by line, with the expected output |
 | 🧪 **Exercise + solution** | A starter file with built-in checks, and a worked solution |
 | 🧩 **Quiz** | Test yourself; every answer tells you which lesson to revisit |
@@ -97,17 +98,28 @@ Finished an exercise? Open a **Pull Request** with your solution in your own
 folder (for example `submissions/<your-github-name>/ex08.py`) and I'll review
 your code.
 
+## Interview prep
+
+Getting ready for a Python or web developer interview? Start with
+[**interview_prep/**](interview_prep/README.md): the [Top 100 questions](interview_prep/TOP_100.md),
+runnable [SQL practice](interview_prep/sql_practice.py), the [Git workflow](interview_prep/git_workflow.md)
+and [system design basics](interview_prep/system_design_basics.md).
+
 ## Rebuild the slides
 
-The slide source is [`slides/src/python-pro-slides.html`](slides/src/python-pro-slides.html).
-Modules 8–9 are written by hand; Modules 10–30 are generated from compact data by
-[`slides/src/build_module_slides.py`](slides/src/build_module_slides.py):
+Each module's slides are compact Python data in [`slides/src/modules/`](slides/src/modules/) (`m08.py` … `m30.py`),
+drawn with the layouts in [`slides/src/teach_kit.py`](slides/src/teach_kit.py). The build **runs every code example**,
+so the OUTPUT boxes always show real output, and it flags any text that doesn't fit on a slide.
 
 ```bash
-python slides/src/build_module_slides.py
+python slides/src/build_course.py
 ```
 
-Then open the HTML in a browser, or print it to PDF at 1920 × 1080 with no margins.
+```bash
+python slides/src/build_course.py 10 11
+```
+
+The first command rebuilds every module PDF plus the full course PDF. The second rebuilds only Modules 10 and 11, which is faster while editing.
 
 ## Support the channel
 

@@ -37,7 +37,6 @@ Your tests must catch 6 planted bugs in a password checker (mutation testing).
 
 Preparing for interviews? Read the [Module 16 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 16 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 17 · Concurrency](../17_concurrency/README.md) →

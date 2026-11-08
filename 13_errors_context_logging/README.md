@@ -30,7 +30,6 @@ A custom `InsufficientFunds` error and an `atomic()` context manager that rolls 
 
 Preparing for interviews? Read the [Module 13 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 13 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 14 · Project structure & packaging](../14_packaging/README.md) →

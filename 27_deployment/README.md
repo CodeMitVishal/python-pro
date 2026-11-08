@@ -34,7 +34,6 @@ Turn a working-but-dangerous Dockerfile into a production one (9 checks).
 
 Preparing for interviews? Read the [Module 27 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 27 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 28 · Web capstone](../28_web_capstone/README.md) →

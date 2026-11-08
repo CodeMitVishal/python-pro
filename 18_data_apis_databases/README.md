@@ -43,7 +43,6 @@ A `NotesRepository` class that hides all SQL behind clean methods, injection-saf
 
 Preparing for interviews? Read the [Module 18 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 18 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 19 · Performance & internals](../19_performance_internals/README.md) →

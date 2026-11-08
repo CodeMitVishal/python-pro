@@ -32,7 +32,6 @@ Router, API-key dependency, pagination, validation and a custom 404 handler.
 
 Preparing for interviews? Read the [Module 22 interview questions](INTERVIEW.md): short answers you can say out loud.
 
-
 Test yourself with the [Module 22 quiz](QUIZ.md). The answer key is at the bottom.
 
 **Next up:** [Module 23 · SQLAlchemy 2.0 & Alembic](../23_sqlalchemy_alembic/README.md) →
