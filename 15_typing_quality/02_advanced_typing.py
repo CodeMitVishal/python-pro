@@ -7,6 +7,17 @@
   Protocol    -> "anything with these methods" (Module 12)
   Final       -> a constant that must not be reassigned
 
+TEACHING NOTES
+  Why it matters  Real code passes dicts, callbacks and 'one of these strings'; precise types
+                  catch mistakes there.
+  Picture it      Literal is a fixed menu, TypedDict a form with known fields, Callable a
+                  function-shaped hole.
+  Watch out       Avoid Any: it switches checking off; prefer object, a Union, or a Protocol.
+  In real jobs    Typed JSON payloads, sort-order parameters, callback signatures in libraries.
+  Interview       Q: Any vs object?
+                  A: Any disables checking; object accepts anything but allows almost nothing
+                     until you narrow it.
+
 Run it:  python 15_typing_quality/02_advanced_typing.py
 """
 from typing import Callable, Final, Literal, TypedDict, TypeVar

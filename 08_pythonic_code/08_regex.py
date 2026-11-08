@@ -8,6 +8,18 @@ Cheat sheet:  \\d digit   \\w letter/digit/_   \\s whitespace   .  any char
               +  1 or more   *  0 or more   ?  optional   {2,4}  2 to 4 times
               [abc] one of   [^abc] none of   ^ start   $ end   ( ) capture group
 
+TEACHING NOTES
+  Why it matters  Logs, emails and IDs hide in text; string methods alone can't describe
+                  patterns.
+  Picture it      A regex is a stencil laid over text: wherever the text fits the stencil, you
+                  have a match.
+  Watch out       Always use raw strings r'...'; and don't validate complex formats (HTML, full
+                  emails) with one giant regex.
+  In real jobs    Masking secrets in logs, parsing log lines, validating IDs and postcodes.
+  Interview       Q: search vs match vs fullmatch?
+                  A: match checks at the start, search anywhere, fullmatch requires the whole
+                     string to match.
+
 Run it:  python 08_pythonic_code/08_regex.py
 """
 import re

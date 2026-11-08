@@ -8,6 +8,17 @@
 
 FastAPI's OAuth2PasswordBearer also adds the "Authorize" button to /docs.
 
+TEACHING NOTES
+  Why it matters  Login, current user and roles are in every product; this is the standard
+                  FastAPI pattern.
+  Picture it      Login hands out a wristband (token); every door (endpoint) checks the
+                  wristband and its colour (role).
+  Watch out       Check permissions on the server for every request; hiding buttons in the UI is
+                  not security.
+  In real jobs    OAuth2 password flow for first-party apps, role checks via dependencies.
+  Interview       Q: Authentication vs authorisation?
+                  A: Authentication: who are you (401). Authorisation: what may you do (403).
+
 Run it:  python 24_auth_security/03_fastapi_login.py
 """
 import hashlib

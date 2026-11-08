@@ -9,6 +9,18 @@ Free text is fine for humans. Your CODE needs data, so ask for a schema:
                      runs the function and sends back a tool_result; repeat until
                      the model gives a final text answer. That loop is an "agent".
 
+TEACHING NOTES
+  Why it matters  Code needs data, not prose; and real assistants must look things up and take
+                  actions.
+  Picture it      Tools are buttons you give the model: it asks to press one, your code decides
+                  and presses it.
+  Watch out       The model only ASKS; validation, permissions and limits must live in your
+                  code.
+  In real jobs    Support agents that check orders, extract tickets from emails, fill forms.
+  Interview       Q: What is tool use / an agent?
+                  A: The model returns tool calls with arguments; your code runs them and
+                     returns results until a final answer.
+
 Run it:  python 30_ai_with_python/02_structured_output_and_tools.py
 """
 import json

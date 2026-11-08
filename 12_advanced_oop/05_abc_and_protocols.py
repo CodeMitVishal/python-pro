@@ -7,6 +7,18 @@ Two ways to say "anything used here must have these methods":
   Protocol (typing) -> STRUCTURAL ("duck typing"): any class that simply HAS
                        the right methods fits, no inheritance needed.
 
+TEACHING NOTES
+  Why it matters  Swappable parts (payment gateways, notifiers) need a contract, or tests and
+                  integrations break.
+  Picture it      An ABC is a membership card you must sign; a Protocol is a dress code: if you
+                  fit, you're in.
+  Watch out       ABCs fail at instantiation if methods are missing; Protocols are only checked
+                  by mypy.
+  In real jobs    Repository and gateway interfaces, so tests can pass in fakes.
+  Interview       Q: ABC vs Protocol?
+                  A: ABC: nominal, must inherit, runtime check. Protocol: structural duck
+                     typing, checked statically.
+
 Run it:  python 12_advanced_oop/05_abc_and_protocols.py
 """
 from abc import ABC, abstractmethod

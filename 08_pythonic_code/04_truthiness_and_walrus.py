@@ -3,6 +3,18 @@
 Every value in Python is either "truthy" or "falsy" when you put it in an
 if. Knowing which is which lets you write short, clear conditions.
 
+TEACHING NOTES
+  Why it matters  if items: is short and clear, but it treats 0, '' and [] as 'missing', which
+                  causes real bugs.
+  Picture it      Every value answers yes/no to bool(): empty and zero say no, everything else
+                  says yes.
+  Watch out       When 0 or '' are valid values, test with 'is None', not 'if not x'.
+  In real jobs    while (chunk := f.read(8192)): reads a file in chunks; 'if not user:' guards
+                  in views.
+  Interview       Q: What values are falsy in Python?
+                  A: 0, 0.0, '', empty containers ([], {}, set()), None and False. Everything
+                     else is truthy.
+
 Run it:  python 08_pythonic_code/04_truthiness_and_walrus.py
 """
 

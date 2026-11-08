@@ -10,6 +10,18 @@ redirect, so refreshing the page doesn't submit the form twice.
 The SESSION is a signed cookie: the browser stores it, but can't change it
 without the secret key.
 
+TEACHING NOTES
+  Why it matters  Server-rendered pages, forms and logins are still the backbone of many web
+                  products.
+  Picture it      A template is a page with holes; the view fills them, and Jinja2 escapes what
+                  goes in.
+  Watch out       After a successful POST, redirect (Post/Redirect/Get) or a refresh submits the
+                  form again.
+  In real jobs    Admin pages, sign-up forms, email templates.
+  Interview       Q: Cookie vs session?
+                  A: A cookie is data in the browser; a session is server-side state, usually
+                     found via an ID in a cookie.
+
 Run the self-test:   python 21_web_flask/03_templates_forms_sessions.py
 Run a real server:   flask --app 21_web_flask/03_templates_forms_sessions.py run --debug
 """

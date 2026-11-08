@@ -8,6 +8,18 @@ The rule that follows: keys (and set items) must be HASHABLE, which in
 practice means immutable: str, int, float, tuple, frozenset. Not list,
 dict or set.
 
+TEACHING NOTES
+  Why it matters  Fast lookups and de-duplication are everywhere in backends; dicts and sets
+                  give O(1) for both.
+  Picture it      A wall of numbered lockers: the key's hash says which locker to open, so
+                  nothing is searched.
+  Watch out       Keys must be hashable (no lists/dicts); .copy() is shallow, so nested data is
+                  still shared.
+  In real jobs    Caching by ID, counting events, 'have I processed this order already?' checks.
+  Interview       Q: How does a dict work internally?
+                  A: A hash table: hash(key) picks a slot, O(1) average for get/set/delete;
+                     insertion order is preserved.
+
 Run it:  python 09_data_structures/03_dicts_and_sets.py
 """
 

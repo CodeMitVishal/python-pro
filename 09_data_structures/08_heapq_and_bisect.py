@@ -6,6 +6,18 @@ heapq  -> a priority queue in a plain list. push/pop the SMALLEST item in O(log 
 bisect -> binary search in a SORTED list: find the position in O(log n),
           insert while keeping the list sorted.
 
+TEACHING NOTES
+  Why it matters  Job queues, top-k and scheduling need 'smallest first' fast; sorting every
+                  time is wasteful.
+  Picture it      A heap is a tournament tree: the winner (smallest) always sits on top.
+  Watch out       heapq is a MIN-heap; for a max-heap push negative priorities. bisect needs a
+                  sorted list.
+  In real jobs    Priority task queues, top-k leaderboards, Dijkstra, keeping time-series
+                  sorted.
+  Interview       Q: How do you get the top 3 of a million numbers?
+                  A: heapq.nlargest(3, nums): O(n log k) instead of sorting everything in O(n
+                     log n).
+
 Run it:  python 09_data_structures/08_heapq_and_bisect.py
 """
 import bisect

@@ -5,6 +5,18 @@ MIDDLEWARE         -> code that runs around EVERY request: timing, request IDs, 
 CORS               -> lets a website on another origin (e.g. a React app on :3000)
                       call your API from the browser
 
+TEACHING NOTES
+  Why it matters  Inconsistent error responses and missing request IDs make APIs painful to use
+                  and debug.
+  Picture it      Middleware is a security gate every request walks through, in and out.
+  Watch out       CORS allow_origins=['*'] with credentials is unsafe and doesn't even work;
+                  list exact origins.
+  In real jobs    Global exception handlers, request ID and timing middleware, CORS for the
+                  frontend.
+  Interview       Q: What is CORS?
+                  A: A browser rule: a page may read responses from another origin only if that
+                     API allows it via CORS headers.
+
 Run it:  python 22_fastapi_in_depth/03_errors_middleware_cors.py
 """
 import time

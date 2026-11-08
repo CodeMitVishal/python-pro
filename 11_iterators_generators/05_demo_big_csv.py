@@ -5,6 +5,16 @@ peak memory with tracemalloc:
   1. load every row into a list first   (eager)
   2. stream the rows with generators     (lazy)
 
+TEACHING NOTES
+  Why it matters  This demo proves the point: a 200,000-row CSV analysed with almost no memory.
+  Picture it      Reading a long scroll one line at a time instead of photocopying the whole
+                  thing.
+  Watch out       csv values are strings; convert types yourself and handle bad rows.
+  In real jobs    Nightly import jobs and reports on large exports.
+  Interview       Q: How do you keep memory constant when processing a big CSV?
+                  A: Iterate the file with csv.DictReader and aggregate on the fly; never build
+                     a list of all rows.
+
 Run it:  python 11_iterators_generators/05_demo_big_csv.py
 """
 import csv

@@ -9,6 +9,17 @@ microservices calling each other. Store it as an ADJACENCY LIST: a dict
   Dijkstra (a heap)             -> shortest path with WEIGHTED edges (km, ms, EUR)
   Topological sort              -> a valid order for tasks with dependencies
 
+TEACHING NOTES
+  Why it matters  Networks, routes, dependencies and social connections are graphs.
+  Picture it      BFS explores in rings (1 hop, then 2 hops); DFS follows one path to the end
+                  first.
+  Watch out       Mark nodes as visited, or cycles make you loop forever.
+  In real jobs    Shortest routes (Dijkstra), build/task ordering (topological sort), friend
+                  suggestions (BFS).
+  Interview       Q: BFS vs DFS?
+                  A: BFS uses a queue and finds shortest paths in unweighted graphs; DFS uses a
+                     stack/recursion, good for cycles.
+
 Run it:  python 29_algorithms/04_graphs.py
 """
 import heapq

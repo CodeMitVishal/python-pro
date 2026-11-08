@@ -7,6 +7,18 @@ Every recursive function has two parts:
 Each call gets its own frame on the CALL STACK (Module 6 memory slides). The
 frames pile up until the base case, then unwind one by one.
 
+TEACHING NOTES
+  Why it matters  Nested data (folders, JSON, comment threads) is naturally solved by a function
+                  that calls itself.
+  Picture it      Russian dolls: open one, find a smaller one, until the smallest can't be
+                  opened (the base case).
+  Watch out       Every recursion needs a base case; Python stops at about 1000 levels with
+                  RecursionError.
+  In real jobs    Walking JSON/trees, category menus, permission hierarchies; DFS in graphs.
+  Interview       Q: Recursion or a loop?
+                  A: Recursion fits nested data and is clear; for very deep data use a loop with
+                     an explicit stack.
+
 Run it:  python 10_advanced_functions/07_recursion.py
 """
 import sys

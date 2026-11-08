@@ -5,6 +5,17 @@
 2. ExceptionGroup + except* (Python 3.11+): report SEVERAL errors at once,
    e.g. when validating a whole form or when several concurrent tasks fail.
 
+TEACHING NOTES
+  Why it matters  Sometimes you open a variable number of resources, or several tasks fail at
+                  once.
+  Picture it      ExitStack is a stack of open doors that it closes in reverse; an
+                  ExceptionGroup is a bundle of errors.
+  Watch out       except* handles parts of a group; plain except can't match inside a group.
+  In real jobs    Opening many files or connections; asyncio.TaskGroup raises ExceptionGroup.
+  Interview       Q: What are exception groups?
+                  A: ExceptionGroup carries several exceptions (e.g. from TaskGroup); except*
+                     handles matching ones.
+
 Run it:  python 13_errors_context_logging/05_exitstack_and_groups.py
 """
 import tempfile

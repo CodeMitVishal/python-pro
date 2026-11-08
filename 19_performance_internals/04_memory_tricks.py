@@ -5,6 +5,17 @@
   __slots__       -> smaller objects when you have millions of them
   generators      -> process data without holding it all (Module 11)
 
+TEACHING NOTES
+  Why it matters  Millions of small objects or full lists in memory can exhaust a server.
+  Picture it      __slots__ removes each object's spare drawer (__dict__); generators keep only
+                  one item on the table.
+  Watch out       sys.getsizeof is shallow; use tracemalloc to see what your code really
+                  allocates.
+  In real jobs    Data pipelines, caches and long-running workers.
+  Interview       Q: What is __slots__?
+                  A: A fixed set of attributes without a per-instance __dict__: less memory,
+                     slightly faster access.
+
 Run it:  python 19_performance_internals/04_memory_tricks.py
 """
 import sys

@@ -9,6 +9,19 @@ When Python sees a name, it looks in 4 places, in this order:
 A CLOSURE is an inner function that remembers variables from the outer
 function, even after the outer function has finished.
 
+TEACHING NOTES
+  Why it matters  Per-user counters and configurable functions need state without globals or a
+                  whole class.
+  Picture it      A closure carries a backpack: the outer variables it uses travel with it after
+                  the outer function returns.
+  Watch out       Assigning to an outer variable needs nonlocal; lambdas in a loop all see the
+                  LAST loop value.
+  In real jobs    Decorators, callbacks, and FastAPI dependency factories like
+                  require_role('admin').
+  Interview       Q: What is a closure?
+                  A: An inner function that remembers variables from its enclosing scope;
+                     changing them needs nonlocal.
+
 Run it:  python 10_advanced_functions/02_scope_and_closures.py
 """
 

@@ -4,6 +4,19 @@ Python gives you small built-in tools so you almost never need
 range(len(...)) or manual counters. Learn these and your loops get
 shorter, safer and easier to read.
 
+TEACHING NOTES
+  Why it matters  range(len(xs)) loops are noisy and cause IndexErrors; Python has better tools
+                  built in.
+  Picture it      enumerate hands you a numbered ticket with each item; zip walks several lists
+                  side by side.
+  Watch out       zip stops at the shortest list silently; use zip(a, b, strict=True) (3.10+)
+                  when lengths must match.
+  In real jobs    sorted(users, key=lambda u: u['age']), any(...) / all(...) checks in
+                  validation code.
+  Interview       Q: sorted() vs list.sort()?
+                  A: sorted() returns a new list from any iterable; .sort() sorts a list in
+                     place and returns None.
+
 Run it:  python 08_pythonic_code/03_looping_like_a_pro.py
 """
 

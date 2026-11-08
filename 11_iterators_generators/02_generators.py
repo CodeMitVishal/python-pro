@@ -5,6 +5,18 @@ the body; it returns a generator object. Each next() runs the code until
 the next yield, hands out that value, and PAUSES right there, keeping all
 its local variables. The next next() continues from that exact spot.
 
+TEACHING NOTES
+  Why it matters  Loading a 10 GB file into a list crashes the server; you only need one item at
+                  a time.
+  Picture it      yield is a pause button: the function hands out a value and sleeps until asked
+                  for the next one.
+  Watch out       Calling a generator function doesn't run it; and a generator is used up after
+                  one pass.
+  In real jobs    Streaming CSV exports, reading huge files, paginating APIs.
+  Interview       Q: What is a generator and why use it?
+                  A: A function with yield that produces values lazily; memory stays constant
+                     for any data size.
+
 Run it:  python 11_iterators_generators/02_generators.py
 """
 import sys

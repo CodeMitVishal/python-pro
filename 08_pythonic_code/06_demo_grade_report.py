@@ -3,6 +3,16 @@
 Everything from this module in one small program: comprehensions,
 unpacking, enumerate, zip, sorted with key, any/all, f-string tables.
 
+TEACHING NOTES
+  Why it matters  Real programs combine many small idioms; this demo shows them working
+                  together.
+  Picture it      A recipe: each Pythonic tool from this module is one step in the dish.
+  Watch out       Don't chase one-liners: if a line needs a comment to be understood, split it.
+  In real jobs    Small report scripts and data clean-up jobs look exactly like this.
+  Interview       Q: How would you make a piece of code more Pythonic?
+                  A: Comprehensions, enumerate/zip, unpacking, f-strings, sorted(key=), EAFP,
+                     and following PEP 8.
+
 Run it:  python 08_pythonic_code/06_demo_grade_report.py
 """
 

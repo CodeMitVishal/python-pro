@@ -7,6 +7,18 @@ Picks the right data structure for each question:
   deque       -> what were the last 3 errors?
   dataclass   -> one clean record per log line
 
+TEACHING NOTES
+  Why it matters  Log analysis is a classic interview take-home and a daily ops task.
+  Picture it      Each structure is a tool on a workbench: Counter counts, defaultdict groups, a
+                  set de-duplicates.
+  Watch out       Load logs lazily (line by line) when files are big; this demo is small on
+                  purpose.
+  In real jobs    Finding top error endpoints, slowest requests and suspicious IPs from web
+                  server logs.
+  Interview       Q: How would you find the 10 most common IPs in a 5 GB log file?
+                  A: Stream it line by line, count with a Counter (or a dict), then
+                     most_common(10); memory = number of distinct IPs.
+
 Run it:  python 09_data_structures/06_demo_log_analyzer.py
 """
 from collections import Counter, defaultdict, deque

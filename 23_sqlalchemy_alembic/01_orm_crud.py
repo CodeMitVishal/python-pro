@@ -10,6 +10,17 @@ works on SQLite, PostgreSQL, MySQL, SQL Server and Azure SQL.
   Session  -> a unit of work: track changes, then commit them together
   select() -> build queries in Python
 
+TEACHING NOTES
+  Why it matters  Hand-written SQL strings everywhere are hard to maintain; an ORM gives typed,
+                  safe queries.
+  Picture it      The ORM is a translator between Python objects and table rows.
+  Watch out       Commit inside a Session; objects outside it may be detached and can't lazy-
+                  load.
+  In real jobs    Models with Mapped[...], select() queries in services and repositories.
+  Interview       Q: What is an ORM, and what are its downsides?
+                  A: Maps tables to classes; less boilerplate and safe SQL, but it can hide slow
+                     queries like N+1.
+
 Run it:  python 23_sqlalchemy_alembic/01_orm_crud.py
 """
 from sqlalchemy import create_engine, func, select

@@ -6,6 +6,19 @@
   wraps             -> keep names in decorators      (see lesson 04)
   singledispatch    -> one function, different code per argument type
 
+TEACHING NOTES
+  Why it matters  Caching results and pre-filling arguments are common needs; functools has
+                  tested tools for them.
+  Picture it      lru_cache is a notebook of answers you already worked out; partial is a pre-
+                  filled form.
+  Watch out       Only cache pure functions with hashable arguments; never cache data that
+                  changes (DB rows, prices).
+  In real jobs    Caching expensive lookups, partial for callbacks, singledispatch for type-
+                  based handlers.
+  Interview       Q: What does lru_cache do and when is it dangerous?
+                  A: Memoises results by arguments; dangerous for changing data and on methods
+                     (it keeps self alive).
+
 Run it:  python 10_advanced_functions/05_functools.py
 """
 import time

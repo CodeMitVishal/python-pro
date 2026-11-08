@@ -9,6 +9,17 @@ The essentials of calling one safely:
   - pass query parameters with params=..., never by gluing strings together
   - catch requests.RequestException for network problems
 
+TEACHING NOTES
+  Why it matters  Your service will call other services; without timeouts and checks one slow
+                  partner takes you down.
+  Picture it      An API call is a letter with a form; the reply has a status code you must read
+                  before the body.
+  Watch out       Always set a timeout and call raise_for_status(); retry only idempotent calls.
+  In real jobs    Payment, shipping, CRM and weather APIs; reuse a requests.Session.
+  Interview       Q: How do you call an external API robustly?
+                  A: Timeout, status check, retries with backoff on 429/5xx, a session for
+                     pooling, logging.
+
 Run it:  python 18_data_apis_databases/02_http_requests.py   (needs internet)
 """
 import requests

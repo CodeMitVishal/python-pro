@@ -7,6 +7,19 @@ Why not print()? Logging gives you:
   - OUTPUTS: console, files, cloud services... set once, used everywhere
   - TRACEBACKS with logger.exception()
 
+TEACHING NOTES
+  Why it matters  print() has no time, level or source, and can't be sent to a log system: in
+                  production you're blind.
+  Picture it      Logging is a news feed with priorities: DEBUG chatter to CRITICAL alarms,
+                  routed by handlers.
+  Watch out       Pass arguments (log.info('id %s', x)), not f-strings; configure logging once
+                  at startup.
+  In real jobs    Structured JSON logs to stdout, collected by Azure Monitor / ELK;
+                  log.exception in handlers.
+  Interview       Q: Why logging instead of print?
+                  A: Levels, timestamps, module names, handlers and tracebacks, all configurable
+                     without code changes.
+
 Run it:  python 13_errors_context_logging/03_logging.py
 """
 import logging

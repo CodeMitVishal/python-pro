@@ -10,6 +10,18 @@ Rule: you never store a password, only a slow, salted HASH of it.
 Here we use hashlib.scrypt (standard library). In production, argon2id via the
 argon2-cffi or pwdlib packages is the current recommendation.
 
+TEACHING NOTES
+  Why it matters  When a database leaks, the password hashing decides whether users are safe.
+  Picture it      A slow salted hash is a lock that takes a second to try: fine for one login,
+                  hopeless for billions of guesses.
+  Watch out       SHA-256 is fast, which is bad for passwords; use argon2, scrypt or bcrypt with
+                  a salt.
+  In real jobs    Django's and passlib's password hashers; secrets.token_urlsafe for reset
+                  tokens.
+  Interview       Q: How do you store passwords?
+                  A: Slow, salted, adaptive hashes (argon2id/scrypt/bcrypt), constant-time
+                     comparison, never plain text.
+
 Run it:  python 24_auth_security/01_password_hashing.py
 """
 import hashlib

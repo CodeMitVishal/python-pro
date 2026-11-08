@@ -7,6 +7,16 @@
 Files, locks, database transactions, timers, temporary settings... anything
 that must be "undone" afterwards, even if the body crashes.
 
+TEACHING NOTES
+  Why it matters  Files, DB transactions and locks must be released even when errors happen.
+  Picture it      A door that closes itself: whatever happens in the room, it shuts when you
+                  leave.
+  Watch out       Put teardown in finally (or after yield inside try/finally) so it always runs.
+  In real jobs    transaction.atomic(), open(), requests.Session(), temporary settings in tests.
+  Interview       Q: What is a context manager?
+                  A: An object with __enter__/__exit__ that guarantees setup and cleanup around
+                     a with block.
+
 Run it:  python 13_errors_context_logging/02_context_managers.py
 """
 import os

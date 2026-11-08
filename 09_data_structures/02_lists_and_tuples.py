@@ -8,6 +8,18 @@ to shift one place to the right.
 A tuple is a fixed-size, read-only row. Use it for data that belongs
 together and shouldn't change: coordinates, RGB colours, database rows.
 
+TEACHING NOTES
+  Why it matters  Choosing list vs tuple tells readers whether data can change, and affects
+                  speed and hashability.
+  Picture it      A list is a shopping list you edit; a tuple is a printed receipt: fixed once
+                  made.
+  Watch out       list.insert(0, x) and pop(0) are O(n); use collections.deque for queues.
+  In real jobs    Tuples as dict keys (coordinates, composite IDs), lists for collections of
+                  rows.
+  Interview       Q: List vs tuple?
+                  A: List: mutable, many items of one kind. Tuple: immutable, a fixed record,
+                     hashable, slightly faster.
+
 Run it:  python 09_data_structures/02_lists_and_tuples.py
 """
 import sys

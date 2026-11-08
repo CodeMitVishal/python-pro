@@ -7,6 +7,19 @@ Big-O describes how the work grows when the data grows.
 
 We measure it with timeit so you can SEE the difference.
 
+TEACHING NOTES
+  Why it matters  The same code can be instant with 10 items and hang with a million; Big-O
+                  predicts that.
+  Picture it      Big-O is the shape of the cost curve: flat (O(1)), gentle (log n), straight
+                  (n), or explosive (n squared).
+  Watch out       Big-O ignores constants: measure real code too, but never ignore an accidental
+                  O(n squared).
+  In real jobs    Code reviews flag 'x in big_list' inside loops; interviews ask for complexity
+                  after every answer.
+  Interview       Q: What is the time complexity of 'x in list' vs 'x in set'?
+                  A: List: O(n), it checks items one by one. Set: O(1) on average, it uses
+                     hashing.
+
 Run it:  python 09_data_structures/01_big_o.py
 """
 import timeit

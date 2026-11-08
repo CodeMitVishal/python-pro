@@ -9,6 +9,18 @@ Every file read and every network call is a decode/encode. Use the wrong
 encoding and you get errors or "mojibake" (Ã© instead of é).
 Rule: UTF-8 everywhere, and ALWAYS pass encoding="utf-8" to open().
 
+TEACHING NOTES
+  Why it matters  Garbled names like 'MÃ¼nchen' and crashes on emoji come from mixing up text
+                  and bytes.
+  Picture it      str is the message; bytes is the message packed for transport; the codec is
+                  the packing method.
+  Watch out       Always specify encoding='utf-8'; decoding with the wrong codec gives mojibake.
+  In real jobs    Reading uploads, HTTP bodies, files from Windows systems, user names in many
+                  languages.
+  Interview       Q: str vs bytes?
+                  A: str is Unicode text, bytes is raw data; convert with .encode()/.decode()
+                     and an explicit codec.
+
 Run it:  python 18_data_apis_databases/07_text_and_bytes.py
 """
 import sys

@@ -5,6 +5,17 @@ Imports orders from CSV text. Bad rows must not crash the import:
   - a transaction context manager rolls back a whole batch on failure
   - logging records what happened, at the right level
 
+TEACHING NOTES
+  Why it matters  Imports must decide: skip a bad row or roll back the whole batch. This demo
+                  does both.
+  Picture it      A quality inspector: reject single bad items, or stop the line if the batch is
+                  ruined.
+  Watch out       Log every skipped row with a reason, or nobody can fix the source data.
+  In real jobs    Nightly partner imports and CSV uploads in admin tools.
+  Interview       Q: How do you make an import job robust?
+                  A: Validate each row, collect errors, use transactions for all-or-nothing, log
+                     and report what was skipped.
+
 Run it:  python 13_errors_context_logging/04_demo_order_importer.py
 """
 import csv

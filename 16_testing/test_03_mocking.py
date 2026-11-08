@@ -1,5 +1,16 @@
 """Module 16 · Fakes, mocks and monkeypatch: testing code with outside dependencies
 
+TEACHING NOTES
+  Why it matters  Tests that call real APIs are slow, flaky and can't simulate outages.
+  Picture it      A mock is a stunt double: it stands in for the dangerous part and records what
+                  happened.
+  Watch out       Patch where the name is USED ('weather.requests.get'), not where it is
+                  defined.
+  In real jobs    Faking payment providers, email services and the clock in unit tests.
+  Interview       Q: Mock vs stub vs fake?
+                  A: Stub: canned answers. Fake: working light version. Mock: also records and
+                     verifies calls.
+
 Run:   pytest 16_testing/test_03_mocking.py -v
 """
 from unittest.mock import Mock

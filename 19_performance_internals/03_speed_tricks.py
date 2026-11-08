@@ -6,6 +6,16 @@ In order of impact:
   3. use built-ins written in C: sum, max, sorted, set, join  -> 2-10x
   4. micro tweaks (local variables...)                        -> 1.1x, rarely worth it
 
+TEACHING NOTES
+  Why it matters  Some changes give 100x, most give 1%; know which is which.
+  Picture it      Fix the road before tuning the engine: algorithm and I/O first, micro-tricks
+                  last.
+  Watch out       Readable code first; micro-optimise only measured hot loops.
+  In real jobs    Replacing list lookups with sets, batching queries, using built-ins.
+  Interview       Q: Which optimisations matter most?
+                  A: Better algorithms/data structures, fewer I/O round trips, caching, built-
+                     ins and C libraries.
+
 Run it:  python 19_performance_internals/03_speed_tricks.py
 """
 import timeit

@@ -4,6 +4,14 @@ pytest finds files named test_*.py, runs every function named test_*, and
 reports each plain `assert` that fails, with the actual values. No classes
 or special assert methods needed.
 
+TEACHING NOTES
+  Why it matters  Tests let you change code on Friday without breaking refunds on Monday.
+  Picture it      Arrange, act, assert: set the table, eat, check the plate is empty.
+  Watch out       Test the error path too (pytest.raises), not only the happy path.
+  In real jobs    Every PR runs the test suite in CI; failing tests block the merge.
+  Interview       Q: What is the testing pyramid?
+                  A: Many fast unit tests, some integration tests, few end-to-end tests.
+
 Run:   pytest 16_testing/test_01_basics.py -v
 """
 import pytest

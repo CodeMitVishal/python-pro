@@ -13,6 +13,19 @@ HTTP is just TEXT sent over a network connection.
 We start a tiny server with the standard library, then talk to it with a raw
 socket so you can SEE the text, and finally with urllib like a normal client.
 
+TEACHING NOTES
+  Why it matters  Frameworks hide HTTP until a cookie, header or redirect misbehaves; then you
+                  need the raw view.
+  Picture it      An HTTP request is a letter: a first line (method + path), envelope headers, a
+                  blank line, the body.
+  Watch out       HTTP is stateless: nothing is remembered between requests unless cookies or
+                  tokens carry it.
+  In real jobs    Debugging APIs with curl and browser dev tools; reading proxy and load
+                  balancer logs.
+  Interview       Q: What happens when you type a URL and press Enter?
+                  A: DNS lookup, TCP + TLS connection, HTTP request, server builds a response,
+                     browser renders and fetches assets.
+
 Run it:  python 21_web_flask/01_http_from_scratch.py
 """
 import json

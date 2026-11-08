@@ -15,6 +15,18 @@ Users shouldn't wait for emails, PDF reports or image processing.
          @celery.task(bind=True, max_retries=3)       report.delay(user_id)  # returns at once
          def report(self, user_id): ...
 
+TEACHING NOTES
+  Why it matters  Sending emails or building PDFs inside a request makes users wait and time
+                  out.
+  Picture it      A restaurant ticket: the waiter (API) answers instantly; the kitchen (worker)
+                  cooks later.
+  Watch out       Tasks can run twice (retries, crashes): make them idempotent.
+  In real jobs    Celery/RQ workers for emails, reports, imports; 202 Accepted + a job status
+                  endpoint.
+  Interview       Q: When do you use background jobs?
+                  A: For slow or unreliable work the user needn't wait for; return 202 and let
+                     workers retry idempotent tasks.
+
 Run it:  python 26_realtime_tasks_caching/02_background_tasks.py
 """
 import asyncio

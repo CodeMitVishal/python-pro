@@ -4,6 +4,17 @@ Instead of magic strings ("pending", "shipped"...) that can be mistyped, an
 Enum gives every allowed value a name. Typos become errors, editors autocomplete,
 and you can loop over all the options.
 
+TEACHING NOTES
+  Why it matters  Magic strings like 'payed' vs 'paid' create silent bugs; enums make invalid
+                  values impossible.
+  Picture it      An enum is a menu: you can only order what's printed on it.
+  Watch out       Compare members with 'is' or ==; StrEnum (3.11+) equals its string, plain Enum
+                  does not.
+  In real jobs    Order status, user roles, payment states stored in the DB and sent as JSON.
+  Interview       Q: Why use an Enum instead of string constants?
+                  A: A closed set of valid values: typos fail loudly, IDEs autocomplete, you can
+                     iterate all options.
+
 Run it:  python 09_data_structures/07_enums.py
 """
 from enum import Enum, Flag, IntEnum, StrEnum, auto

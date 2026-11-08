@@ -7,6 +7,19 @@ runs a method inside. Use it to:
   - make an attribute read-only
 ...without changing how other code uses your class.
 
+TEACHING NOTES
+  Why it matters  Validation rules spread over callers get forgotten; properties keep them in
+                  one place.
+  Picture it      A property is a receptionist in front of an attribute: it checks everything
+                  that goes in.
+  Watch out       Store the value in a differently named attribute (_balance) or the setter
+                  calls itself forever.
+  In real jobs    Computed fields (full_name), validated fields (price >= 0), read-only
+                  attributes.
+  Interview       Q: Why use @property instead of getters and setters?
+                  A: Callers keep plain attribute syntax while you add logic later without
+                     changing their code.
+
 Run it:  python 12_advanced_oop/02_properties.py
 """
 

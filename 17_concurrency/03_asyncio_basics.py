@@ -9,6 +9,18 @@ so there are far fewer race conditions, and 10,000 tasks are cheap.
 The catch: everything must be async-aware (asyncio.sleep, aiohttp, asyncpg...).
 One blocking call (time.sleep, requests.get) freezes the whole loop.
 
+TEACHING NOTES
+  Why it matters  Thousands of open connections (APIs, WebSockets) can't each have a thread;
+                  asyncio handles them on one.
+  Picture it      A barista: start one machine, take the next order while it runs; await =
+                  'serve someone else meanwhile'.
+  Watch out       One blocking call (requests.get, time.sleep) inside async def freezes
+                  everything.
+  In real jobs    FastAPI async endpoints, httpx.AsyncClient, async DB drivers.
+  Interview       Q: How does async/await work?
+                  A: Coroutines pause at await and an event loop runs whichever is ready, on a
+                     single thread.
+
 Run it:  python 17_concurrency/03_asyncio_basics.py
 """
 import asyncio

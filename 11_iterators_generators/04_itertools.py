@@ -1,5 +1,15 @@
 """Module 11 · itertools: a toolbox of fast, lazy iterators
 
+TEACHING NOTES
+  Why it matters  Slicing, chunking, grouping and combining iterators are solved problems; don't
+                  rewrite them.
+  Picture it      A toolbox of conveyor-belt attachments: slicers, joiners, batchers, groupers.
+  Watch out       groupby only groups NEIGHBOURS with the same key: sort by the key first.
+  In real jobs    batched() for bulk DB inserts, islice for previews, chain for combining
+                  sources.
+  Interview       Q: Name some itertools functions you have used.
+                  A: islice, chain, batched, groupby, count, product, permutations, accumulate.
+
 Run it:  python 11_iterators_generators/04_itertools.py
 """
 from itertools import (accumulate, chain, combinations, count, cycle,

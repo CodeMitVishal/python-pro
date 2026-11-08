@@ -7,6 +7,18 @@ real database, that's slow. Tell SQLAlchemy up front what you'll need.
   selectinload(Author.books) -> 2 queries total, however many authors
   joinedload(Book.author)    -> 1 query with a JOIN (good for many-to-one)
 
+TEACHING NOTES
+  Why it matters  The most common real-world performance bug in web apps: pages that run
+                  hundreds of queries.
+  Picture it      Asking a librarian for 50 books one trip at a time instead of handing over the
+                  whole list.
+  Watch out       Accessing a lazy relationship inside a loop triggers one query per row.
+  In real jobs    selectinload/joinedload in SQLAlchemy; select_related/prefetch_related in
+                  Django.
+  Interview       Q: What is the N+1 problem?
+                  A: 1 query for N rows, then 1 query per row for a relationship; fix with eager
+                     loading.
+
 Run it:  python 23_sqlalchemy_alembic/02_n_plus_1_and_loading.py
 """
 from sqlalchemy import create_engine, event, select

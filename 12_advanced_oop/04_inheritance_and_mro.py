@@ -5,6 +5,18 @@ methods: the Method Resolution Order (MRO). super() means "the NEXT class
 in the MRO", not simply "my parent". That's what makes cooperative classes
 and mixins work.
 
+TEACHING NOTES
+  Why it matters  Multiple inheritance and mixins are common in frameworks; you must know who
+                  answers a call.
+  Picture it      The MRO is a queue of classes Python asks in order; super() means 'ask the
+                  next one in the queue'.
+  Watch out       super() is not 'my parent' with multiple inheritance; keep hierarchies
+                  shallow.
+  In real jobs    Django class-based views and DRF mixins rely on the MRO.
+  Interview       Q: What is the MRO and how does super() work?
+                  A: C3 linearisation gives a fixed order (Class.__mro__); super() calls the
+                     next class in it, each runs once.
+
 Run it:  python 12_advanced_oop/04_inheritance_and_mro.py
 """
 import json

@@ -8,6 +8,17 @@ decorators once and stack them:
   @retry(3)    -> try again on ConnectionError
   @lru_cache   -> don't call the API twice for the same city
 
+TEACHING NOTES
+  Why it matters  External APIs are slow and flaky; stacking small decorators makes a client
+                  resilient.
+  Picture it      Layers of an onion: log on the outside, cache in the middle, retry closest to
+                  the call.
+  Watch out       Decorator order matters: the bottom decorator wraps first and runs innermost.
+  In real jobs    HTTP clients for payment, shipping and partner APIs.
+  Interview       Q: In which order do stacked decorators run?
+                  A: They apply bottom-up (f = a(b(f))) and run top-down: a's wrapper first,
+                     then b's, then f.
+
 Run it:  python 10_advanced_functions/06_demo_api_client.py
 """
 import functools

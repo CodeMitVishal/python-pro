@@ -7,6 +7,18 @@ A separate PROCESS has its own interpreter and its own GIL, so 8 processes
 really run on 8 cores. The cost: starting a process is slower, and data must
 be copied (pickled) between processes.
 
+TEACHING NOTES
+  Why it matters  CPU-heavy work (images, maths, parsing) needs all cores, which threads can't
+                  give you in CPython.
+  Picture it      Several cooks in several kitchens: real parallel work, but ingredients must be
+                  sent between kitchens.
+  Watch out       Use the if __name__ == '__main__' guard; arguments and results are pickled
+                  between processes.
+  In real jobs    Batch image resizing, report generation, data science workloads.
+  Interview       Q: Threads vs processes?
+                  A: Threads for I/O-bound work (shared memory, GIL); processes for CPU-bound
+                     work (separate memory, all cores).
+
 Run it:  python 17_concurrency/02_processes.py
 """
 import os

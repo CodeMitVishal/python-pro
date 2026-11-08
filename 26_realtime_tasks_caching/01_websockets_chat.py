@@ -6,6 +6,17 @@ HTTP is request -> response, then the connection is done. For live updates
 A WebSocket starts as an HTTP request, "upgrades", and then stays open: both
 sides can send messages at any time, until one side closes it.
 
+TEACHING NOTES
+  Why it matters  Dashboards, chat and notifications should update without refreshing the page.
+  Picture it      HTTP is sending letters; a WebSocket is a phone call that stays open in both
+                  directions.
+  Watch out       Remove clients on disconnect; with several servers you need Redis pub/sub to
+                  broadcast.
+  In real jobs    Live order tracking, chat, collaborative editing, notifications.
+  Interview       Q: WebSockets vs polling?
+                  A: Polling is simple but wasteful and laggy; WebSockets push instantly but
+                     need connection management.
+
 Run the self-test:   python 26_realtime_tasks_caching/01_websockets_chat.py
 Run a real server:   cd 26_realtime_tasks_caching && uvicorn 01_websockets_chat:app --reload
                      open http://127.0.0.1:8000 in TWO browser tabs and chat

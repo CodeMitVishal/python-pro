@@ -4,6 +4,16 @@ SQLite is a full SQL database stored in ONE file (or in memory). Perfect for
 learning SQL, tests, small apps and prototypes. The same ideas work with
 PostgreSQL or MySQL.
 
+TEACHING NOTES
+  Why it matters  Data that must survive restarts and be queried flexibly belongs in a SQL
+                  database.
+  Picture it      Tables are spreadsheets with rules; SQL is the language to ask them questions.
+  Watch out       Never build SQL with f-strings (SQL injection); use ? placeholders.
+  In real jobs    Every backend: users, orders, payments in Postgres/MySQL; SQLite for tests and
+                  small tools.
+  Interview       Q: How do you prevent SQL injection?
+                  A: Parameterised queries or an ORM; never concatenate user input into SQL.
+
 Run it:  python 18_data_apis_databases/03_sqlite.py
 """
 import sqlite3

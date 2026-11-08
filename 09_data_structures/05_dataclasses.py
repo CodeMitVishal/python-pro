@@ -4,6 +4,19 @@
 fields you list with type hints. Perfect for "records": a product, an
 order, a user, a config.
 
+TEACHING NOTES
+  Why it matters  Writing __init__, __repr__ and __eq__ by hand for every data class is boring
+                  and error-prone.
+  Picture it      A dataclass is a form template: list the fields, Python prints the whole form
+                  for you.
+  Watch out       Mutable defaults need field(default_factory=list); dataclasses don't validate
+                  types.
+  In real jobs    DTOs between layers, config objects, value objects like Money with
+                  frozen=True.
+  Interview       Q: dataclass vs Pydantic model?
+                  A: dataclass: lightweight, no validation, for internal data. Pydantic:
+                     validates and converts outside input.
+
 Run it:  python 09_data_structures/05_dataclasses.py
 """
 from dataclasses import dataclass, field, asdict

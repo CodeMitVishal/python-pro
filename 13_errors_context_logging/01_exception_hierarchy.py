@@ -9,6 +9,16 @@ Exceptions are classes in a family tree:
 
 Catching a parent catches all its children. So catch as SPECIFIC as you can.
 
+TEACHING NOTES
+  Why it matters  Errors will happen; good code decides where to handle them and what to tell
+                  the caller.
+  Picture it      An exception is a ball thrown up the call stack until someone catches it.
+  Watch out       Never 'except: pass'; catch the narrowest exception you can actually handle.
+  In real jobs    Domain errors (OutOfStock) mapped to HTTP codes in one exception handler.
+  Interview       Q: How do you design custom exceptions?
+                  A: One base class per app with specific subclasses; raise ... from e to keep
+                     the cause.
+
 Run it:  python 13_errors_context_logging/01_exception_hierarchy.py
 """
 

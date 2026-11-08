@@ -12,6 +12,17 @@
                            cookies + CSRF tokens for cookie-based forms. Bearer tokens
                            in headers aren't sent automatically, so they're not affected.
 
+TEACHING NOTES
+  Why it matters  Most breaches use a handful of well-known attacks; knowing them is part of the
+                  job.
+  Picture it      OWASP Top 10 is a burglar's handbook you read so you can lock the doors first.
+  Watch out       Being logged in is not permission: check ownership of every object (IDOR).
+  In real jobs    Security headers, rate limits, safe file paths, escaping output, dependency
+                  scans.
+  Interview       Q: What are XSS and CSRF?
+                  A: XSS runs an attacker's script in other users' browsers; CSRF forges
+                     requests from a logged-in browser.
+
 Run it:  python 24_auth_security/04_web_security_checklist.py
 """
 import time

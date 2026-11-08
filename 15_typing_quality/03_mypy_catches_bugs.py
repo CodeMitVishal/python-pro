@@ -3,6 +3,16 @@
 This file runs without errors... today. But it hides 3 bugs that will crash
 in production with the "wrong" data. mypy finds all of them in a second.
 
+TEACHING NOTES
+  Why it matters  Every bug mypy finds in review is a bug that never reaches production.
+  Picture it      mypy is a spell-checker for types: it reads the code without running it.
+  Watch out       Don't silence errors with '# type: ignore' without a reason; fix the type or
+                  narrow it.
+  In real jobs    mypy --strict in CI on new services; gradual adoption on legacy code.
+  Interview       Q: How do you adopt type checking in an existing codebase?
+                  A: Start with new modules, run mypy in CI, tighten per package, and fix the
+                     warnings that find real bugs.
+
 Run it:          python 15_typing_quality/03_mypy_catches_bugs.py
 Then check it:   pip install mypy
                  mypy 15_typing_quality/03_mypy_catches_bugs.py

@@ -5,6 +5,16 @@
 Flask maps URLs to Python functions. It's small, explicit and everywhere,
 which makes it the best framework to SEE how a web app works.
 
+TEACHING NOTES
+  Why it matters  Small services and internal tools need a web app in minutes, not days.
+  Picture it      A route is a doorbell: a URL rings, and the function behind that door answers.
+  Watch out       Return the right status code (201, 404), not 200 with an error message in the
+                  body.
+  In real jobs    Health checks, webhooks, internal dashboards, small JSON APIs.
+  Interview       Q: Flask vs Django vs FastAPI?
+                  A: Flask: minimal and flexible. Django: batteries included. FastAPI: typed,
+                     async APIs with auto docs.
+
 Run the self-test:   python 21_web_flask/02_flask_basics.py
 Run a real server:   flask --app 21_web_flask/02_flask_basics.py run --debug
                      then open http://127.0.0.1:5000/books

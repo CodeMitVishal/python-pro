@@ -7,6 +7,17 @@ make I/O-bound programs much faster.
 (For heavy CALCULATION, "CPU-bound" work, threads don't help in CPython
 because of the GIL; use processes instead -> lesson 02.)
 
+TEACHING NOTES
+  Why it matters  Most backend time is spent waiting on networks and disks; threads let you wait
+                  for many things at once.
+  Picture it      One cook watching several pots: while one boils, she stirs another.
+  Watch out       Threads sharing data need locks; the GIL stops threads from speeding up pure
+                  Python CPU work.
+  In real jobs    Parallel HTTP calls with ThreadPoolExecutor, blocking SDKs in web apps.
+  Interview       Q: What is the GIL?
+                  A: A lock that lets one thread run Python bytecode at a time; it is released
+                     during I/O.
+
 Run it:  python 17_concurrency/01_threads.py
 """
 import threading

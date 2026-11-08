@@ -4,6 +4,18 @@ argparse turns  python tool.py add "Buy milk" --priority high
 into a clean object:  args.command == "add", args.title == "Buy milk", ...
 and gives you --help, type checking and error messages for free.
 
+TEACHING NOTES
+  Why it matters  Teams automate everything with small command-line tools; argparse makes them
+                  robust for free.
+  Picture it      argparse is a receptionist: it checks the request, fills the form, and
+                  explains --help.
+  Watch out       Keep logic in normal functions and only parse arguments in main(), so it stays
+                  testable.
+  In real jobs    Admin commands, data import scripts, deploy helpers (like Django's manage.py).
+  Interview       Q: How do you build a CLI in Python?
+                  A: argparse (or click/typer) with subcommands and types, exposed via
+                     [project.scripts] in pyproject.toml.
+
 Run it:  python 14_packaging/02_cli_with_argparse.py
 Try:     python 14_packaging/02_cli_with_argparse.py --help
          python 14_packaging/02_cli_with_argparse.py greet Vishal --times 2 --shout

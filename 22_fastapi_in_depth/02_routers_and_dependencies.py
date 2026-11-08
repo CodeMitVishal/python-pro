@@ -6,6 +6,17 @@ Depends()   -> FastAPI calls a function for you and passes the result in:
                Dependencies can depend on other dependencies, and tests can
                REPLACE any of them with app.dependency_overrides.
 
+TEACHING NOTES
+  Why it matters  Auth, DB sessions and pagination repeated in every endpoint cause bugs and
+                  duplication.
+  Picture it      Depends() is room service: the endpoint orders what it needs, FastAPI delivers
+                  it and cleans up.
+  Watch out       401 means 'who are you?', 403 means 'I know you, but no'; don't mix them up.
+  In real jobs    current_user, get_db, admin-only routes, overriding dependencies in tests.
+  Interview       Q: What is dependency injection in FastAPI?
+                  A: Endpoints declare needs with Depends(); FastAPI builds them per request;
+                     tests override them with fakes.
+
 Run it:  python 22_fastapi_in_depth/02_routers_and_dependencies.py
 """
 from typing import Annotated

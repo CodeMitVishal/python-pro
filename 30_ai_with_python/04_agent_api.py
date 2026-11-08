@@ -12,6 +12,17 @@ Production habits shown here:
   * every response reports token usage, so you can log and bill it
   * tool rules (who may be refunded, how much) are enforced in Python, not in the prompt
 
+TEACHING NOTES
+  Why it matters  An AI feature becomes a product when it sits behind a reliable, testable API.
+  Picture it      The agent is a new employee behind a service desk: clear tools, limits, and a
+                  manager (your code).
+  Watch out       Limit input size and agent steps; report token usage for every request.
+  In real jobs    /ask endpoints for apps, streaming answers, swapping the model for a fake in
+                  tests.
+  Interview       Q: How do you test an LLM feature?
+                  A: Fake the client in unit tests; run an eval set of real questions on every
+                     prompt or model change.
+
 Run the demo:  python 30_ai_with_python/04_agent_api.py
 Serve it:      cd 30_ai_with_python  then  uvicorn 04_agent_api:app --reload   (docs at /docs)
 """

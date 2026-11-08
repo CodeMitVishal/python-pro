@@ -8,6 +8,19 @@ A function can accept:
         |  └ default value
         └ normal positional parameter
 
+TEACHING NOTES
+  Why it matters  Wrappers, decorators and flexible APIs must accept arguments they don't know
+                  in advance.
+  Picture it      *args is a bag for extra positional values; **kwargs is a labelled box for
+                  extra named ones.
+  Watch out       Never use a mutable default (def f(x=[])): it is created once and shared by
+                  every call.
+  In real jobs    Logging wrappers, decorators, and keyword-only options like connect(host, *,
+                  timeout=5).
+  Interview       Q: What is the mutable default argument trap?
+                  A: Defaults are evaluated once at def time, so a default list is shared; use
+                     None and create it inside.
+
 Run it:  python 10_advanced_functions/01_args_and_kwargs.py
 """
 

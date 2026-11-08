@@ -4,6 +4,17 @@ STACK  -> Last In, First Out (LIFO): undo history, the call stack, matching brac
 QUEUE  -> First In, First Out (FIFO): print jobs, task queues, breadth-first search
 LINKED LIST -> nodes pointing to the next node: O(1) insert at the front, no random access
 
+TEACHING NOTES
+  Why it matters  Undo, bracket checking, job queues and BFS all depend on these basic
+                  structures.
+  Picture it      A stack is a pile of plates (last in, first out); a queue is a line at a
+                  counter (first in, first out).
+  Watch out       list.pop(0) is O(n); use collections.deque for queues.
+  In real jobs    Task queues, undo history, parsers.
+  Interview       Q: How do you check if brackets are balanced?
+                  A: Push openers on a stack; each closer must match the top; the stack must be
+                     empty at the end. O(n).
+
 Run it:  python 29_algorithms/02_stacks_queues_linked_lists.py
 """
 from __future__ import annotations

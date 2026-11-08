@@ -6,6 +6,17 @@
   @staticmethod def m(...)       -> a plain helper that lives in the class
                                     for organisation; no self, no cls.
 
+TEACHING NOTES
+  Why it matters  Creating objects from JSON or DB rows needs constructors that aren't __init__.
+  Picture it      classmethod = a second front door that knows which house (class) it belongs
+                  to; staticmethod = a tool in the shed.
+  Watch out       Use cls(...) in classmethods, not the hard-coded class name, so subclasses
+                  work.
+  In real jobs    User.from_json(...), datetime.fromtimestamp(), dict.fromkeys().
+  Interview       Q: classmethod vs staticmethod vs instance method?
+                  A: Instance gets self, classmethod gets cls (alternative constructors),
+                     staticmethod gets nothing.
+
 Run it:  python 12_advanced_oop/03_class_and_static_methods.py
 """
 from datetime import date

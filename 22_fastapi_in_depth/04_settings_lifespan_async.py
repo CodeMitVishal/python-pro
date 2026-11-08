@@ -8,6 +8,18 @@ ASYNC     -> `async def` endpoints can await other I/O (HTTP calls, async DB dri
              without blocking the server. Use plain `def` for blocking/sync code:
              FastAPI runs it in a thread pool for you.
 
+TEACHING NOTES
+  Why it matters  Hard-coded config and clients created per request break in production and
+                  waste resources.
+  Picture it      Settings come from the environment like orders from HQ; lifespan opens the
+                  shop and closes it at night.
+  Watch out       Never commit secrets; never call blocking libraries inside async def.
+  In real jobs    pydantic-settings for env config, one shared httpx.AsyncClient created at
+                  startup.
+  Interview       Q: def vs async def endpoints?
+                  A: async def only with awaitable I/O; plain def runs in a thread pool, so
+                     blocking calls don't freeze the loop.
+
 Run it:  python 22_fastapi_in_depth/04_settings_lifespan_async.py
 """
 import os

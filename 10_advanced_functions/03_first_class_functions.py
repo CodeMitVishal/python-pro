@@ -6,6 +6,18 @@ In Python a function is a value, just like a number or a list. You can:
 
 That one idea powers callbacks, sorting keys, decorators and strategies.
 
+TEACHING NOTES
+  Why it matters  Choosing behaviour at runtime with long if/elif chains is rigid; functions can
+                  be passed like data.
+  Picture it      Without (), a function is just a value you can hand around; with () you call
+                  it.
+  Watch out       Pass the function (key=len), not its result (key=len()).
+  In real jobs    sorted(key=...), callbacks, dispatch dicts {'csv': read_csv}, strategy
+                  objects.
+  Interview       Q: What does 'functions are first-class objects' mean?
+                  A: Functions can be stored, passed as arguments and returned, like any other
+                     object.
+
 Run it:  python 10_advanced_functions/03_first_class_functions.py
 """
 from functools import partial

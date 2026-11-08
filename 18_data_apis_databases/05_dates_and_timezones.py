@@ -6,6 +6,18 @@ Rules that prevent 95% of date bugs:
   3. Use zoneinfo for real time zones: it knows daylight saving time (DST).
   4. Exchange dates as ISO 8601 text: 2026-11-08T10:30:00+00:00
 
+TEACHING NOTES
+  Why it matters  Time zone bugs ship to production once per developer; this lesson is your
+                  once.
+  Picture it      UTC is the world clock everyone agrees on; local time is just how you display
+                  it.
+  Watch out       Never mix naive and aware datetimes; store and compute in UTC.
+  In real jobs    Timestamps in DBs, scheduling jobs, showing local times to users in India and
+                  Germany.
+  Interview       Q: How do you handle time zones?
+                  A: Store aware UTC datetimes, convert with zoneinfo for display, exchange ISO
+                     8601 strings.
+
 Run it:  python 18_data_apis_databases/05_dates_and_timezones.py
          (on Windows you may need: pip install tzdata)
 """

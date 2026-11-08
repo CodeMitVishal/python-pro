@@ -6,6 +6,17 @@ The pattern every production FastAPI + SQL app uses:
   - database errors (like a UNIQUE violation) become clean HTTP errors
   - pydantic models (from_attributes=True) turn ORM objects into JSON
 
+TEACHING NOTES
+  Why it matters  Sessions shared between requests corrupt data; one session per request is the
+                  rule.
+  Picture it      Each request borrows its own notebook (Session) and returns it when done.
+  Watch out       Catch IntegrityError and roll back; return 409 for duplicates instead of a
+                  500.
+  In real jobs    get_db() yield dependency, overridden with a test database in pytest.
+  Interview       Q: How do you manage DB sessions in a web app?
+                  A: A session per request via a yield dependency or middleware; commit or roll
+                     back, always close.
+
 Run it:  python 23_sqlalchemy_alembic/03_sqlalchemy_with_fastapi.py
 """
 from collections.abc import Iterator

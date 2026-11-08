@@ -16,6 +16,19 @@ Files in this module:
 This script runs the app the way a platform sees it: config from env vars,
 probes, JSON logs, and the pytest suite.
 
+TEACHING NOTES
+  Why it matters  'Works on my machine' isn't done; production needs config, logs, health checks
+                  and repeatable deploys.
+  Picture it      A container is a shipping container: the same box runs on any ship (laptop,
+                  CI, Azure).
+  Watch out       Secrets in env vars or a vault, never in the image or git; logs to stdout, not
+                  files.
+  In real jobs    Docker images built in CI, deployed to Azure Container Apps with health
+                  probes.
+  Interview       Q: What is the 12-factor app?
+                  A: Config in env, stateless processes, logs to stdout, backing services by
+                     URL, same build everywhere.
+
 Run it:  python 27_deployment/01_production_ready_tour.py
 """
 import os

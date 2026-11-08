@@ -10,6 +10,17 @@ machine. Never unpickle data from users, the internet, or anything you don't tru
 For data exchange (APIs, files, other languages) use JSON. It's plain data:
 loading it never runs code.
 
+TEACHING NOTES
+  Why it matters  Choosing a serialisation format is a security decision, not just a
+                  convenience.
+  Picture it      JSON is a postcard anyone can read safely; pickle is a parcel that can run
+                  code when opened.
+  Watch out       Never unpickle data from an untrusted source: it is remote code execution.
+  In real jobs    JSON for APIs and configs; pickle only for your own caches and ML models.
+  Interview       Q: Why is pickle dangerous?
+                  A: Unpickling can execute arbitrary code, so untrusted pickles can take over
+                     your server.
+
 Run it:  python 18_data_apis_databases/06_pickle_vs_json.py
 """
 import json

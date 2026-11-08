@@ -10,6 +10,15 @@ Traversals (the order you visit nodes):
   post-order (left, right, node)   delete/size: children before the parent
   level-order (row by row)         uses a queue (breadth-first)
 
+TEACHING NOTES
+  Why it matters  Trees appear in file systems, DOMs, DB indexes and many interview questions.
+  Picture it      A BST is a family tree sorted by value: smaller to the left, bigger to the
+                  right.
+  Watch out       Inserting sorted data makes an unbalanced BST: a chain with O(n) search.
+  In real jobs    B-tree indexes in databases, category trees, comment threads.
+  Interview       Q: Which traversal of a BST gives sorted output?
+                  A: In-order: left subtree, node, right subtree.
+
 Run it:  python 29_algorithms/03_trees.py
 """
 from __future__ import annotations

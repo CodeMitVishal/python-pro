@@ -12,6 +12,17 @@ ITERATOR : the thing that remembers WHERE you are.
                                                except StopIteration: break
                                                print(x)
 
+TEACHING NOTES
+  Why it matters  Every for loop, comprehension and sum() uses the same protocol; knowing it
+                  explains generators.
+  Picture it      A ticket dispenser: iter() gives you the dispenser, next() hands out one
+                  ticket, StopIteration = empty.
+  Watch out       Iterators are single-use: looping a second time gives nothing.
+  In real jobs    Custom iterable classes for paginated API results or DB cursors.
+  Interview       Q: Iterable vs iterator?
+                  A: An iterable can create iterators (__iter__); an iterator has __next__ and
+                     remembers its position.
+
 Run it:  python 11_iterators_generators/01_iteration_protocol.py
 """
 

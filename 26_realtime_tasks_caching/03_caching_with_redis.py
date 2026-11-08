@@ -13,6 +13,18 @@ This demo uses `fakeredis`: the same API as the real `redis` client, but in
 memory, so no server is needed. In production:
     r = redis.Redis.from_url(os.environ["REDIS_URL"])     # e.g. Azure Cache for Redis
 
+TEACHING NOTES
+  Why it matters  The same expensive query 1000 times a minute: a cache turns 50 ms into under 1
+                  ms.
+  Picture it      A cache is a sticky note on your monitor: check it first, go to the archive
+                  (DB) only if it's missing.
+  Watch out       Every input the result depends on (user, language) belongs in the cache key,
+                  or users see others' data.
+  In real jobs    Cache-aside with TTLs, rate limiting with INCR, leaderboards with sorted sets.
+  Interview       Q: How would you cache a slow endpoint?
+                  A: Cache-aside in Redis with a TTL, keys built from all inputs, invalidate on
+                     write, guard against stampedes.
+
 Run it:  pip install fakeredis
          python 26_realtime_tasks_caching/03_caching_with_redis.py
 """

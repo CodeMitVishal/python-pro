@@ -4,6 +4,19 @@ Every byte that comes from outside (JSON bodies, query strings, env vars, files)
 is untrusted. pydantic turns it into typed Python objects, or explains exactly
 what's wrong. FastAPI uses it for every request and response.
 
+TEACHING NOTES
+  Why it matters  Clients send bad data all the time; validation at the edge keeps garbage out
+                  of your database.
+  Picture it      A Pydantic model is a border control officer: it checks, converts and rejects
+                  incoming data.
+  Watch out       Use separate input and output models so clients can't set id/is_admin and you
+                  never leak password hashes.
+  In real jobs    Request/response models in FastAPI, settings classes, parsing partner
+                  payloads.
+  Interview       Q: How does FastAPI validate requests?
+                  A: From type hints and Pydantic models; invalid input returns 422 with field
+                     errors before your code runs.
+
 Run it:  python 22_fastapi_in_depth/01_pydantic_models.py
 """
 from datetime import date

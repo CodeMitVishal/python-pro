@@ -4,6 +4,18 @@ FIXTURE      = reusable setup. A test asks for it by NAME as a parameter, and
                pytest builds it fresh for that test (and cleans up afterwards).
 PARAMETRIZE  = run the same test with many inputs; each one is reported separately.
 
+TEACHING NOTES
+  Why it matters  Copy-pasted setup and near-identical tests make suites slow to write and hard
+                  to change.
+  Picture it      A fixture is a kitchen helper that prepares ingredients for any test that asks
+                  for them by name.
+  Watch out       Fixtures with scope='session' share state between tests: use them only for
+                  expensive, read-only setup.
+  In real jobs    Test clients, test databases and fake users as fixtures in conftest.py.
+  Interview       Q: What is a pytest fixture?
+                  A: A function that provides setup (and teardown after yield) to tests that
+                     request it by name.
+
 Run:   pytest 16_testing/test_02_fixtures_and_parametrize.py -v
 """
 import json

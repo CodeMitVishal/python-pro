@@ -6,6 +6,17 @@ with the same memory as a 10 line file.
 
     read_lines -> parse -> only_errors -> pick_fields -> first 3
 
+TEACHING NOTES
+  Why it matters  Big data processing becomes simple when each step is a small, lazy, testable
+                  function.
+  Picture it      An assembly line: each station takes items from the previous one, does one
+                  job, passes them on.
+  Watch out       Nothing runs until something consumes the pipeline (list, sum, for).
+  In real jobs    Log processing, ETL jobs, data clean-up scripts.
+  Interview       Q: How would you process a huge log file?
+                  A: A lazy pipeline: read lines -> parse -> filter -> aggregate, one line in
+                     memory at a time.
+
 Run it:  python 11_iterators_generators/03_pipelines.py
 """
 from itertools import islice

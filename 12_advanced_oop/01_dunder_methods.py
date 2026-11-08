@@ -7,6 +7,17 @@ Python calls special methods behind the scenes:
   a < b     -> a.__lt__(b)       item in x -> x.__contains__(item)
 Implement them and your class works with print, len, +, ==, sorted, in, for...
 
+TEACHING NOTES
+  Why it matters  Objects that print as <object at 0x...> and can't be added or compared feel
+                  broken.
+  Picture it      Dunder methods are hooks: Python calls them behind +, ==, len(), print() and
+                  for loops.
+  Watch out       If you define __eq__, also define __hash__ (or the object becomes unhashable).
+  In real jobs    Money and Vector types, Django model __str__, rich comparisons for sorting.
+  Interview       Q: __str__ vs __repr__?
+                  A: __repr__ is unambiguous for developers (shell, logs); __str__ is friendly
+                     text for users.
+
 Run it:  python 12_advanced_oop/01_dunder_methods.py
 """
 from functools import total_ordering

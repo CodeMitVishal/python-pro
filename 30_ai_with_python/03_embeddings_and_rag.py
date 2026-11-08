@@ -12,6 +12,18 @@ We build the vectoriser ourselves (TF-IDF with numpy) so you can see every step.
 Real embedding models (Voyage AI, OpenAI, sentence-transformers) capture MEANING,
 so "money back" also finds "refund". The pipeline around them stays the same.
 
+TEACHING NOTES
+  Why it matters  The model doesn't know your documents; RAG lets it answer from them, with
+                  sources.
+  Picture it      An open-book exam: find the right pages first (retrieve), then answer from
+                  them (generate).
+  Watch out       Word matching misses synonyms; real embeddings capture meaning. No relevant
+                  chunk: say 'I don't know'.
+  In real jobs    Help-centre bots, internal docs search, contract Q&A.
+  Interview       Q: What is RAG?
+                  A: Retrieve relevant chunks via embeddings and similarity search, then answer
+                     from that context with citations.
+
 Run it:  python 30_ai_with_python/03_embeddings_and_rag.py
 """
 import math

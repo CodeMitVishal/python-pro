@@ -6,6 +6,17 @@ time in 10% of the code. Find that 10% with a profiler, fix it, measure again.
   timeit   -> compare small snippets precisely
   cProfile -> see which functions take the time in a whole program
 
+TEACHING NOTES
+  Why it matters  Guessing where code is slow wastes days; profilers tell you in seconds.
+  Picture it      A profiler is a stopwatch on every function: it shows where the time really
+                  goes.
+  Watch out       Optimise only the hot spot the profiler shows; most time is often I/O, not
+                  Python code.
+  In real jobs    cProfile/py-spy on slow endpoints; query counts and APM traces in production.
+  Interview       Q: Your endpoint is slow; what do you do?
+                  A: Measure (logs/APM, profiler), check DB queries and external calls first,
+                     then fix the biggest bottleneck.
+
 Run it:  python 19_performance_internals/02_measure_first.py
 Profile any script yourself:  python -m cProfile -s cumtime your_script.py
 """

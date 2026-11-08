@@ -10,6 +10,17 @@ assistant message back. Everything else (chat, agents, RAG) is built on that.
   usage         input_tokens + output_tokens: what you pay for
   streaming     show the answer word by word instead of waiting for all of it
 
+TEACHING NOTES
+  Why it matters  Product teams want AI features; the foundation is calling an LLM API
+                  correctly.
+  Picture it      The API is a very smart pen pal with no memory: each letter must include the
+                  whole conversation.
+  Watch out       Check stop_reason before trusting the text; never hard-code API keys.
+  In real jobs    Chat features, summaries, classification behind your own API.
+  Interview       Q: How does an LLM API call work?
+                  A: Send model, system prompt, messages and max_tokens; get content blocks,
+                     stop_reason and token usage.
+
 Run it offline (default):   python 30_ai_with_python/01_llm_api_basics.py
 Run it against Claude:      pip install anthropic, set ANTHROPIC_API_KEY, set USE_REAL_LLM=1
 """

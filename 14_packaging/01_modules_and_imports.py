@@ -8,6 +8,19 @@ When you write  import json  Python:
   2. otherwise searches the folders in sys.path, in order
   3. runs the file top to bottom and stores the result in sys.modules
 
+TEACHING NOTES
+  Why it matters  Once code outgrows one file, imports decide whether the project stays clean or
+                  tangles.
+  Picture it      A library: Python searches the shelves (sys.path), reads each book once, and
+                  keeps it in sys.modules.
+  Watch out       Circular imports: two modules importing each other at the top level; make
+                  dependencies point one way.
+  In real jobs    Splitting an app into packages (api, services, models); 'python -m app' entry
+                  points.
+  Interview       Q: What does if __name__ == '__main__' do?
+                  A: Runs that code only when the file is executed directly, not when it is
+                     imported.
+
 Run it:  python 14_packaging/01_modules_and_imports.py
 """
 import sys

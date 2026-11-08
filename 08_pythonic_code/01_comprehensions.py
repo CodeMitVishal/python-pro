@@ -6,6 +6,18 @@ It replaces the classic "make an empty list, loop, append" pattern.
 Shape:   [ what_to_keep   for item in things   if condition ]
            ^ expression     ^ the loop           ^ optional filter
 
+TEACHING NOTES
+  Why it matters  Building lists with append loops takes 4 lines and hides the intent; a
+                  comprehension says it in one.
+  Picture it      A factory line: items come in (for), a check throws some out (if), each good
+                  item is shaped (expression).
+  Watch out       Use a loop, not a comprehension, for side effects (print, save) or when it no
+                  longer fits on one line.
+  In real jobs    Turning DB rows into API JSON: [{'id': o.id} for o in orders if o.paid].
+  Interview       Q: List comprehension vs generator expression?
+                  A: [ ] builds the whole list now; ( ) produces values lazily, one at a time,
+                     with constant memory.
+
 Run it:  python 08_pythonic_code/01_comprehensions.py
 """
 

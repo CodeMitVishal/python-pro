@@ -12,6 +12,17 @@ ruff does both, extremely fast:
 The function below WORKS but is deliberately messy. Run ruff on it and compare
 with the clean version underneath.
 
+TEACHING NOTES
+  Why it matters  Style debates waste review time; a linter and formatter end them.
+  Picture it      ruff is an automatic proof-reader: it flags smells and fixes formatting in
+                  milliseconds.
+  Watch out       Don't fight the formatter; configure it once in pyproject.toml and let
+                  everyone use it.
+  In real jobs    ruff check + ruff format in pre-commit and CI on every PR.
+  Interview       Q: How do you keep code quality high in a team?
+                  A: Formatter, linter and type checker in pre-commit and CI, tests, small PRs
+                     and code reviews.
+
 Run it:  python 15_typing_quality/04_ruff_and_style.py
 """
 import os, sys          # E401: two imports on one line; F401: both unused

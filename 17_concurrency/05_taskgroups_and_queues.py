@@ -8,6 +8,18 @@
 3. httpx.AsyncClient: a real async HTTP client (requests is blocking!).
    Here it talks to a fake transport, so the demo runs offline.
 
+TEACHING NOTES
+  Why it matters  Fire-and-forget tasks leak work and hide errors; structured concurrency keeps
+                  them under control.
+  Picture it      A TaskGroup is a team leader: if one member fails, the others are told to
+                  stop.
+  Watch out       asyncio.gather keeps other tasks running after a failure unless you handle it;
+                  prefer TaskGroup.
+  In real jobs    Producer/consumer pipelines, crawlers, background ingestion workers.
+  Interview       Q: gather vs TaskGroup?
+                  A: TaskGroup cancels siblings on failure and raises an ExceptionGroup; gather
+                     does not by default.
+
 Run it:  python 17_concurrency/05_taskgroups_and_queues.py
 """
 import asyncio

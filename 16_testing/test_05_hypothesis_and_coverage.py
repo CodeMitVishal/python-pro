@@ -11,6 +11,17 @@ COVERAGE shows which lines your tests never run:
     pytest 16_testing --cov=16_testing --cov-report=term-missing
 100% coverage doesn't mean bug-free, but 40% means most code is untested.
 
+TEACHING NOTES
+  Why it matters  Hand-picked examples miss edge cases; property tests and coverage find what
+                  you forgot.
+  Picture it      Hypothesis is a fuzzing robot: you state a rule, it throws hundreds of nasty
+                  inputs at it.
+  Watch out       100% coverage doesn't mean correct; it only shows which lines ran.
+  In real jobs    Property tests for parsers and serializers; coverage gates in CI (e.g. 85%).
+  Interview       Q: Is 100% coverage the goal?
+                  A: No; test behaviour and edge cases. Coverage is a tool to find untested
+                     code.
+
 Run:   pytest 16_testing/test_05_hypothesis_and_coverage.py -v
 """
 from hypothesis import given

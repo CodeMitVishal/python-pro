@@ -5,6 +5,19 @@
 3. @overload: different return types depending on the arguments
 
 Check it:  mypy 15_typing_quality/05_generics_and_typed_decorators.py
+
+TEACHING NOTES
+  Why it matters  Reusable containers and decorators lose type information unless you use
+                  generics.
+  Picture it      A TypeVar is a placeholder: whatever type goes in, the same type comes out.
+  Watch out       Decorators without ParamSpec erase the wrapped function's signature for type
+                  checkers.
+  In real jobs    Generic Repository[T], Page[T] responses, typed decorators in shared
+                  libraries.
+  Interview       Q: What is a TypeVar / generic?
+                  A: A type placeholder linking inputs and outputs, e.g. def first(xs: list[T])
+                     -> T.
+
 Run it:    python 15_typing_quality/05_generics_and_typed_decorators.py
 """
 import functools

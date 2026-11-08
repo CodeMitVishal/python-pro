@@ -6,6 +6,19 @@ Four tools that remove a lot of boilerplate:
   deque       -> fast adds/removes at both ends, with an optional max length
   namedtuple  -> a tuple whose fields have names
 
+TEACHING NOTES
+  Why it matters  Counting, grouping and queues are so common that the standard library has
+                  ready-made containers.
+  Picture it      Counter is a tally sheet, defaultdict a filing cabinet that creates missing
+                  folders, deque a two-ended tube.
+  Watch out       Counter and defaultdict create keys when you READ a missing key with [ ]; use
+                  .get() to just look.
+  In real jobs    Counter(e.status for e in events) for dashboards; deque(maxlen=100) for
+                  recent-activity feeds.
+  Interview       Q: Which collections classes do you use and why?
+                  A: Counter (counting), defaultdict (grouping), deque (O(1) queues), namedtuple
+                     (light records).
+
 Run it:  python 09_data_structures/04_collections.py
 """
 from collections import Counter, defaultdict, deque, namedtuple

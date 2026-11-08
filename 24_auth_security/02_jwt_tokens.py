@@ -13,6 +13,18 @@ SESSIONS vs JWT:
   JWT (self-contained)                     -> no lookup per request, hard to revoke early
                                               -> keep them short-lived (minutes)
 
+TEACHING NOTES
+  Why it matters  APIs and mobile apps need stateless authentication; JWTs are the common
+                  answer.
+  Picture it      A JWT is a signed ticket: anyone can read it, only the server can create a
+                  valid one.
+  Watch out       Never put secrets in the payload; always check exp and pass algorithms=[...]
+                  when decoding.
+  In real jobs    Bearer tokens for APIs, short-lived access tokens plus refresh tokens.
+  Interview       Q: How does JWT authentication work?
+                  A: The server signs claims; the client sends Bearer <token>; the server
+                     verifies signature and expiry.
+
 Run it:  python 24_auth_security/02_jwt_tokens.py
 """
 import base64

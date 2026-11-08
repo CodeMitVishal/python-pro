@@ -5,6 +5,18 @@ Everything in Python is an OBJECT living in memory, with:
 Variables are just NAMES pointing to objects. CPython counts how many
 references point to each object, and frees it when the count drops to 0.
 
+TEACHING NOTES
+  Why it matters  Surprising bugs (a list changing 'by itself') come from not knowing how names
+                  and objects work.
+  Picture it      Variables are sticky notes on objects, not boxes; b = a adds a second note to
+                  the same object.
+  Watch out       Functions receive references: mutating a list argument changes the caller's
+                  list.
+  In real jobs    Debugging shared-state bugs and memory leaks in long-running services.
+  Interview       Q: How does Python manage memory?
+                  A: Reference counting frees objects at zero; a cyclic GC handles reference
+                     cycles.
+
 Run it:  python 19_performance_internals/01_memory_model.py
 """
 import copy

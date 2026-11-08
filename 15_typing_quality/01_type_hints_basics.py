@@ -6,6 +6,16 @@ Python does NOT check them at runtime. Tools do:
   - mypy (finds bugs before you run anything)  -> lesson 03
 They're also documentation that can never go out of date.
 
+TEACHING NOTES
+  Why it matters  The classic None bug ('NoneType has no attribute...') is caught before running
+                  when functions have hints.
+  Picture it      Type hints are labels on boxes: they say what should go in and what comes out.
+  Watch out       Hints are NOT checked at runtime; run mypy (or pyright) to get the benefit.
+  In real jobs    FastAPI and Pydantic read hints to validate requests; mypy runs in CI.
+  Interview       Q: Are type hints enforced in Python?
+                  A: No; Python stores them but ignores them. Checkers like mypy and libraries
+                     like Pydantic use them.
+
 Run it:  python 15_typing_quality/01_type_hints_basics.py
 """
 

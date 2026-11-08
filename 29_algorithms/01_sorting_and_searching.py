@@ -4,6 +4,18 @@ You'll use sorted() in real code (it's Timsort: O(n log n), stable, written in C
 But interviews and real problem-solving need you to understand HOW sorting works,
 and why some algorithms are O(n²) and others O(n log n).
 
+TEACHING NOTES
+  Why it matters  Coding interviews start here, and choosing the right sort/search keeps real
+                  code fast.
+  Picture it      Binary search is the phone book trick: open in the middle, throw away half,
+                  repeat.
+  Watch out       Binary search needs sorted data; Python's sorted() (Timsort) is stable and O(n
+                  log n).
+  In real jobs    bisect for sorted lists; sorting with key= for reports.
+  Interview       Q: What sorting algorithm does Python use?
+                  A: Timsort: a hybrid of merge and insertion sort, O(n log n), stable, fast on
+                     partly sorted data.
+
 Run it:  python 29_algorithms/01_sorting_and_searching.py
 """
 import bisect

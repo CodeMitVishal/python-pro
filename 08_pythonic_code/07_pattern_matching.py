@@ -3,6 +3,18 @@
 `match` checks the SHAPE of data, not just its value, and pulls pieces out in
 the same step. It shines with nested data like JSON, commands and events.
 
+TEACHING NOTES
+  Why it matters  Long if/elif chains that check keys and types of JSON payloads are hard to
+                  read and easy to break.
+  Picture it      A sorting machine: each case is a slot shaped like the data it accepts; the
+                  first slot that fits wins.
+  Watch out       A bare name in a case CAPTURES a value; compare against constants with dotted
+                  names (Color.RED).
+  In real jobs    Routing webhook events and API messages by their shape.
+  Interview       Q: When would you use match/case instead of if/elif?
+                  A: When branching on the structure of data (dicts, lists, classes); for simple
+                     values if/elif is fine.
+
 Run it:  python 08_pythonic_code/07_pattern_matching.py
 """
 from dataclasses import dataclass

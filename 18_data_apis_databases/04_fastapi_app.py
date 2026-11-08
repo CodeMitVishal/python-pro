@@ -11,6 +11,16 @@ validation (pydantic) and interactive docs at /docs.
   PATCH  /todos/{id}     mark done
   DELETE /todos/{id}     delete one
 
+TEACHING NOTES
+  Why it matters  Frontends and mobile apps need an HTTP API over your data.
+  Picture it      The API is a shop counter: requests come in, validated orders go to the back
+                  (DB), answers come out.
+  Watch out       Return proper status codes (201, 404, 422), not 200 with an error message.
+  In real jobs    CRUD services behind web and mobile apps.
+  Interview       Q: What is REST?
+                  A: Resources at URLs, HTTP methods for actions, stateless requests, status
+                     codes, JSON bodies.
+
 Run the self-test:   python 18_data_apis_databases/04_fastapi_app.py
 Run a real server:   cd 18_data_apis_databases
                      uvicorn 04_fastapi_app:app --reload

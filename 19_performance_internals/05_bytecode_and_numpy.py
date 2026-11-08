@@ -5,6 +5,16 @@
 3. NumPy: when pure Python loops are too slow for numbers, vectorise.
    The loop runs in optimised C over a compact array, often 10-100x faster.
 
+TEACHING NOTES
+  Why it matters  Understanding what Python runs explains why NumPy is 30x faster for numbers.
+  Picture it      Bytecode is the recipe the interpreter follows; NumPy hands the whole loop to
+                  fast C code.
+  Watch out       Don't loop over NumPy arrays in Python; use vectorised operations.
+  In real jobs    Numeric work, data science, pandas-based reports.
+  Interview       Q: Why is NumPy faster than Python loops?
+                  A: Contiguous typed arrays and compiled C loops, without a Python object per
+                     element.
+
 Run it:  pip install numpy
          python 19_performance_internals/05_bytecode_and_numpy.py
 """

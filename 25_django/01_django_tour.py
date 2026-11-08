@@ -25,6 +25,18 @@ For the real thing:
     python manage.py createsuperuser
     python manage.py runserver        -> http://127.0.0.1:8000/  /api/  /admin/
 
+TEACHING NOTES
+  Why it matters  Many Python web jobs are Django jobs: ORM, admin, auth and migrations out of
+                  the box.
+  Picture it      Django is a fully equipped kitchen: you cook the business logic, the
+                  appliances are already there.
+  Watch out       QuerySets are lazy and N+1 is easy to create: use select_related /
+                  prefetch_related.
+  In real jobs    Admin panels for staff, DRF APIs for apps, migrations in every deploy.
+  Interview       Q: select_related vs prefetch_related?
+                  A: select_related: FK/one-to-one with a JOIN. prefetch_related: reverse FK/M2M
+                     with a second IN query.
+
 Run it:  python 25_django/01_django_tour.py
 """
 import os

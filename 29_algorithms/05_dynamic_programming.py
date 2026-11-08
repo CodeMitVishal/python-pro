@@ -8,6 +8,17 @@ Two styles:
   TOP-DOWN  - recursion + a cache (@lru_cache)              easy to write
   BOTTOM-UP - fill a table from the smallest case upwards    no recursion limit, often faster
 
+TEACHING NOTES
+  Why it matters  Some problems explode exponentially unless you remember sub-results.
+  Picture it      Climbing stairs with a notebook: write down how you reached each step so you
+                  never recompute it.
+  Watch out       Greedy choices can be wrong (coins 1, 3, 4 for 6); DP checks every option
+                  once.
+  In real jobs    Diff tools (edit distance), pricing and packing optimisations.
+  Interview       Q: When do you use dynamic programming?
+                  A: When there are overlapping subproblems and optimal substructure: fewest,
+                     most, or number of ways.
+
 Run it:  python 29_algorithms/05_dynamic_programming.py
 """
 from functools import cache

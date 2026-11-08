@@ -4,6 +4,18 @@ You rarely need these in app code, but frameworks use them everywhere
 (Django models, SQLAlchemy columns, pydantic fields, dataclasses).
 Understanding them makes "magic" libraries make sense.
 
+TEACHING NOTES
+  Why it matters  Frameworks like Django and SQLAlchemy use these to turn class attributes into
+                  fields.
+  Picture it      A descriptor is a smart attribute slot; a metaclass is the factory that builds
+                  classes.
+  Watch out       You rarely need metaclasses: __init_subclass__ or a class decorator is usually
+                  enough.
+  In real jobs    Plugin registries, ORM fields, validation frameworks.
+  Interview       Q: What is a descriptor?
+                  A: An object with __get__/__set__ on a class that controls attribute access;
+                     property is one.
+
 Run it:  python 12_advanced_oop/07_descriptors_and_metaclasses.py
 """
 

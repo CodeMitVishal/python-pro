@@ -5,6 +5,17 @@ Each shop answers after a random delay; some are down. We:
   - give each shop 1.0 s (wait_for), so one slow shop can't block everything
   - keep going when a shop fails (return_exceptions=True)
 
+TEACHING NOTES
+  Why it matters  30 shops checked one by one take 30 seconds; concurrently, about one.
+  Picture it      Sending 30 letters at once instead of waiting for each reply before writing
+                  the next.
+  Watch out       Limit concurrency (Semaphore) so you don't overload partner APIs or hit rate
+                  limits.
+  In real jobs    Aggregating data from several services or partner APIs.
+  Interview       Q: How would you call 100 APIs as fast as possible?
+                  A: asyncio with an async HTTP client, a Semaphore to cap concurrency, timeouts
+                     and retries.
+
 Run it:  python 17_concurrency/04_demo_price_checker.py
 """
 import asyncio

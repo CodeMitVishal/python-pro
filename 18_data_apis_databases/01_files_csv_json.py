@@ -4,6 +4,17 @@
   csv      -> DictReader/DictWriter handle quoting, commas inside values, headers
   json     -> the format every web API speaks
 
+TEACHING NOTES
+  Why it matters  Every integration starts with reading or writing files: CSV exports, JSON
+                  configs.
+  Picture it      pathlib treats paths as objects; csv.DictReader turns each row into a labelled
+                  dict.
+  Watch out       Always pass encoding='utf-8' (and newline='' for CSV); CSV values are strings.
+  In real jobs    Partner CSV imports, JSON fixtures and configs, report exports.
+  Interview       Q: How do you read a large CSV safely?
+                  A: csv.DictReader over the open file, row by row, with explicit encoding and
+                     type conversion.
+
 Run it:  python 18_data_apis_databases/01_files_csv_json.py
 """
 import csv

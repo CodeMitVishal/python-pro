@@ -3,6 +3,18 @@
 Unpacking pulls values OUT of a list, tuple or dict and into names,
 in one step. It makes code shorter and easier to read.
 
+TEACHING NOTES
+  Why it matters  Index juggling (row[0], row[1]) is unreadable and breaks when the data shape
+                  changes.
+  Picture it      Like unpacking a parcel: each item goes straight into its own labelled box.
+  Watch out       The number of names must match the number of values, unless one name has a *
+                  to collect the rest.
+  In real jobs    Merging config: settings = {**DEFAULTS, **env_settings}; swapping values: a, b
+                  = b, a.
+  Interview       Q: How does a, b = b, a work without a temporary variable?
+                  A: The right side builds a tuple first, then it is unpacked into the names on
+                     the left.
+
 Run it:  python 08_pythonic_code/02_unpacking.py
 """
 

@@ -9,6 +9,17 @@ Beyond print(): the tools experienced developers reach for.
   5. faulthandler             tracebacks even when Python itself hangs or crashes
   6. VS Code launch.json      one click to debug a FastAPI server or pytest test
 
+TEACHING NOTES
+  Why it matters  Most of a developer's time is reading code and hunting bugs; tools make it 10x
+                  faster.
+  Picture it      A debugger is a pause button and magnifying glass for a running program.
+  Watch out       Don't leave breakpoint() in committed code; read tracebacks bottom-up.
+  In real jobs    VS Code debugger for uvicorn and pytest; post-mortem on crashes; logs in
+                  production.
+  Interview       Q: How do you debug a problem?
+                  A: Read the traceback, reproduce with a test, inspect with breakpoint()/IDE,
+                     fix, keep the test.
+
 Run it:  python 13_errors_context_logging/06_debugging_like_a_pro.py
 """
 import faulthandler

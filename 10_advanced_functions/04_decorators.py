@@ -7,6 +7,18 @@ retries, access checks...
     @timer                 is exactly the same as      slow_task = timer(slow_task)
     def slow_task(): ...
 
+TEACHING NOTES
+  Why it matters  Adding timing, logging or retries to 40 functions by copy-paste is slow and
+                  error-prone.
+  Picture it      Gift wrapping: callers still call the same name, but get the wrapper, which
+                  acts before and after.
+  Watch out       Always use functools.wraps and always return the wrapped function's result.
+  In real jobs    @app.get routes, @login_required, @lru_cache, @pytest.fixture, your own
+                  @retry.
+  Interview       Q: Write a decorator with arguments. Why three levels?
+                  A: retry(times) keeps the settings, returns decorator(func), which returns the
+                     wrapper that runs each call.
+
 Run it:  python 10_advanced_functions/04_decorators.py
 """
 import functools

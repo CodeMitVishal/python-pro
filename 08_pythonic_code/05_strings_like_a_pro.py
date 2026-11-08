@@ -3,6 +3,19 @@
 f-strings can format numbers, pad columns and even debug for you.
 join and split turn lists into text and back.
 
+TEACHING NOTES
+  Why it matters  Reports, logs and emails are all strings; clumsy formatting makes code ugly
+                  and slow.
+  Picture it      An f-string is a form with blanks; the format spec after : says how to fill
+                  each blank.
+  Watch out       Building a big string with += in a loop is O(n squared); collect parts in a
+                  list and ''.join() once.
+  In real jobs    Formatting money and percentages in invoices, f'{x=}' while debugging,
+                  join/split for CSV-like data.
+  Interview       Q: Why are strings immutable, and what does that mean for performance?
+                  A: Every change creates a new string; repeated += copies everything, so use
+                     join for many pieces.
+
 Run it:  python 08_pythonic_code/05_strings_like_a_pro.py
 """
 

@@ -12,6 +12,18 @@ A reliable process: 1. restate the problem + examples  2. brute force first
 3. find the pattern  4. code it  5. test edge cases (empty, one item, duplicates)
 6. state the time and space complexity.
 
+TEACHING NOTES
+  Why it matters  Most interview problems are variations of a few patterns.
+  Picture it      Patterns are keys on a ring: recognise the lock (problem type), pick the
+                  matching key.
+  Watch out       Don't jump into code: clarify, brute force, then optimise, test and state
+                  Big-O.
+  In real jobs    Hash maps for lookups, sliding windows for streams, prefix sums for range
+                  reports.
+  Interview       Q: How do you solve two sum in O(n)?
+                  A: One pass with a dict of value -> index; check whether target - n has been
+                     seen.
+
 Run it:  python 29_algorithms/06_problem_solving_patterns.py
 """
 from collections import defaultdict

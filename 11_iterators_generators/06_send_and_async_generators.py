@@ -6,6 +6,16 @@
    Consume it with `async for`. Perfect for streaming: pages of an API,
    rows from an async database driver, messages from a queue.
 
+TEACHING NOTES
+  Why it matters  Two-way generators and async generators power coroutines and async streaming.
+  Picture it      send() is a two-way radio: you hand a value in and get the next value out.
+  Watch out       Prime a generator with next() before the first send(); async generators need
+                  'async for'.
+  In real jobs    Streaming paginated results from async HTTP APIs.
+  Interview       Q: What is an async generator?
+                  A: An 'async def' function with yield, consumed with 'async for'; ideal for
+                     async streams.
+
 Run it:  python 11_iterators_generators/06_send_and_async_generators.py
 """
 import asyncio

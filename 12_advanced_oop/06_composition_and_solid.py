@@ -10,6 +10,19 @@ SOLID, simplified:
   I  Interface segregation   - small, focused interfaces beat one giant one
   D  Dependency inversion    - depend on an abstraction, pass the details in
 
+TEACHING NOTES
+  Why it matters  Deep inheritance trees become fragile; good designs are built from small parts
+                  passed in.
+  Picture it      Composition is LEGO: a service HAS a repository and a mailer, it doesn't
+                  inherit from them.
+  Watch out       Inheriting only to reuse code creates weird is-a relationships; prefer
+                  composition.
+  In real jobs    Service layers with injected repositories and clients (FastAPI Depends, Django
+                  services).
+  Interview       Q: Composition vs inheritance?
+                  A: Inheritance = is-a for small stable hierarchies; composition = has-a,
+                     flexible and easy to test.
+
 Run it:  python 12_advanced_oop/06_composition_and_solid.py
 """
 from typing import Protocol

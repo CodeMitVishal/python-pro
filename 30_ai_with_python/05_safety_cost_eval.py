@@ -8,6 +8,16 @@ The demo works on your laptop. Production needs four more things:
   3. COST              you pay per token, in and out: estimate, budget, choose the model
   4. EVALS             a test suite for prompts: run it on every change, like unit tests
 
+TEACHING NOTES
+  Why it matters  AI features can be tricked, leak data and run up big bills if left unchecked.
+  Picture it      Treat model output like user input: helpful, but never trusted blindly.
+  Watch out       Prompt injection is real: limits, allow-lists and approvals belong in code,
+                  not in the prompt.
+  In real jobs    Redacting personal data, budgets per day, eval scores tracked per release.
+  Interview       Q: What is prompt injection?
+                  A: Untrusted text containing instructions the model follows; defend with least
+                     privilege and checks in code.
+
 Run it:  python 30_ai_with_python/05_safety_cost_eval.py
 """
 import re
