@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Bookstore</title></head>
+<body>
+  <h1>Books</h1>
+  <form><input name="q" value="{{ request.GET.q }}" placeholder="Search"><button>Search</button></form>
+  <ul>
+    {% for book in books %}
+      <li><a href="{% url 'catalog:book-detail' book.pk %}">{{ book.title }}</a>
+          by {{ book.author.name }}: {{ book.price }} EUR
+          {% if not book.in_stock %}<em>(sold out)</em>{% endif %}</li>
+    {% empty %}
+      <li>No books found.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

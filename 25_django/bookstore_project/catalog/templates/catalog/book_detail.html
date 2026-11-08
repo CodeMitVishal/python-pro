@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>{{ book.title }}</title></head>
+<body>
+  <h1>{{ book.title }}</h1>
+  <p>by {{ book.author.name }}{% if book.author.country %} ({{ book.author.country }}){% endif %}</p>
+  <p>{{ book.price }} EUR · {{ book.published|date:"Y"|default:"unknown year" }}</p>
+  <a href="{% url 'catalog:book-list' %}">All books</a>
+</body>
+</html>
