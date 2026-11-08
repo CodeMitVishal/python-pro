@@ -29,17 +29,17 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 |---|---|---|---|
 | 08 | [Pythonic code](08_pythonic_code/README.md) | write short, idiomatic Python | ✅ Ready |
 | 09 | [Data structures deep dive](09_data_structures/README.md) | pick the right structure, understand Big-O | ✅ Ready |
-| 10 | Advanced functions | write closures and decorators | 🔜 Coming |
-| 11 | Iterators & generators | process big data lazily | 🔜 Coming |
-| 12 | Advanced OOP | design clean classes (dunders, ABCs, SOLID) | 🔜 Coming |
-| 13 | Errors, context managers & logging | fail safely and log clearly | 🔜 Coming |
-| 14 | Project structure & packaging | ship an installable command-line tool | 🔜 Coming |
-| 15 | Type hints & code quality | catch bugs before you run the code | 🔜 Coming |
-| 16 | Testing with pytest | prove your code works | 🔜 Coming |
-| 17 | Concurrency | use threads, processes and asyncio | 🔜 Coming |
-| 18 | Data, APIs & databases | build a REST API backed by a database | 🔜 Coming |
-| 19 | Performance & internals | profile and speed up real code | 🔜 Coming |
-| 20 | Capstone project | build a full project, end to end | 🔜 Coming |
+| 10 | [Advanced functions](10_advanced_functions/README.md) | write closures and decorators | ✅ Ready |
+| 11 | [Iterators & generators](11_iterators_generators/README.md) | process big data lazily | ✅ Ready |
+| 12 | [Advanced OOP](12_advanced_oop/README.md) | design clean classes (dunders, ABCs, SOLID) | ✅ Ready |
+| 13 | [Errors, context managers & logging](13_errors_context_logging/README.md) | fail safely and log clearly | ✅ Ready |
+| 14 | [Project structure & packaging](14_packaging/README.md) | ship an installable command-line tool | ✅ Ready |
+| 15 | [Type hints & code quality](15_typing_quality/README.md) | catch bugs before you run the code | ✅ Ready |
+| 16 | [Testing with pytest](16_testing/README.md) | prove your code works | ✅ Ready |
+| 17 | [Concurrency](17_concurrency/README.md) | use threads, processes and asyncio | ✅ Ready |
+| 18 | [Data, APIs & databases](18_data_apis_databases/README.md) | build a REST API backed by a database | ✅ Ready |
+| 19 | [Performance & internals](19_performance_internals/README.md) | profile and speed up real code | ✅ Ready |
+| 20 | [Capstone project](20_capstone/README.md) | build a full project, end to end | ✅ Ready |
 
 ## How to study
 
@@ -50,8 +50,7 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 ## Quick start
 
-You need **Python 3.10 or newer**. Everything uses the standard library, so
-there's nothing to install for Modules 8–9.
+You need **Python 3.10 or newer**. Modules 8–13 use only the standard library.
 
 ```bash
 git clone https://github.com/CodeMitVishal/python-pro.git
@@ -63,6 +62,13 @@ cd python-pro
 
 ```bash
 python 08_pythonic_code/01_comprehensions.py
+```
+
+From Module 14 on you'll use pytest, mypy, ruff, requests and FastAPI.
+Install them once, ideally inside a virtual environment:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ## Submit your exercise

@@ -35,7 +35,7 @@ Fill in 6 TODOs, each with the data structure that fits the job.
 
 Test yourself with the [Module 9 quiz](QUIZ.md). The answer key is at the bottom.
 
-**Next up:** Module 10 · Advanced functions (coming soon)
+**Next up:** [Module 10 · Advanced functions](../10_advanced_functions/README.md) →
 
 ---
 

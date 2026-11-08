@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "budget"
+version = "1.0.0"
+description = "Track expenses from the command line or a REST API (Python Pro capstone)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["fastapi>=0.110", "uvicorn>=0.29"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27", "mypy>=1.10", "ruff>=0.5"]
+
+[project.scripts]
+budget = "budget.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# --- Quality tools: configured once, used by everyone ------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:.*httpx.*"]   # a notice from the test client library, not our code
+
+[tool.mypy]
+strict = true
+files = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]   # errors, pyflakes, imports, bugbear, pyupgrade
