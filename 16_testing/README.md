@@ -12,6 +12,7 @@ Prove your code works, and keep it working. Plain asserts, fixtures, parametrize
 | Fixtures & parametrize | [`test_02_fixtures_and_parametrize.py`](test_02_fixtures_and_parametrize.py) | reusable setup, `tmp_path`, many cases |
 | Fakes, mocks & monkeypatch | [`test_03_mocking.py`](test_03_mocking.py) | test code that calls a web API, without the network |
 | TDD | [`test_04_tdd.py`](test_04_tdd.py) | red → green → refactor, building `slugify()` |
+| Property-based tests & coverage | [`test_05_hypothesis_and_coverage.py`](test_05_hypothesis_and_coverage.py) | hypothesis, `pytest --cov` |
 
 Install pytest and run the whole module:
 

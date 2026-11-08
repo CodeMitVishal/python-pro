@@ -12,6 +12,7 @@ Fail safely and leave a clear trail: custom exception families, guaranteed clean
 | Context managers | [`02_context_managers.py`](02_context_managers.py) | `__enter__`/`__exit__`, `@contextmanager`, rollback |
 | logging | [`03_logging.py`](03_logging.py) | levels, formats, handlers, `log.exception()` |
 | Demo: robust order importer | [`04_demo_order_importer.py`](04_demo_order_importer.py) | skip bad rows, or roll back the whole batch |
+| ExitStack & exception groups | [`05_exitstack_and_groups.py`](05_exitstack_and_groups.py) | many context managers at once, `except*` |
 
 ```bash
 python 13_errors_context_logging/01_exception_hierarchy.py

@@ -16,6 +16,8 @@ specialised tools in `collections` and `dataclasses`.
 | The collections module | [`04_collections.py`](04_collections.py) | `Counter`, `defaultdict`, `deque`, `namedtuple` |
 | dataclasses | [`05_dataclasses.py`](05_dataclasses.py) | `@dataclass`, `field`, `frozen`, `order` |
 | Demo: log analyzer | [`06_demo_log_analyzer.py`](06_demo_log_analyzer.py) | one question, one right data structure |
+| Enums | [`07_enums.py`](07_enums.py) | `StrEnum`, `IntEnum`, `Flag`, enums in `match` |
+| heapq & bisect | [`08_heapq_and_bisect.py`](08_heapq_and_bisect.py) | priority queues, top-k, sorted inserts |
 
 ```bash
 python 09_data_structures/01_big_o.py

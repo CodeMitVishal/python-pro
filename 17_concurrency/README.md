@@ -12,6 +12,7 @@ Do many things at once: threads for waiting, processes for calculating, asyncio 
 | Processes | [`02_processes.py`](02_processes.py) | the GIL, and real multi-core speed-ups |
 | asyncio | [`03_asyncio_basics.py`](03_asyncio_basics.py) | `async`/`await`, `gather`, timeouts, semaphores |
 | Demo: price checker | [`04_demo_price_checker.py`](04_demo_price_checker.py) | 30 shops concurrently, with limits and timeouts |
+| TaskGroup, queues, async HTTP | [`05_taskgroups_and_queues.py`](05_taskgroups_and_queues.py) | structured concurrency, backpressure, `httpx.AsyncClient` |
 
 ```bash
 python 17_concurrency/01_threads.py

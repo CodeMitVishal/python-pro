@@ -13,6 +13,7 @@ Process data one item at a time. Generators let you handle a 10 GB file with the
 | Lazy pipelines | [`03_pipelines.py`](03_pipelines.py) | chain generators like an assembly line |
 | itertools | [`04_itertools.py`](04_itertools.py) | `islice`, `chain`, `groupby`, `pairwise`, `product`... |
 | Demo: a 200,000-row CSV | [`05_demo_big_csv.py`](05_demo_big_csv.py) | 56 MB eager vs 0.05 MB lazy, measured |
+| send() & async generators | [`06_send_and_async_generators.py`](06_send_and_async_generators.py) | two-way generators, `async for`, streaming pages |
 
 ```bash
 python 11_iterators_generators/01_iteration_protocol.py

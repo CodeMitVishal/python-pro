@@ -12,6 +12,7 @@ Catch bugs before you run the code. Type hints, mypy and ruff are what make big 
 | Advanced typing | [`02_advanced_typing.py`](02_advanced_typing.py) | `Literal`, `TypedDict`, `Callable`, `TypeVar`, `Final` |
 | mypy catches bugs | [`03_mypy_catches_bugs.py`](03_mypy_catches_bugs.py) | 3 hidden crashes found without running anything |
 | ruff & style | [`04_ruff_and_style.py`](04_ruff_and_style.py) | linting vs formatting, messy vs clean code |
+| Generics & typed decorators | [`05_generics_and_typed_decorators.py`](05_generics_and_typed_decorators.py) | `Generic[T]`, `ParamSpec`, `@overload` |
 
 Install the tools:
 

@@ -12,6 +12,7 @@ Understand what Python does under the hood, then make code fast the right way: m
 | Measure first | [`02_measure_first.py`](02_measure_first.py) | `timeit` and `cProfile` |
 | Speed tricks that matter | [`03_speed_tricks.py`](03_speed_tricks.py) | 309x from a data structure, caching, built-ins |
 | Memory tricks | [`04_memory_tricks.py`](04_memory_tricks.py) | `tracemalloc`, `__slots__`, generators |
+| Bytecode, weakref & NumPy | [`05_bytecode_and_numpy.py`](05_bytecode_and_numpy.py) | `dis`, weak caches, vectorisation |
 
 ```bash
 python 19_performance_internals/01_memory_model.py

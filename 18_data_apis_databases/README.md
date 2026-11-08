@@ -12,6 +12,8 @@ Work with real data: files, CSV and JSON, web APIs, SQL databases, and your own 
 | Calling web APIs | [`02_http_requests.py`](02_http_requests.py) | `requests` with params, timeouts, status codes |
 | SQLite | [`03_sqlite.py`](03_sqlite.py) | SQL, `?` parameters vs SQL injection, transactions |
 | Your own REST API | [`04_fastapi_app.py`](04_fastapi_app.py) | FastAPI + pydantic + SQLite, tested with `TestClient` |
+| Dates & time zones | [`05_dates_and_timezones.py`](05_dates_and_timezones.py) | UTC, `zoneinfo`, DST, ISO 8601 |
+| pickle vs JSON | [`06_pickle_vs_json.py`](06_pickle_vs_json.py) | why untrusted pickles run code |
 
 Install the libraries:
 

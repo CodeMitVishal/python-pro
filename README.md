@@ -4,7 +4,7 @@
 [![YouTube: CodeMitVishal](https://img.shields.io/badge/YouTube-CodeMitVishal-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@CodeMitVishal)
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support%20us-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/codemitvishal)
 
-**From Python Foundations to professional Python: deep, but simple.**
+**From Python Foundations to professional Python and web development: deep, but simple.**
 
 You know variables, loops, functions and classes. Now learn how experienced
 Python developers actually write code: clean and idiomatic, fast, tested,
@@ -41,6 +41,19 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 | 19 | [Performance & internals](19_performance_internals/README.md) | profile and speed up real code | ✅ Ready |
 | 20 | [Capstone project](20_capstone/README.md) | build a full project, end to end | ✅ Ready |
 
+### 🌐 Web development track
+
+| # | Module | You'll be able to… | Status |
+|---|---|---|---|
+| 21 | [HTTP, Flask & Jinja2](21_web_flask/README.md) | understand HTTP; build server-rendered pages | ✅ Ready |
+| 22 | [FastAPI in depth](22_fastapi_in_depth/README.md) | design production APIs with validation and DI | ✅ Ready |
+| 23 | [SQLAlchemy 2.0 & Alembic](23_sqlalchemy_alembic/README.md) | use an ORM, avoid N+1, migrate schemas | ✅ Ready |
+| 24 | [Authentication & security](24_auth_security/README.md) | hash passwords, issue JWTs, stop OWASP bugs | ✅ Ready |
+| 25 | [Django + DRF](25_django/README.md) | build Django apps with an admin and REST API | ✅ Ready |
+| 26 | [WebSockets, background tasks & caching](26_realtime_tasks_caching/README.md) | push live updates, run jobs, cache with Redis | ✅ Ready |
+| 27 | [Docker, CI/CD & Azure](27_deployment/README.md) | containerise, test in CI, deploy to Azure | ✅ Ready |
+| 28 | [Web capstone: taskboard](28_web_capstone/README.md) | ship a secure, tested, real-time API | ✅ Ready |
+
 ## How to study
 
 1. **Read the slides** for the module (or watch the video when it's out).
@@ -64,7 +77,7 @@ cd python-pro
 python 08_pythonic_code/01_comprehensions.py
 ```
 
-From Module 14 on you'll use pytest, mypy, ruff, requests and FastAPI.
+From Module 14 on you'll use pytest, mypy, ruff, requests, FastAPI, SQLAlchemy, Django and more.
 Install them once, ideally inside a virtual environment:
 
 ```bash

@@ -11,6 +11,7 @@ Turn scripts into a real, installable project with a command-line tool: modules,
 | Modules & imports | [`01_modules_and_imports.py`](01_modules_and_imports.py) | `sys.path`, caching, `__name__ == "__main__"` |
 | CLIs with argparse | [`02_cli_with_argparse.py`](02_cli_with_argparse.py) | subcommands, flags, types, `--help` |
 | A real package: tasky | [`tasky_project/`](tasky_project/) | src layout, `pyproject.toml`, the `tasky` command, tests |
+| Publishing & tooling | [`03_publishing_and_tooling.md`](03_publishing_and_tooling.md) | PyPI, uv, pre-commit |
 
 Install the example package:
 

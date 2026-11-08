@@ -36,7 +36,7 @@ From inside `budget_project`, `pytest`, `mypy` and `ruff check .` must all pass.
 
 Take the [final exam](QUIZ.md): 20 questions across the whole course.
 
-🎉 **That's the end of Python Pro!** You've gone from Foundations to professional Python.
+**Next up:** the web development track → [Module 21 · HTTP fundamentals, Flask & Jinja2](../21_web_flask/README.md)
 
 ---
 

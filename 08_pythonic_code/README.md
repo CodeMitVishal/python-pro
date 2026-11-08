@@ -18,6 +18,8 @@ expected output next to every `print`.
 | Truthiness & walrus | [`04_truthiness_and_walrus.py`](04_truthiness_and_walrus.py) | falsy values, `is None`, `:=` |
 | Strings like a pro | [`05_strings_like_a_pro.py`](05_strings_like_a_pro.py) | f-string formatting, `join`, `split` |
 | Demo: grade report | [`06_demo_grade_report.py`](06_demo_grade_report.py) | everything above in one program |
+| Pattern matching | [`07_pattern_matching.py`](07_pattern_matching.py) | `match`/`case` on values, sequences, dicts and classes |
+| Regular expressions | [`08_regex.py`](08_regex.py) | search, named groups, `sub`, validation |
 
 ```bash
 python 08_pythonic_code/01_comprehensions.py

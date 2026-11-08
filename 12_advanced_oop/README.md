@@ -14,6 +14,7 @@ Design classes that feel built-in and stay easy to change: dunder methods, prope
 | Inheritance & the MRO | [`04_inheritance_and_mro.py`](04_inheritance_and_mro.py) | `super()`, the diamond, mixins |
 | ABCs & Protocols | [`05_abc_and_protocols.py`](05_abc_and_protocols.py) | contracts: nominal vs structural typing |
 | Composition & SOLID | [`06_composition_and_solid.py`](06_composition_and_solid.py) | dependency injection, testable design |
+| Descriptors & metaclasses | [`07_descriptors_and_metaclasses.py`](07_descriptors_and_metaclasses.py) | how `@property` works, `__new__`, `__init_subclass__`, metaclasses |
 
 ```bash
 python 12_advanced_oop/01_dunder_methods.py
