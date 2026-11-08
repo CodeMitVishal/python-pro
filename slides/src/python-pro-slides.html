@@ -48,9 +48,9 @@ svg .mono { font-family: 'Roboto Mono', monospace; }
 <section class="dark" style="justify-content:center;gap:28px">
   <p class="num">CODEMITVISHAL · FREE COURSE</p>
   <h1>Python Pro</h1>
-  <p style="font-size:40px;color:#E6E9F0;max-width:1300px;line-height:1.3">From Python Foundations to <b style="color:#7EE2A8">professional</b> Python: clean code, data structures, OOP, testing, packaging, concurrency and real projects.</p>
+  <p style="font-size:40px;color:#E6E9F0;max-width:1300px;line-height:1.3">From Python Foundations to <b style="color:#7EE2A8">professional</b> Python and web development: clean code, OOP, testing, concurrency, FastAPI, Django, security and Azure.</p>
   <div style="display:flex;gap:60px;margin-top:30px">
-    <div><p class="big" style="font-size:96px">13</p><p style="font-size:24px">modules</p></div>
+    <div><p class="big" style="font-size:96px">21</p><p style="font-size:24px">modules</p></div>
     <div><p class="big" style="font-size:96px">60+</p><p style="font-size:24px">runnable examples</p></div>
     <div><p class="big" style="font-size:96px">0 €</p><p style="font-size:24px">always free</p></div>
   </div>
@@ -60,7 +60,7 @@ svg .mono { font-family: 'Roboto Mono', monospace; }
 
 <!-- ============ ROADMAP ============ -->
 <section>
-  <div><p class="eyebrow">Course map</p><h2>From foundations to pro, in 13 modules</h2></div>
+  <div><p class="eyebrow">Course map</p><h2>13 core modules, then an 8-module web track</h2></div>
   <div class="row" style="gap:40px">
     <table style="flex:1">
       <tr><th>#</th><th>Module</th><th>You'll be able to…</th></tr>
@@ -1307,10 +1307,490 @@ $ budget summary --month 2026-11
   <p class="foot-l">Python Pro · Module 20 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
 </section>
 
+<section>
+  <div><p class="eyebrow">Bonus · Module 8 · Pattern matching</p><h2>match / case: match the SHAPE of data</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:23px">match event:
+    case {<span class="s">&quot;type&quot;</span>: <span class="s">&quot;order&quot;</span>, <span class="s">&quot;items&quot;</span>: [first, *rest]}:
+        <span class="k">return</span> <span class="s">f&quot;order: {first} (+{len(rest)} more)&quot;</span>
+    case {<span class="s">&quot;type&quot;</span>: <span class="s">&quot;refund&quot;</span>, <span class="s">&quot;amount&quot;</span>: float(a)} <span class="k">if</span> a &gt; 0:
+        <span class="k">return</span> <span class="s">f&quot;refund {a:.2f}&quot;</span>
+    case Point(x=0, y=0):
+        <span class="k">return</span> <span class="s">&quot;the origin&quot;</span>
+    case _:
+        <span class="k">return</span> <span class="s">&quot;something else&quot;</span></div>
+  <div class="col" style="flex:1"><p class="note">Match <b>literals</b>, <b>sequences</b>, <b>dicts</b> (extra keys ignored) and <b>classes</b>.</p><p class="note"><span class="m">if ...</span> after a pattern is a <b>guard</b>.</p><p class="note">A bare name <b>captures</b>; compare constants with <span class="m">Color.RED</span>.</p><p class="tip">Also new in Module 8: <b>08_regex.py</b>, named groups, <span class="m">re.sub</span>, validation</p></div></div>
+  <p class="foot-l">Python Pro · Bonus lessons · Modules 8-19</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Bonus · Module 9 · Enums, heapq, bisect</p><h2>The right tool for constants, priorities and sorted data</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Tool</th><th>Use it for</th><th>Example</th></tr><tr><td><b>StrEnum</b></td><td>fixed string options (JSON/DB friendly)</td><td><span class="m">OrderStatus.PAID == "paid"</span></td></tr><tr><td><b>IntEnum / Flag</b></td><td>sortable levels / combinable permissions</td><td><span class="m">READ | WRITE</span></td></tr><tr><td><b>heapq</b></td><td>priority queue, top-k</td><td><span class="m">heappop(jobs)</span> → most urgent</td></tr><tr><td><b>heapq.nlargest</b></td><td>top 3 of 1M without a full sort</td><td>O(n log k)</td></tr><tr><td><b>bisect</b></td><td>search/insert in sorted lists</td><td><span class="m">insort(timeline, 30)</span></td></tr></table><div class="col" style="width:620px"><p class="tip">Typos in plain strings fail silently. <b>Enum typos fail loudly.</b></p></div></div>
+  <p class="foot-l">Python Pro · Bonus lessons · Modules 8-19</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Bonus · Modules 11-13</p><h2>Deeper language features</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Lesson</th><th>Key idea</th></tr><tr><td><b>gen.send(value)</b></td><td>two-way generators: <span class="m">value = yield result</span></td></tr><tr><td><b>async generators</b></td><td><span class="m">async for item in all_items()</span>: stream API pages</td></tr><tr><td><b>descriptors</b></td><td><span class="m">__get__/__set__/__set_name__</span>: how <span class="m">@property</span> works</td></tr><tr><td><b>__new__</b> / <b>__init_subclass__</b></td><td>control creation; auto-register plugins</td></tr><tr><td><b>metaclasses</b></td><td>the class of a class: framework territory</td></tr><tr><td><b>ExitStack</b></td><td>a variable number of context managers, all cleaned up</td></tr><tr><td><b>ExceptionGroup + except*</b></td><td>report and handle several errors at once</td></tr></table></div>
+  <p class="foot-l">Python Pro · Bonus lessons · Modules 8-19</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Bonus · Modules 14-19</p><h2>Pro tooling and performance</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Lesson</th><th>Key idea</th></tr><tr><td><b>PyPI, uv, pre-commit</b></td><td><span class="m">python -m build</span> · <span class="m">uv add</span> · checks on every commit</td></tr><tr><td><b>Generic[T], ParamSpec, @overload</b></td><td>typed containers and decorators that keep signatures</td></tr><tr><td><b>hypothesis + coverage</b></td><td>properties tested on hundreds of generated inputs; <span class="m">--cov</span></td></tr><tr><td><b>TaskGroup + Queue</b></td><td>structured concurrency, backpressure, <span class="m">httpx.AsyncClient</span></td></tr><tr><td><b>dates &amp; zoneinfo</b></td><td>store UTC, show local; DST makes a day 23 hours</td></tr><tr><td><b>pickle vs JSON</b></td><td>loading an untrusted pickle can run code</td></tr><tr><td><b>dis, weakref, NumPy</b></td><td>bytecode, weak caches, 28× faster vectorised maths</td></tr></table></div>
+  <p class="foot-l">Python Pro · Bonus lessons · Modules 8-19</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Web development track</p><h2>From HTTP basics to a deployed, secure API</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>#</th><th>Module</th><th>You'll be able to…</th></tr><tr><td><b>21</b></td><td><b>HTTP, Flask &amp; Jinja2</b></td><td>understand HTTP; build server-rendered pages</td></tr><tr><td><b>22</b></td><td><b>FastAPI in depth</b></td><td>design production APIs with validation and DI</td></tr><tr><td><b>23</b></td><td><b>SQLAlchemy 2.0 &amp; Alembic</b></td><td>use an ORM, avoid N+1, migrate schemas</td></tr><tr><td><b>24</b></td><td><b>Authentication &amp; security</b></td><td>hash passwords, issue JWTs, stop OWASP bugs</td></tr><tr><td><b>25</b></td><td><b>Django + DRF</b></td><td>build Django apps with an admin and REST API</td></tr><tr><td><b>26</b></td><td><b>WebSockets, tasks &amp; caching</b></td><td>push live updates, run jobs, cache with Redis</td></tr><tr><td><b>27</b></td><td><b>Docker, CI/CD &amp; Azure</b></td><td>containerise, test in CI, deploy to Azure</td></tr><tr><td><b>28</b></td><td><b>Web capstone: taskboard</b></td><td>ship a secure, tested, real-time API</td></tr></table></div>
+  <p class="foot-l">Python Pro · Web development track</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">21</p>
+    <h1 style="font-size:76px">HTTP, Flask &amp; Jinja2</h1>
+    <p style="font-size:28px;line-height:1.4">How the web really works, then server-rendered pages with Flask.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>HTTP from scratch</span><span>01_http_from_scratch.py</span></div><div><span>Flask basics</span><span>02_flask_basics.py</span></div><div><span>Templates, forms &amp; sessions</span><span>03_templates_forms_sessions.py</span></div><div><span>Exercise: guestbook</span><span>ex21_flask_guestbook.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 21</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · HTTP</p><h2>HTTP is just text</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:20px">GET /hello?name=Vishal HTTP/1.1      &lt;- request line
+Host: localhost:8765                 &lt;- headers
+Accept: application/json
+                                     &lt;- blank line ends the headers
+HTTP/1.0 200 OK                      &lt;- status line
+Content-Type: application/json
+Set-Cookie: visits=1
+
+{<span class="s">&quot;message&quot;</span>: <span class="s">&quot;Hello, Vishal!&quot;</span>}        &lt;- body</div>
+  <div class="col" style="flex:1"><p class="note"><b>2xx</b> success · <b>3xx</b> redirect · <b>4xx</b> your fault · <b>5xx</b> server fault</p><p class="note"><b>201</b> created · <b>204</b> no content · <b>401</b> who are you? · <b>403</b> not allowed · <b>422</b> invalid</p><p class="note"><b>Cookies</b>: the server asks the browser to remember a value and send it back.</p></div></div>
+  <p class="foot-l">Python Pro · Module 21 · HTTP, Flask &amp; Jinja2</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Flask</p><h2>URLs → functions</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:25px">@app.get(<span class="s">&quot;/books/&lt;int:book_id&gt;&quot;</span>)
+<span class="k">def</span> get_book(book_id):
+    book = BOOKS.get(book_id)
+    <span class="k">if</span> book <span class="k">is</span> <span class="k">None</span>:
+        abort(404, description=<span class="s">&quot;not found&quot;</span>)
+    <span class="k">return</span> book                       <span class="c"># dict -&gt; JSON</span>
+
+@app.post(<span class="s">&quot;/books&quot;</span>)
+<span class="k">def</span> create_book():
+    data = request.get_json(silent=<span class="k">True</span>) <span class="k">or</span> {}
+    <span class="k">if</span> <span class="k">not</span> data.get(<span class="s">&quot;title&quot;</span>):
+        <span class="k">return</span> {<span class="s">&quot;error&quot;</span>: <span class="s">&quot;title is required&quot;</span>}, 400
+    <span class="k">return</span> new_book, 201</div>
+  <div class="col" style="flex:1"><p class="note"><span class="m">request.args</span> query · <span class="m">request.form</span> forms · <span class="m">request.get_json()</span> JSON</p><p class="note"><span class="m">app.test_client()</span> tests without a server.</p></div></div>
+  <p class="foot-l">Python Pro · Module 21 · HTTP, Flask &amp; Jinja2</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Jinja2, forms &amp; sessions</p><h2>Server-rendered pages, safely</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:19px">{% extends <span class="s">&quot;base.html&quot;</span> %}
+{% block content %}
+  {% <span class="k">for</span> book <span class="k">in</span> books %}
+    &lt;li&gt;{{ book.title|title }}: {{ <span class="s">&quot;%.2f&quot;</span>|format(book.price) }}&lt;/li&gt;
+  {% endfor %}
+  &lt;p&gt;{{ review }}&lt;/p&gt;     {<span class="c"># &lt;script&gt; becomes &amp;lt;script&amp;gt; #}</span>
+{% endblock %}
+
+<span class="c"># POST -&gt; redirect -&gt; GET</span>
+flash(<span class="s">&quot;Added!&quot;</span>); <span class="k">return</span> redirect(url_for(<span class="s">&quot;shop&quot;</span>))</div>
+  <div class="col" style="flex:1"><p class="note"><b>Auto-escaping</b> blocks XSS. Never <span class="m">|safe</span> user input.</p><p class="note">Redirect after POST: a refresh doesn't resubmit.</p><p class="note"><b>session</b> = a signed cookie; <span class="m">secret_key</span> from an env var.</p></div></div>
+  <p class="foot-l">Python Pro · Module 21 · HTTP, Flask &amp; Jinja2</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 21 · Your turn</p><h2>A Flask guestbook</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>GET / renders entries, newest first</td></tr><tr><td><b>2</b></td><td>POST /sign validates + flashes + redirects</td></tr><tr><td><b>3</b></td><td>Escape user messages (no |safe)</td></tr><tr><td><b>4</b></td><td>GET /api/entries?name= returns JSON</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">POST /sign  -&gt; 302 /
+<span class="s">&quot;Thanks for signing!&quot;</span>
+GET /api/entries?name=RAJ
+[{<span class="s">&quot;name&quot;</span>: <span class="s">&quot;Raj&quot;</span>, ...}]</div>
+      <div class="tip"><b>Starter:</b> exercises/ex21_flask_guestbook.py<br><b>Solution:</b> solutions/ex21_flask_guestbook.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 21 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">22</p>
+    <h1 style="font-size:80px">FastAPI in depth</h1>
+    <p style="font-size:28px;line-height:1.4">Production API design: validation, dependencies, errors, middleware, settings.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>pydantic models</span><span>01_pydantic_models.py</span></div><div><span>Routers &amp; dependencies</span><span>02_routers_and_dependencies.py</span></div><div><span>Errors, middleware &amp; CORS</span><span>03_errors_middleware_cors.py</span></div><div><span>Settings, lifespan &amp; async</span><span>04_settings_lifespan_async.py</span></div><div><span>Exercise: library API</span><span>ex22_fastapi_library_api.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 22</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · pydantic</p><h2>Validate at the edges</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:20px"><span class="k">class</span> UserIn(BaseModel):
+    username: str = Field(min_length=3, pattern=r<span class="s">&quot;^[a-z0-9_]+$&quot;</span>)
+    password: str = Field(min_length=8)
+    age: int = Field(ge=13, le=120)
+    address: Address                    <span class="c"># nested</span>
+
+    @field_validator(<span class="s">&quot;tags&quot;</span>)
+    @classmethod
+    <span class="k">def</span> clean(cls, tags): <span class="k">return</span> sorted({t.lower() <span class="k">for</span> t <span class="k">in</span> tags})
+
+<span class="k">class</span> UserOut(BaseModel):               <span class="c"># no password field!</span>
+    username: str</div>
+  <div class="col" style="flex:1"><p class="note">Strings like <span class="m">"30"</span> become the right types.</p><p class="note">Every error comes with its location: <span class="m">address.country</span>.</p><p class="note">Separate <b>In</b> and <b>Out</b> models: secrets never leak.</p></div></div>
+  <p class="foot-l">Python Pro · Module 22 · FastAPI in depth</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Dependencies</p><h2>Depends(): reusable, testable building blocks</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:18px"><span class="k">def</span> current_user(authorization: Annotated[str | <span class="k">None</span>, Header()] = <span class="k">None</span>):
+    user = USERS.get((authorization <span class="k">or</span> <span class="s">&quot;&quot;</span>).removeprefix(<span class="s">&quot;Bearer &quot;</span>))
+    <span class="k">if</span> user <span class="k">is</span> <span class="k">None</span>: <span class="k">raise</span> HTTPException(401, <span class="s">&quot;not logged in&quot;</span>)
+    <span class="k">return</span> user
+
+<span class="k">def</span> admin_user(user = Depends(current_user)):      <span class="c"># chains</span>
+    <span class="k">if</span> user[<span class="s">&quot;role&quot;</span>] != <span class="s">&quot;admin&quot;</span>: <span class="k">raise</span> HTTPException(403)
+    <span class="k">return</span> user
+
+@products.delete(<span class="s">&quot;/{id}&quot;</span>, status_code=204)
+<span class="k">def</span> delete(id: int, admin: AdminDep): ...
+
+app.dependency_overrides[current_user] = fake_user  <span class="c"># tests</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>APIRouter</b>: group endpoints, with a prefix such as <span class="m">/api/v1</span>.</p><p class="note">Pagination, DB sessions, settings, and the current user are all dependencies.</p></div></div>
+  <p class="foot-l">Python Pro · Module 22 · FastAPI in depth</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Production plumbing</p><h2>Errors, middleware, CORS, settings</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Feature</th><th>What it gives you</th></tr><tr><td><b>@app.exception_handler</b></td><td>domain errors → clean JSON (409); no tracebacks leaked</td></tr><tr><td><b>middleware</b></td><td>request IDs, timing headers, access logs on every request</td></tr><tr><td><b>CORSMiddleware</b></td><td>only your frontends may call the API from a browser</td></tr><tr><td><b>pydantic-settings</b></td><td>env vars → typed config; <span class="m">SecretStr</span> hides secrets</td></tr><tr><td><b>lifespan</b></td><td>open shared clients/pools at startup, close at shutdown</td></tr><tr><td><b>async def</b></td><td>for awaited I/O (httpx, async DB); plain <span class="m">def</span> for blocking code</td></tr></table></div>
+  <p class="foot-l">Python Pro · Module 22 · FastAPI in depth</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 22 · Your turn</p><h2>A library API</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>APIRouter at /api/v1/books</td></tr><tr><td><b>2</b></td><td>author filter + limit/offset validation</td></tr><tr><td><b>3</b></td><td>X-API-Key dependency on POST (401)</td></tr><tr><td><b>4</b></td><td>BookNotFound → custom 404 JSON</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:21px">GET /api/v1/books?author=martin
+{<span class="s">&quot;total&quot;</span>: 2, <span class="s">&quot;items&quot;</span>: [...]}
+GET /api/v1/books/9
+404 {<span class="s">&quot;error&quot;</span>: <span class="s">&quot;book_not_found&quot;</span>, <span class="s">&quot;id&quot;</span>: 9}</div>
+      <div class="tip"><b>Starter:</b> exercises/ex22_fastapi_library_api.py<br><b>Solution:</b> solutions/ex22_fastapi_library_api.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 22 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">23</p>
+    <h1 style="font-size:76px">SQLAlchemy 2.0 &amp; Alembic</h1>
+    <p style="font-size:28px;line-height:1.4">Databases through an ORM, without N+1, with versioned migrations.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Models</span><span>models.py</span></div><div><span>ORM CRUD</span><span>01_orm_crud.py</span></div><div><span>N+1 &amp; loading</span><span>02_n_plus_1_and_loading.py</span></div><div><span>SQLAlchemy + FastAPI</span><span>03_sqlalchemy_with_fastapi.py</span></div><div><span>Alembic</span><span>04_alembic_migrations.py</span></div><div><span>Exercise: blog ORM</span><span>ex23_blog_orm.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 23</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · The ORM</p><h2>Tables as typed classes</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:19px"><span class="k">class</span> Book(Base):
+    __tablename__ = <span class="s">&quot;books&quot;</span>
+    id: Mapped[int] = mapped_column(primary_key=<span class="k">True</span>)
+    title: Mapped[str] = mapped_column(String(200))
+    author_id: Mapped[int] = mapped_column(ForeignKey(<span class="s">&quot;authors.id&quot;</span>))
+    author: Mapped[Author] = relationship(back_populates=<span class="s">&quot;books&quot;</span>)
+
+<span class="k">with</span> Session(engine) <span class="k">as</span> session:
+    cheap = session.scalars(select(Book).where(Book.price &lt; 40)).all()
+    book.price = 29.0          <span class="c"># just change it...</span>
+    session.commit()           <span class="c"># ...one transaction</span></div>
+  <div class="col" style="flex:1"><p class="note">The same code runs on SQLite, PostgreSQL and <b>Azure SQL</b>.</p><p class="note">Values are bound parameters: <b>no SQL injection</b>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 23 · SQLAlchemy &amp; Alembic</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · N+1 and migrations</p><h2>The two things that bite in production</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Problem</th><th>Fix</th><th>Measured</th></tr><tr><td>lazy loading in a loop</td><td><span class="m">selectinload(Author.books)</span></td><td>51 → <b>2</b> queries</td></tr><tr><td>many-to-one in a loop</td><td><span class="m">joinedload(Book.author)</span></td><td><b>1</b> query</td></tr><tr><td>schema changes on live DBs</td><td><b>Alembic</b> migrations</td><td>data survives</td></tr><tr><td></td><td><span class="m">alembic upgrade head</span></td><td>apply missing steps</td></tr><tr><td></td><td><span class="m">alembic downgrade -1</span></td><td>undo the last step</td></tr></table><div class="col" style="width:600px"><div class="code" style="font-size:16px"><span class="k">def</span> get_db():
+    db = SessionLocal()
+    <span class="k">try</span>:
+        <span class="k">yield</span> db          <span class="c"># one session per request</span>
+    <span class="k">finally</span>:
+        db.close()</div></div></div>
+  <p class="foot-l">Python Pro · Module 23 · SQLAlchemy &amp; Alembic</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 23 · Your turn</p><h2>A blog database</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>User, Post, Tag + a many-to-many table</td></tr><tr><td><b>2</b></td><td>publish(): reuse existing tags</td></tr><tr><td><b>3</b></td><td>posts_with_tag, top_authors (GROUP BY)</td></tr><tr><td><b>4</b></td><td>all posts with tags in ≤ 2 queries</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">top_authors(s)
+<span class="c"># [(&quot;vishal&quot;, 2), (&quot;raj&quot;, 1)]</span>
+queries: 2   <span class="c"># not N+1</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex23_blog_orm.py<br><b>Solution:</b> solutions/ex23_blog_orm.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 23 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">24</p>
+    <h1 style="font-size:76px">Authentication &amp; security</h1>
+    <p style="font-size:28px;line-height:1.4">Store passwords right, issue tokens, and stop the OWASP classics.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Password hashing</span><span>01_password_hashing.py</span></div><div><span>JWT tokens</span><span>02_jwt_tokens.py</span></div><div><span>FastAPI login</span><span>03_fastapi_login.py</span></div><div><span>Security checklist</span><span>04_web_security_checklist.py</span></div><div><span>Exercise: auth toolkit</span><span>ex24_auth_toolkit.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 24</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Passwords</p><h2>Slow + salted, never sha256</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:16px"><span class="k">def</span> hash_password(pw):
+    salt = secrets.token_bytes(16)            <span class="c"># unique per user</span>
+    digest = hashlib.scrypt(pw.encode(), salt=salt, n=2**14, r=8, p=1)
+    <span class="k">return</span> <span class="s">f&quot;scrypt${salt.hex()}${digest.hex()}&quot;</span>
+
+<span class="k">def</span> verify_password(pw, stored):
+    _, salt, digest = stored.split(<span class="s">&quot;$&quot;</span>)
+    check = hashlib.scrypt(pw.encode(), salt=bytes.fromhex(salt), n=2**14, r=8, p=1)
+    <span class="k">return</span> hmac.compare_digest(check.hex(), digest)  <span class="c"># constant time</span></div>
+  <div class="col" style="flex:1"><p class="note">sha256: ~1,000,000 guesses/s on one core. scrypt: <b>50 ms</b> each.</p><p class="note">In production: <b>argon2id</b> (argon2-cffi / pwdlib).</p><p class="note">Tokens and reset links: <span class="m">secrets</span>, never <span class="m">random</span>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 24 · Authentication &amp; security</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · JWT + login</p><h2>Signed, not secret</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:20px">token = jwt.encode({<span class="s">&quot;sub&quot;</span>: <span class="s">&quot;vishal&quot;</span>, <span class="s">&quot;role&quot;</span>: <span class="s">&quot;admin&quot;</span>,
+                    <span class="s">&quot;exp&quot;</span>: now + timedelta(minutes=15)},
+                   SECRET, algorithm=<span class="s">&quot;HS256&quot;</span>)
+
+claims = jwt.decode(token, SECRET, algorithms=[<span class="s">&quot;HS256&quot;</span>])  <span class="c"># pin it!</span>
+
+@app.get(<span class="s">&quot;/admin&quot;</span>)
+<span class="k">def</span> admin(user = Depends(require_role(<span class="s">&quot;admin&quot;</span>))): ...
+<span class="c">#  no / bad token -&gt; 401   wrong role -&gt; 403</span></div>
+  <div class="col" style="flex:1"><p class="note">The payload is <b>base64</b>: anyone can read it. Put no secrets in it.</p><p class="note">Tampering → <span class="m">InvalidSignatureError</span>; expired → rejected.</p><p class="note">Same message for wrong user and wrong password.</p></div></div>
+  <p class="foot-l">Python Pro · Module 24 · Authentication &amp; security</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · OWASP basics</p><h2>A checklist you can run</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Threat</th><th>Defence</th></tr><tr><td>SQL injection</td><td>parameters / ORM</td></tr><tr><td>XSS</td><td>escape output + Content-Security-Policy</td></tr><tr><td>Broken access control</td><td>check ownership on <b>every</b> request (401 vs 403)</td></tr><tr><td>Path traversal</td><td><span class="m">resolve()</span> + <span class="m">is_relative_to(UPLOADS)</span></td></tr><tr><td>Brute force</td><td>rate limiting → <b>429</b> + Retry-After</td></tr><tr><td>CSRF</td><td>SameSite cookies + CSRF tokens (Bearer headers aren't auto-sent)</td></tr><tr><td>Leaked secrets / vulnerable deps</td><td>env vars / Key Vault · <span class="m">pip-audit</span></td></tr></table></div>
+  <p class="foot-l">Python Pro · Module 24 · Authentication &amp; security</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 24 · Your turn</p><h2>An auth toolkit</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>scrypt hash + verify</td></tr><tr><td><b>2</b></td><td>create/read JWT; AuthError on any bad token</td></tr><tr><td><b>3</b></td><td>POST /login, GET /orders (401)</td></tr><tr><td><b>4</b></td><td>DELETE /orders/{id}: admins only (403)</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">read_token(expired)  <span class="c"># AuthError</span>
+DELETE /orders/1 <span class="k">as</span> raj    -&gt; 403
+DELETE /orders/1 <span class="k">as</span> admin  -&gt; 204</div>
+      <div class="tip"><b>Starter:</b> exercises/ex24_auth_toolkit.py<br><b>Solution:</b> solutions/ex24_auth_toolkit.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 24 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">25</p>
+    <h1 style="font-size:80px">Django + DRF</h1>
+    <p style="font-size:28px;line-height:1.4">Batteries included: ORM, admin, templates, auth, and a REST API.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Guided tour</span><span>01_django_tour.py</span></div><div><span>The project</span><span>bookstore_project/</span></div><div><span>The API</span><span>catalog/api.py</span></div><div><span>Tests</span><span>catalog/tests.py</span></div><div><span>Exercise: reviews</span><span>ex25_test_reviews.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 25</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Django</p><h2>Model → migration → admin → view → template</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px"><span class="k">class</span> Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE,
+                               related_name=<span class="s">&quot;books&quot;</span>)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+
+$ python manage.py makemigrations &amp;&amp; python manage.py migrate
+$ python manage.py createsuperuser &amp;&amp; python manage.py runserver
+
+Book.objects.filter(price__lt=35).select_related(<span class="s">&quot;author&quot;</span>)</div>
+  <div class="col" style="flex:1"><p class="note"><b>admin.py</b>: a full back office with search and filters, for free.</p><p class="note"><b>DecimalField</b> for money, never float.</p><p class="note">Settings from <b>env vars</b>; <span class="m">DEBUG</span> off in production.</p></div></div>
+  <p class="foot-l">Python Pro · Module 25 · Django + DRF</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Django REST Framework</p><h2>Serializers + ViewSets + a router</h2></div>
+  <div class="row"><div class="code" style="width:980px;font-size:17px"><span class="k">class</span> BookSerializer(serializers.ModelSerializer):
+    author_name = serializers.CharField(source=<span class="s">&quot;author.name&quot;</span>, read_only=<span class="k">True</span>)
+    <span class="k">class</span> Meta:
+        model = Book
+        fields = [<span class="s">&quot;id&quot;</span>, <span class="s">&quot;title&quot;</span>, <span class="s">&quot;author&quot;</span>, <span class="s">&quot;author_name&quot;</span>, <span class="s">&quot;price&quot;</span>]
+    <span class="k">def</span> validate_price(self, value):
+        <span class="k">if</span> value &lt;= 0: <span class="k">raise</span> serializers.ValidationError(<span class="s">&quot;price must be positive&quot;</span>)
+        <span class="k">return</span> value
+
+<span class="k">class</span> BookViewSet(viewsets.ModelViewSet): ...     <span class="c"># list/create/retrieve/update/delete</span>
+router.register(<span class="s">&quot;books&quot;</span>, BookViewSet, basename=<span class="s">&quot;book&quot;</span>)</div>
+  <div class="col" style="flex:1"><p class="note"><b>IsAuthenticatedOrReadOnly</b>: guests read, users write.</p><p class="note">Django when you need admin + auth + HTML; FastAPI for lean async APIs.</p></div></div>
+  <p class="foot-l">Python Pro · Module 25 · Django + DRF</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 25 · Your turn</p><h2>Book reviews</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>Review model (1-5) + migration</td></tr><tr><td><b>2</b></td><td>admin + ReviewSerializer validation</td></tr><tr><td><b>3</b></td><td>avg_rating on books (Avg annotate)</td></tr><tr><td><b>4</b></td><td>/api/reviews/?book=<id></td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">$ python manage.py test
+Ran 8 tests ... OK</div>
+      <div class="tip"><b>Starter:</b> exercises/ex25_test_reviews.py<br><b>Solution:</b> solutions/ex25_django_reviews/</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 25 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">26</p>
+    <h1 style="font-size:76px">WebSockets, tasks &amp; caching</h1>
+    <p style="font-size:28px;line-height:1.4">Push live updates, move slow work out of the request, cache with Redis.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>WebSocket chat</span><span>01_websockets_chat.py</span></div><div><span>Background tasks</span><span>02_background_tasks.py</span></div><div><span>Caching with Redis</span><span>03_caching_with_redis.py</span></div><div><span>Exercise: live prices</span><span>ex26_live_prices.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 26</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · WebSockets</p><h2>The server can push</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:22px">@app.websocket(<span class="s">&quot;/ws/{name}&quot;</span>)
+<span class="k">async</span> <span class="k">def</span> chat(ws: WebSocket, name: str):
+    <span class="k">await</span> room.join(ws, name)            <span class="c"># accept + remember</span>
+    <span class="k">try</span>:
+        <span class="k">while</span> <span class="k">True</span>:
+            text = <span class="k">await</span> ws.receive_text()
+            <span class="k">await</span> room.broadcast(<span class="s">f&quot;{name}: {text}&quot;</span>)
+    <span class="k">except</span> WebSocketDisconnect:
+        <span class="k">await</span> room.leave(ws)</div>
+  <div class="col" style="flex:1"><p class="note">Starts as HTTP, <b>upgrades</b>, then stays open both ways.</p><p class="note">Chat, notifications, dashboards, live prices.</p></div></div>
+  <p class="foot-l">Python Pro · Module 26 · Real-time, tasks &amp; caching</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Background work &amp; caching</p><h2>Answer fast, do the slow part later</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Tool</th><th>Use</th></tr><tr><td><b>BackgroundTasks</b></td><td>small jobs after the response (welcome email)</td></tr><tr><td><b>queue + worker</b></td><td><b>202</b> + job id, then the client polls <span class="m">/jobs/{id}</span></td></tr><tr><td><b>Celery / RQ / arq</b></td><td>separate workers, retries, schedules, survive restarts</td></tr><tr><td><b>Redis cache-aside</b></td><td>read → miss → DB → <span class="m">set(key, ex=60)</span>; write → <span class="m">delete(key)</span></td></tr><tr><td><b>Redis extras</b></td><td>counters (<span class="m">incr</span>), leaderboards (<span class="m">zadd</span>), rate limits</td></tr></table><div class="col" style="width:560px"><div class="code" style="font-size:22px">1st read:  899.0 EUR <span class="k">in</span> 224.5 ms
+2nd read:  899.0 EUR <span class="k">in</span>   0.1 ms
+after update: 799.0 EUR  &lt;- fresh</div></div></div>
+  <p class="foot-l">Python Pro · Module 26 · Real-time, tasks &amp; caching</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 26 · Your turn</p><h2>Live prices</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>GET /products/{id}: cache-aside, X-Cache HIT/MISS</td></tr><tr><td><b>2</b></td><td>30 s TTL, 404 when missing</td></tr><tr><td><b>3</b></td><td>PUT: update DB + delete cache key</td></tr><tr><td><b>4</b></td><td>push {id, price} to every /ws/prices client</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">X-Cache: MISS -&gt; HIT
+PUT /products/1?price=799.0
+ws &lt;- {<span class="s">&quot;id&quot;</span>: 1, <span class="s">&quot;price&quot;</span>: 799.0}</div>
+      <div class="tip"><b>Starter:</b> exercises/ex26_live_prices.py<br><b>Solution:</b> solutions/ex26_live_prices.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 26 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">27</p>
+    <h1 style="font-size:76px">Docker, CI/CD &amp; Azure</h1>
+    <p style="font-size:28px;line-height:1.4">From laptop to cloud: containers, pipelines, Azure Container Apps.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Production-ready tour</span><span>01_production_ready_tour.py</span></div><div><span>Dockerfile</span><span>Dockerfile</span></div><div><span>docker compose</span><span>docker-compose.yml</span></div><div><span>CI/CD pipeline</span><span>github-actions/ci-cd.yml</span></div><div><span>Azure deploy</span><span>azure/deploy.sh</span></div><div><span>Exercise: fix a Dockerfile</span><span>ex27_fix_the_dockerfile.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 27</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Dockerfile</p><h2>Small, cached, non-root</h2></div>
+  <div class="row"><div class="code" style="width:1000px;font-size:19px">FROM python:3.12-slim AS build
+COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install         -r requirements.txt
+
+FROM python:3.12-slim
+RUN useradd --create-home --uid 1000 appuser
+COPY --<span class="k">from</span>=build /install /usr/local
+COPY app ./app                 <span class="c"># code LAST: cached layers</span>
+USER appuser
+HEALTHCHECK CMD python -c <span class="s">&quot;...urlopen(&#x27;.../health/live&#x27;)&quot;</span>
+CMD [<span class="s">&quot;gunicorn&quot;</span>, <span class="s">&quot;app.main:app&quot;</span>, <span class="s">&quot;-k&quot;</span>,
+     <span class="s">&quot;uvicorn.workers.UvicornWorker&quot;</span>, <span class="s">&quot;-b&quot;</span>, <span class="s">&quot;0.0.0.0:8000&quot;</span>]</div>
+  <div class="col" style="flex:1"><p class="note"><b>12-factor</b>: config from env, logs to stdout as JSON, health probes.</p><p class="note"><b>Liveness</b> = restart me · <b>Readiness</b> = send me traffic.</p></div></div>
+  <p class="foot-l">Python Pro · Module 27 · Docker, CI/CD &amp; Azure</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · CI/CD to Azure</p><h2>Nothing ships unless the tests pass</h2></div>
+  <div class="row"><div class="code" style="width:980px;font-size:21px">jobs:
+  test:                         <span class="c"># every push + PR</span>
+    steps: [checkout, setup-python, ruff, mypy, pytest]
+  deploy:
+    needs: test                 <span class="c"># only if green</span>
+    <span class="k">if</span>: github.ref == <span class="s">&#x27;refs/heads/main&#x27;</span>
+    steps:
+      - uses: azure/login@v2    <span class="c"># OIDC: no stored passwords</span>
+      - run: az acr build --image hello-service:${{ github.sha }} ...
+      - run: az containerapp update --image ...:${{ github.sha }}</div>
+  <div class="col" style="flex:1"><p class="note">Tag images with the <b>commit SHA</b>: you know what runs, and rollback is easy.</p><p class="note">Container Apps: HTTPS, <b>scale to zero</b>, secrets via <span class="m">secretref:</span>.</p><p class="note"><span class="m">docker compose up</span>: API + Postgres + Redis locally.</p></div></div>
+  <p class="foot-l">Python Pro · Module 27 · Docker, CI/CD &amp; Azure</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 27 · Your turn</p><h2>Fix a bad Dockerfile</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>slim pinned base, no latest</td></tr><tr><td><b>2</b></td><td>deps before code, --no-cache-dir</td></tr><tr><td><b>3</b></td><td>non-root USER, no baked secrets</td></tr><tr><td><b>4</b></td><td>HEALTHCHECK, exec-form CMD, no --reload</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">Reviewed ex27_Dockerfile.bad: 0/9
+Reviewed ex27_Dockerfile:     9/9
+All checks passed!</div>
+      <div class="tip"><b>Starter:</b> exercises/ex27_fix_the_dockerfile.py<br><b>Solution:</b> solutions/ex27_Dockerfile</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 27 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">28</p>
+    <h1 style="font-size:76px">Web capstone: taskboard</h1>
+    <p style="font-size:28px;line-height:1.4">Auth, SQL, permissions, live updates, tests, Docker: all in one API.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>The project</span><span>taskboard/</span></div><div><span>Architecture</span><span>taskboard/README.md</span></div><div><span>Tests</span><span>taskboard/tests/</span></div><div><span>Challenges</span><span>ex28_web_capstone_challenges.md</span></div><div><span>Final exam</span><span>28_web_capstone/QUIZ.md</span></div></div>
+  <p class="foot-l">Python Pro · Module 28</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Capstone · Architecture</p><h2>Every web module in one service</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>File</th><th>Job</th><th>Module</th></tr><tr><td><b>config.py</b></td><td>TASKBOARD_* env vars</td><td>22, 27</td></tr><tr><td><b>db.py · models.py</b></td><td>engine, session per request, User 1---&lt; Task</td><td>23</td></tr><tr><td><b>schemas.py</b></td><td>pydantic in/out, validation</td><td>22</td></tr><tr><td><b>security.py · deps.py</b></td><td>scrypt, JWT, current_user (401)</td><td>24</td></tr><tr><td><b>routers/tasks.py</b></td><td>CRUD, owner-or-admin (403), pagination</td><td>22-24</td></tr><tr><td><b>realtime.py</b></td><td>WebSocket push on every change</td><td>26</td></tr><tr><td><b>Dockerfile</b></td><td>multi-stage, non-root, health check</td><td>27</td></tr></table><div class="col" style="width:520px"><div class="code" style="font-size:22px">$ pytest      7 passed
+$ mypy        Success (strict)
+$ ruff check  All checks passed!</div></div></div>
+  <p class="foot-l">Python Pro · Module 28 · Web capstone</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 28 · Your turn</p><h2>Web capstone challenges</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>⭐ due dates + an admin view</td></tr><tr><td><b>2</b></td><td>⭐⭐ Alembic · login rate limit · Redis counts</td></tr><tr><td><b>3</b></td><td>⭐⭐⭐ projects with members, no N+1</td></tr><tr><td><b>4</b></td><td>⭐⭐⭐ per-user WebSocket · deploy to Azure</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px"><span class="c"># for EVERY challenge:</span>
+<span class="c"># 1. write the test first</span>
+<span class="c"># 2. make it pass</span>
+<span class="c"># 3. keep pytest, mypy, ruff green</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex28_web_capstone_challenges.md</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 28 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
 <section class="dark" style="justify-content:center;gap:30px">
   <p class="num">YOU MADE IT</p>
-  <h1>From Foundations to Pro 🎓</h1>
-  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exam</b> in 20_capstone/QUIZ.md, build the capstone challenges, and share your project on LinkedIn.</p>
+  <h1>From Foundations to Pro, and the Web 🎓</h1>
+  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, and share it on LinkedIn.</p>
   <div style="display:flex;flex-direction:column;gap:14px;font-size:30px;margin-top:20px">
     <span>🎥 youtube.com/@CodeMitVishal</span><span>⭐ github.com/CodeMitVishal/python-pro</span><span>☕ buymeacoffee.com/codemitvishal</span>
   </div>

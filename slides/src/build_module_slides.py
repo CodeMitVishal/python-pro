@@ -96,7 +96,7 @@ def exercise(num, h2, tasks, ex_file, sample, sol=True):
     rows = "".join(f"<tr><td><b>{i}</b></td><td>{t}</td></tr>" for i, t in enumerate(tasks, 1))
     files = f"<b>Starter:</b> exercises/{ex_file}"
     if sol:
-        files += f"<br><b>Solution:</b> solutions/{ex_file}"
+        files += f"<br><b>Solution:</b> solutions/{sol if isinstance(sol, str) else ex_file}"
     return f"""<section>
   <div><p class="eyebrow">Exercise {num} · Your turn</p><h2>{h2}</h2></div>
   <div class="row">
@@ -774,11 +774,18 @@ $ budget summary --month 2026-11
 # 3. keep pytest, mypy, ruff green''', sol=False),
 ]
 
+# Bonus lessons + the web development track (Modules 21-28)
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent))
+from web_track_slides import web_slides  # noqa: E402
+
+S += web_slides(title, code, table, cards, exercise)
+
 # Closing slide
 S.append(f"""<section class="dark" style="justify-content:center;gap:30px">
   <p class="num">YOU MADE IT</p>
-  <h1>From Foundations to Pro 🎓</h1>
-  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exam</b> in 20_capstone/QUIZ.md, build the capstone challenges, and share your project on LinkedIn.</p>
+  <h1>From Foundations to Pro, and the Web 🎓</h1>
+  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, and share it on LinkedIn.</p>
   <div style="display:flex;flex-direction:column;gap:14px;font-size:30px;margin-top:20px">
     <span>🎥 youtube.com/@CodeMitVishal</span><span>⭐ {REPO}</span><span>☕ buymeacoffee.com/codemitvishal</span>
   </div>
