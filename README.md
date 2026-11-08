@@ -18,7 +18,7 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 | | |
 |---|---|
-| 📊 **Slides** | Diagrams and cheat-sheet tables: [`slides/python-pro-slides.pdf`](slides/python-pro-slides.pdf) |
+| 📊 **Slides** | 74 slides with diagrams and cheat-sheet tables: [`slides/python-pro-slides.pdf`](slides/python-pro-slides.pdf) |
 | 💻 **Runnable lessons** | One small file per idea, commented line by line, with the expected output |
 | 🧪 **Exercise + solution** | A starter file with built-in checks, and a worked solution |
 | 🧩 **Quiz** | Test yourself; every answer tells you which lesson to revisit |
@@ -80,7 +80,14 @@ your code.
 ## Rebuild the slides
 
 The slide source is [`slides/src/python-pro-slides.html`](slides/src/python-pro-slides.html).
-Open it in a browser, or print it to PDF at 1920 × 1080 with no margins.
+Modules 8–9 are written by hand; Modules 10–20 are generated from compact data by
+[`slides/src/build_module_slides.py`](slides/src/build_module_slides.py):
+
+```bash
+python slides/src/build_module_slides.py
+```
+
+Then open the HTML in a browser, or print it to PDF at 1920 × 1080 with no margins.
 
 ## Support the channel
 

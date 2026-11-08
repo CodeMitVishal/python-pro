@@ -51,7 +51,7 @@ svg .mono { font-family: 'Roboto Mono', monospace; }
   <p style="font-size:40px;color:#E6E9F0;max-width:1300px;line-height:1.3">From Python Foundations to <b style="color:#7EE2A8">professional</b> Python: clean code, data structures, OOP, testing, packaging, concurrency and real projects.</p>
   <div style="display:flex;gap:60px;margin-top:30px">
     <div><p class="big" style="font-size:96px">13</p><p style="font-size:24px">modules</p></div>
-    <div><p class="big" style="font-size:96px">∞</p><p style="font-size:24px">runnable examples</p></div>
+    <div><p class="big" style="font-size:96px">60+</p><p style="font-size:24px">runnable examples</p></div>
     <div><p class="big" style="font-size:96px">0 €</p><p style="font-size:24px">always free</p></div>
   </div>
   <p class="foot-l">Python Pro · Prerequisite: Python Foundations (Modules 1–7)</p>
@@ -533,4 +533,788 @@ All checks passed!</div>
   <p class="foot-l">Python Pro · Module 9 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
 </section>
 
+<!-- GENERATED:START -->
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">10</p>
+    <h1 style="font-size:80px">Advanced functions</h1>
+    <p style="font-size:28px;line-height:1.4">Functions are objects: pass them, return them, make them remember, wrap them.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Parameters like a pro</span><span>01_args_and_kwargs.py</span></div><div><span>Scope &amp; closures</span><span>02_scope_and_closures.py</span></div><div><span>Functions are objects</span><span>03_first_class_functions.py</span></div><div><span>Decorators</span><span>04_decorators.py</span></div><div><span>functools</span><span>05_functools.py</span></div><div><span>Demo: resilient API client</span><span>06_demo_api_client.py</span></div><div><span>Exercise: write decorators</span><span>ex10_decorators.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 10</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Parameters</p><h2>*args, **kwargs, keyword-only and the trap</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:24px"><span class="k">def</span> f(a, b=2, *args, c, d=4, **kwargs):
+<span class="c">#     |  |     |      |  |     └ extra keywords -&gt; dict</span>
+<span class="c">#     |  |     |      └──┴ keyword-only (after *)</span>
+<span class="c">#     |  |     └ extra positionals -&gt; tuple</span>
+<span class="c">#     |  └ default</span>
+<span class="c">#     └ positional</span>
+
+<span class="k">def</span> connect(host, *, port=443): ...
+connect(<span class="s">&quot;api.io&quot;</span>, port=8080)    <span class="c"># must name it</span>
+
+<span class="k">def</span> add(item, basket=<span class="k">None</span>):     <span class="c"># NOT basket=[]</span>
+    <span class="k">if</span> basket <span class="k">is</span> <span class="k">None</span>:
+        basket = []
+    basket.append(item)
+    <span class="k">return</span> basket</div>
+  <div class="col" style="flex:1"><p class="note"><b>*args</b> collects extra positional arguments into a <b>tuple</b>, <b>**kwargs</b> extra keywords into a <b>dict</b>.</p><p class="note">Everything after a bare <span class="m">*</span> must be passed <b>by name</b>: call sites explain themselves.</p><p class="tip">⚠️ Default values are created <b>once</b>. A <span class="m" style="background:#fff3c4">[]</span> default is shared by every call. Use <b>None</b>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 10 · Advanced functions</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Scope &amp; closures</p><h2>A function that remembers</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:25px"><span class="k">def</span> make_counter():
+    count = 0
+    <span class="k">def</span> next_number():
+        <span class="k">nonlocal</span> count      <span class="c"># update the OUTER count</span>
+        count += 1
+        <span class="k">return</span> count
+    <span class="k">return</span> next_number      <span class="c"># the function, not a call</span>
+
+c1, c2 = make_counter(), make_counter()
+c1(), c1(), c1(), c2()      <span class="c"># 1 2 3 1</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>LEGB</b>: Python looks for a name in <b>L</b>ocal → <b>E</b>nclosing → <b>G</b>lobal → <b>B</b>uilt-in.</p><p class="note">A <b>closure</b> keeps the variables of its outer function alive, even after it returned.</p><p class="note">Reading an outer variable just works. <b>Assigning</b> needs <span class="m">nonlocal</span> (or <span class="m">global</span>).</p><p class="tip">⚠️ <span class="m" style="background:#fff3c4">[lambda: i for i in range(3)]</span> all return 2 (late binding). Fix: <b>lambda i=i: i</b></p></div></div>
+  <p class="foot-l">Python Pro · Module 10 · Advanced functions</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Decorators</p><h2>Wrap a function to add behaviour</h2></div>
+  <div class="row"><div class="code" style="width:960px;font-size:21px"><span class="k">def</span> timer(func):
+    @functools.wraps(func)          <span class="c"># keep name + docstring</span>
+    <span class="k">def</span> wrapper(*args, **kwargs):   <span class="c"># accept ANY arguments</span>
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        print(<span class="s">f&quot;{func.__name__}: {time.perf_counter() - start:.3f}s&quot;</span>)
+        <span class="k">return</span> result               <span class="c"># don&#x27;t forget!</span>
+    <span class="k">return</span> wrapper
+
+@timer                              <span class="c"># same as: slow = timer(slow)</span>
+<span class="k">def</span> slow(): ...</div>
+  <div class="col" style="flex:1"><p class="note"><b>@decorator</b> above <span class="m">def f</span> means <span class="m">f = decorator(f)</span>.</p><p class="note">Decorator <b>with arguments</b> = one more layer: <span class="m">retry(times)</span> → <span class="m">decorator(func)</span> → <span class="m">wrapper(*args)</span>.</p><p class="note">Stacked decorators: the one <b>closest to def</b> wraps first.</p></div></div>
+  <p class="foot-l">Python Pro · Module 10 · Advanced functions</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · functools</p><h2>Ready-made tools for functions</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Tool</th><th>What it does</th><th>Example</th></tr><tr><td><b>lru_cache</b></td><td>remembers results (memoization)</td><td><span class="m">fib(200)</span>: instant</td></tr><tr><td><b>partial</b></td><td>pre-fills arguments</td><td><span class="m">square = partial(power, exp=2)</span></td></tr><tr><td><b>wraps</b></td><td>keeps names in decorators</td><td><span class="m">@functools.wraps(func)</span></td></tr><tr><td><b>reduce</b></td><td>folds a list into one value</td><td><span class="m">reduce(mul, [1,2,3,4])</span> → 24</td></tr><tr><td><b>singledispatch</b></td><td>one function, code per type</td><td><span class="m">describe(21)</span> vs <span class="m">describe([1])</span></td></tr></table><div class="col" style="width:620px"><div class="code" style="font-size:19px">@lru_cache(maxsize=<span class="k">None</span>)
+<span class="k">def</span> fib(n):
+    <span class="k">return</span> n <span class="k">if</span> n &lt; 2 <span class="k">else</span> fib(n-1) + fib(n-2)
+
+fib(28)   <span class="c"># 0.064 s -&gt; 0.00003 s</span></div><p class="tip">Only cache <b>pure</b> functions: same input → same output, no side effects.</p></div></div>
+  <p class="foot-l">Python Pro · Module 10 · Advanced functions</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 10 · Your turn</p><h2>Write three decorators</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">@count_calls</span>: store the number of calls in <span class="m">func.calls</span></td></tr><tr><td><b>2</b></td><td><span class="m">@require_positive</span>: <b>ValueError</b> for negative numbers</td></tr><tr><td><b>3</b></td><td><span class="m">@memoize</span>: your own cache with a dict (no lru_cache!)</td></tr><tr><td><b>4</b></td><td>Work with any arguments and keep the name: <b>functools.wraps</b></td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">@count_calls
+<span class="k">def</span> hello(): <span class="k">return</span> <span class="s">&quot;hi&quot;</span>
+
+hello(); hello(); hello()
+hello.calls        <span class="c"># 3</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex10_decorators.py<br><b>Solution:</b> solutions/ex10_decorators.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 10 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">11</p>
+    <h1 style="font-size:76px">Iterators &amp; generators</h1>
+    <p style="font-size:28px;line-height:1.4">Process data one item at a time: a 10 GB file with the memory of 10 lines.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>How for really works</span><span>01_iteration_protocol.py</span></div><div><span>Generators</span><span>02_generators.py</span></div><div><span>Lazy pipelines</span><span>03_pipelines.py</span></div><div><span>itertools</span><span>04_itertools.py</span></div><div><span>Demo: a 200,000-row CSV</span><span>05_demo_big_csv.py</span></div><div><span>Exercise: lazy generators</span><span>ex11_generators.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 11</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · The iteration protocol</p><h2>What a for loop really does</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:25px"><span class="k">for</span> x <span class="k">in</span> things:          <span class="c"># is really:</span>
+    print(x)
+
+it = iter(things)         <span class="c"># iterable -&gt; iterator</span>
+<span class="k">while</span> <span class="k">True</span>:
+    <span class="k">try</span>:
+        x = next(it)      <span class="c"># next item...</span>
+    <span class="k">except</span> StopIteration: <span class="c"># ...until there&#x27;s none</span>
+        break
+    print(x)</div>
+  <div class="col" style="flex:1"><p class="note"><b>Iterable</b>: something you can loop over. It hands out an iterator (<span class="m">__iter__</span>).</p><p class="note"><b>Iterator</b>: remembers <b>where you are</b> and gives the next item (<span class="m">__next__</span>).</p><p class="note">An iterator is <b>used up</b> after one pass: <span class="m">list(it)</span> twice gives <span class="m">[]</span> the 2nd time.</p></div></div>
+  <p class="foot-l">Python Pro · Module 11 · Iterators &amp; generators</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Generators</p><h2>yield: hand out a value, pause, resume</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:22px"><span class="k">def</span> countdown(start):
+    <span class="k">while</span> start &gt; 0:
+        <span class="k">yield</span> start        <span class="c"># hand out + PAUSE here</span>
+        start -= 1         <span class="c"># resume here on next()</span>
+
+list(countdown(3))         <span class="c"># [3, 2, 1]</span>
+
+squares = (n*n <span class="k">for</span> n <span class="k">in</span> range(10**6))  <span class="c"># generator expression</span>
+sum(squares)               <span class="c"># one value at a time</span></div>
+  <div class="col" style="flex:1"><p class="note">Calling a generator function runs <b>nothing</b>; it returns a generator object.</p><p class="note">Each <span class="m">next()</span> runs to the next <span class="m">yield</span> and keeps all local variables.</p><p class="note"><span class="m">yield from xs</span> hands over to another iterable.</p><p class="tip">Memory: a list of 1M squares = <b>8.4 MB</b>, the generator = <b>200 bytes</b>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 11 · Iterators &amp; generators</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Lazy pipelines</p><h2>Chain generators like an assembly line</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px">lines   = read_lines(path)          <span class="c"># yields one line at a time</span>
+records = parse(lines)              <span class="c"># yields (date, level, msg)</span>
+errors  = only(<span class="s">&quot;ERROR&quot;</span>, records)    <span class="c"># filters lazily</span>
+msgs    = messages(errors)          <span class="c"># formats lazily</span>
+
+<span class="k">for</span> m <span class="k">in</span> islice(msgs, 2):           <span class="c"># take 2, then stop</span>
+    print(m)
+<span class="c"># only 4 lines were ever read!</span></div>
+  <div class="col" style="flex:1"><p class="note">Nothing runs until something <b>asks</b> for values.</p><p class="note">Each stage does <b>one job</b>, so it's easy to test and reuse.</p><p class="note">Demo with a 200,000-row CSV: <b>56 MB</b> (list) vs <b>0.05 MB</b> (generators).</p></div></div>
+  <p class="foot-l">Python Pro · Module 11 · Iterators &amp; generators</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · itertools</p><h2>A toolbox of fast, lazy iterators</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Tool</th><th>Example</th><th>Result</th></tr><tr><td><b>islice</b></td><td><span class="m">islice(count(10, 5), 4)</span></td><td>10 15 20 25</td></tr><tr><td><b>chain</b></td><td><span class="m">chain([1, 2], "ab")</span></td><td>1 2 'a' 'b'</td></tr><tr><td><b>accumulate</b></td><td><span class="m">accumulate([5, 10, 20])</span></td><td>5 15 35</td></tr><tr><td><b>pairwise</b></td><td><span class="m">pairwise([12, 15, 11])</span></td><td>(12,15) (15,11)</td></tr><tr><td><b>groupby</b></td><td>sort first, then group neighbours</td><td>DE 150 · IN 100</td></tr><tr><td><b>product</b></td><td><span class="m">product("SM", ["red", "blue"])</span></td><td>every combination</td></tr><tr><td><b>combinations</b></td><td><span class="m">combinations(names, 2)</span></td><td>every pair</td></tr></table><div class="col" style="width:620px"><p class="tip">⚠️ <b>groupby</b> only groups <b>consecutive</b> items. Sort by the same key first.</p></div></div>
+  <p class="foot-l">Python Pro · Module 11 · Iterators &amp; generators</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 11 · Your turn</p><h2>Write lazy generators</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">chunked(items, size)</span>: lists of <span class="m">size</span> items</td></tr><tr><td><b>2</b></td><td><span class="m">running_average(numbers)</span>: the average so far</td></tr><tr><td><b>3</b></td><td><span class="m">valid_numbers(lines)</span>: ints only, skip the rest</td></tr><tr><td><b>4</b></td><td>Use <b>yield</b>; must work on <b>endless</b> input</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">list(chunked(<span class="s">&quot;abcde&quot;</span>, 2))
+<span class="c"># [[&#x27;a&#x27;,&#x27;b&#x27;], [&#x27;c&#x27;,&#x27;d&#x27;], [&#x27;e&#x27;]]</span>
+
+list(running_average([2, 4, 6]))
+<span class="c"># [2.0, 3.0, 4.0]</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex11_generators.py<br><b>Solution:</b> solutions/ex11_generators.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 11 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">12</p>
+    <h1 style="font-size:80px">Advanced OOP</h1>
+    <p style="font-size:28px;line-height:1.4">Classes that feel built-in, and designs that stay easy to change.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Dunder methods</span><span>01_dunder_methods.py</span></div><div><span>Properties</span><span>02_properties.py</span></div><div><span>Class &amp; static methods</span><span>03_class_and_static_methods.py</span></div><div><span>Inheritance &amp; the MRO</span><span>04_inheritance_and_mro.py</span></div><div><span>ABCs &amp; Protocols</span><span>05_abc_and_protocols.py</span></div><div><span>Composition &amp; SOLID</span><span>06_composition_and_solid.py</span></div><div><span>Exercise: a Vector class</span><span>ex12_vector.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 12</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Dunder methods</p><h2>Python calls them for you</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>You write</th><th>Python calls</th></tr><tr><td><span class="m">print(x)</span> / <span class="m">repr(x)</span></td><td><span class="m">__str__</span> / <span class="m">__repr__</span></td></tr><tr><td><span class="m">a == b</span>, <span class="m">a &lt; b</span></td><td><span class="m">__eq__</span>, <span class="m">__lt__</span> (+ @total_ordering)</td></tr><tr><td><span class="m">a + b</span>, <span class="m">2 * v</span></td><td><span class="m">__add__</span>, <span class="m">__rmul__</span></td></tr><tr><td><span class="m">len(x)</span>, <span class="m">x[i]</span>, <span class="m">for i in x</span></td><td><span class="m">__len__</span>, <span class="m">__getitem__</span></td></tr><tr><td><span class="m">item in x</span></td><td><span class="m">__contains__</span></td></tr><tr><td><span class="m">{x}</span>, dict key</td><td><span class="m">__hash__</span></td></tr><tr><td><span class="m">if x:</span></td><td><span class="m">__bool__</span></td></tr></table><div class="col" style="width:620px"><div class="code" style="font-size:22px">Money(10.5) + Money(4.25)
+<span class="c"># 14.75 EUR</span>
+sorted([Money(9), Money(1)])</div><p class="note">Can't compare with that type? Return <b>NotImplemented</b>, not False.</p><p class="tip">Defined <b>__eq__</b>? Define <b>__hash__</b> too, or the objects can't go in sets.</p></div></div>
+  <p class="foot-l">Python Pro · Module 12 · Advanced OOP</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Properties &amp; class methods</p><h2>Attributes with rules, alternative constructors</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:20px"><span class="k">class</span> Temperature:
+    @property
+    <span class="k">def</span> celsius(self):
+        <span class="k">return</span> self._celsius
+    @celsius.setter
+    <span class="k">def</span> celsius(self, value):
+        <span class="k">if</span> value &lt; -273.15:
+            <span class="k">raise</span> ValueError(<span class="s">&quot;below absolute zero!&quot;</span>)
+        self._celsius = value
+
+<span class="k">class</span> Employee:
+    @classmethod
+    <span class="k">def</span> from_csv(cls, line):       <span class="c"># cls = the class it&#x27;s called on</span>
+        name, salary = line.split(<span class="s">&quot;,&quot;</span>)
+        <span class="k">return</span> cls(name, int(salary))</div>
+  <div class="col" style="flex:1"><p class="note"><b>@property</b>: looks like an attribute, runs a method: validation, computed or read-only values.</p><p class="note"><b>@classmethod</b>: alternative constructors. <span class="m">Manager.from_csv()</span> returns a <b>Manager</b>.</p><p class="note"><b>@staticmethod</b>: a plain helper that lives in the class.</p></div></div>
+  <p class="foot-l">Python Pro · Module 12 · Advanced OOP</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Inheritance, MRO, ABCs, Protocols</p><h2>One clear order, explicit contracts</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px"><span class="k">class</span> Child(Left, Right): ...
+Child.__mro__  <span class="c"># Child, Left, Right, Base, object</span>
+
+<span class="k">class</span> Shape(ABC):                 <span class="c"># nominal: must inherit</span>
+    @abstractmethod
+    <span class="k">def</span> area(self) -&gt; float: ...
+
+<span class="k">class</span> Notifier(Protocol):         <span class="c"># structural: any class</span>
+    <span class="k">def</span> send(self, msg: str) -&gt; <span class="k">None</span>: ...   <span class="c"># with .send() fits</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>super()</b> calls the <b>next class in the MRO</b>, not simply "my parent". That's what makes mixins work.</p><p class="note"><b>ABC</b>: subclasses that forget an abstract method can't even be created.</p><p class="note"><b>Protocol</b>: duck typing with type checking. Great for classes you don't own.</p></div></div>
+  <p class="foot-l">Python Pro · Module 12 · Advanced OOP</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Composition &amp; SOLID</p><h2>Build from parts, inject the details</h2></div>
+  <div class="row"><div class="code" style="width:960px;font-size:23px"><span class="k">class</span> Checkout:
+    <span class="k">def</span> __init__(self, discount: Discount, notifier: Notifier):
+        self.discount = discount        <span class="c"># HAS-A, injected</span>
+        self.notifier = notifier
+
+    <span class="k">def</span> pay(self, items):
+        total = self.discount.apply(sum(p <span class="k">for</span> _, p <span class="k">in</span> items))
+        self.notifier.send(<span class="s">f&quot;charged {total:.2f}&quot;</span>)
+
+Checkout(PercentOff(20), ConsoleNotifier()).pay(cart)
+Checkout(NoDiscount(), FakeNotifier()).pay(cart)  <span class="c"># in tests</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>S</b>ingle responsibility · <b>O</b>pen for extension · <b>L</b>iskov · <b>I</b>nterface segregation · <b>D</b>ependency inversion</p><p class="note">IS-A → inheritance. <b>HAS-A → composition</b>.</p><p class="note">New discount rule? A <b>new class</b>. Checkout never changes.</p></div></div>
+  <p class="foot-l">Python Pro · Module 12 · Advanced OOP</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 12 · Your turn</p><h2>A Vector class that feels built-in</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">repr</span>, <span class="m">+</span>, <span class="m">v * 2</span> and <span class="m">2 * v</span></td></tr><tr><td><b>2</b></td><td><span class="m">abs(v)</span>, a read-only <b>length</b> property</td></tr><tr><td><b>3</b></td><td><span class="m">==</span> and <b>hashable</b> (works in sets)</td></tr><tr><td><b>4</b></td><td><span class="m">x, y = v</span>, <span class="m">bool()</span>, <span class="m">Vector.from_tuple()</span></td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">v = Vector(3, 4)
+v + Vector(1, 1)   <span class="c"># Vector(4, 5)</span>
+2 * v              <span class="c"># Vector(6, 8)</span>
+abs(v)             <span class="c"># 5.0</span>
+x, y = v</div>
+      <div class="tip"><b>Starter:</b> exercises/ex12_vector.py<br><b>Solution:</b> solutions/ex12_vector.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 12 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">13</p>
+    <h1 style="font-size:76px">Errors, context managers &amp; logging</h1>
+    <p style="font-size:28px;line-height:1.4">Fail safely, clean up always, leave a clear trail.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Exceptions like a pro</span><span>01_exception_hierarchy.py</span></div><div><span>Context managers</span><span>02_context_managers.py</span></div><div><span>logging</span><span>03_logging.py</span></div><div><span>Demo: robust order importer</span><span>04_demo_order_importer.py</span></div><div><span>Exercise: safe bank transfers</span><span>ex13_bank_transfer.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 13</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Exceptions</p><h2>Your own exception family</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:22px"><span class="k">class</span> ShopError(Exception): ...         <span class="c"># the family</span>
+<span class="k">class</span> OutOfStock(ShopError):
+    <span class="k">def</span> __init__(self, item, left):
+        super().__init__(<span class="s">f&quot;only {left} x {item} left&quot;</span>)
+        self.item, self.left = item, left   <span class="c"># extra data</span>
+
+<span class="k">try</span>:
+    buy(<span class="s">&quot;laptop&quot;</span>, 5)
+<span class="k">except</span> OutOfStock <span class="k">as</span> e:     <span class="c"># most specific FIRST</span>
+    print(e.left)
+<span class="k">except</span> ShopError <span class="k">as</span> e:      <span class="c"># then the family</span>
+    ...
+
+<span class="k">raise</span> ShopError(<span class="s">&quot;config broken&quot;</span>) <span class="k">from</span> err   <span class="c"># keep the cause</span></div>
+  <div class="col" style="flex:1"><p class="note">Catch as <b>specific</b> as possible; a parent catches all its children.</p><p class="note"><span class="m">raise ... from e</span> keeps the original error in the traceback.</p><p class="note"><b>EAFP</b>: try it, handle the exception. The Pythonic default.</p><p class="tip">⚠️ Never <span class="m" style="background:#fff3c4">except: pass</span>. It also catches Ctrl+C and hides bugs forever.</p></div></div>
+  <p class="foot-l">Python Pro · Module 13 · Errors, context managers &amp; logging</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Context managers</p><h2>Setup and clean-up, guaranteed</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:24px">@contextmanager
+<span class="k">def</span> transaction(db):
+    snapshot = dict(db)
+    <span class="k">try</span>:
+        <span class="k">yield</span>                 <span class="c"># the with-block runs here</span>
+    <span class="k">except</span> Exception:
+        db.clear(); db.update(snapshot)   <span class="c"># roll back</span>
+        <span class="k">raise</span>                 <span class="c"># never swallow the error</span>
+
+<span class="k">with</span> transaction(accounts):
+    accounts[<span class="s">&quot;raj&quot;</span>] += 30
+    withdraw(accounts, <span class="s">&quot;vishal&quot;</span>, 30)</div>
+  <div class="col" style="flex:1"><p class="note"><span class="m">with x:</span> → <span class="m">__enter__</span>, the body, then <span class="m">__exit__</span>, which <b>always</b> runs.</p><p class="note">Code before <span class="m">yield</span> = enter, after = exit.</p><p class="note">Files, locks, DB transactions, timers, temp folders, <span class="m">suppress(FileNotFoundError)</span></p></div></div>
+  <p class="foot-l">Python Pro · Module 13 · Errors, context managers &amp; logging</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · logging</p><h2>print() for grown-ups</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px">logging.basicConfig(
+    level=logging.INFO,
+    format=<span class="s">&quot;%(asctime)s %(levelname)-8s %(name)s: %(message)s&quot;</span>)
+log = logging.getLogger(__name__)    <span class="c"># one per module</span>
+
+log.debug(<span class="s">&quot;hidden below INFO&quot;</span>)
+log.info(<span class="s">&quot;order %s created&quot;</span>, 1042)   <span class="c"># %s, not f-strings</span>
+log.warning(<span class="s">&quot;stock low: %d left&quot;</span>, 2)
+<span class="k">try</span>:
+    1 / 0
+<span class="k">except</span> ZeroDivisionError:
+    log.exception(<span class="s">&quot;discount failed&quot;</span>)  <span class="c"># + traceback</span></div>
+  <div class="col" style="flex:1"><p class="note">Levels: <b>DEBUG &lt; INFO &lt; WARNING &lt; ERROR &lt; CRITICAL</b>.</p><p class="note">Configure <b>once</b> at start-up; add handlers for files or the cloud.</p><p class="note"><span class="m">%s</span> arguments: the text is only built if the message is shown.</p></div></div>
+  <p class="foot-l">Python Pro · Module 13 · Errors, context managers &amp; logging</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 13 · Your turn</p><h2>Safe bank transfers</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">InsufficientFunds(BankError)</span> with <span class="m">.account .balance .amount</span></td></tr><tr><td><b>2</b></td><td><span class="m">withdraw()</span> raises it when the balance is too low</td></tr><tr><td><b>3</b></td><td><span class="m">atomic(accounts)</span>: snapshot, roll back, <b>re-raise</b></td></tr><tr><td><b>4</b></td><td><span class="m">transfer()</span>: no money may appear or disappear</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:21px">transfer(accounts, <span class="s">&quot;raj&quot;</span>, <span class="s">&quot;vishal&quot;</span>, 500)
+<span class="c"># InsufficientFunds: raj has 80</span>
+accounts   <span class="c"># unchanged: rolled back</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex13_bank_transfer.py<br><b>Solution:</b> solutions/ex13_bank_transfer.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 13 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">14</p>
+    <h1 style="font-size:76px">Project structure &amp; packaging</h1>
+    <p style="font-size:28px;line-height:1.4">From scripts to an installable project with its own command.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Modules &amp; imports</span><span>01_modules_and_imports.py</span></div><div><span>CLIs with argparse</span><span>02_cli_with_argparse.py</span></div><div><span>A real package: tasky</span><span>tasky_project/</span></div><div><span>Exercise: wordtool CLI</span><span>ex14_wordtool_cli.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 14</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Modules &amp; imports</p><h2>What import really does</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px"><span class="k">import</span> json
+<span class="c"># 1. already in sys.modules? reuse it (runs only ONCE)</span>
+<span class="c"># 2. otherwise search the folders in sys.path</span>
+<span class="c"># 3. run the file, store it in sys.modules</span>
+
+<span class="k">if</span> __name__ == <span class="s">&quot;__main__&quot;</span>:   <span class="c"># only when run directly,</span>
+    main()                   <span class="c"># not when imported (tests!)</span>
+
+<span class="k">from</span> tasky.store <span class="k">import</span> TaskStore   <span class="c"># absolute: preferred</span>
+<span class="k">from</span> .store <span class="k">import</span> TaskStore        <span class="c"># relative: inside a package</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>module</b> = one .py file · <b>package</b> = a folder of modules with <span class="m">__init__.py</span></p><p class="note"><span class="m">__name__</span> is <span class="m">"__main__"</span> only for the file you ran.</p><p class="note">Avoid <span class="m">from x import *</span>: you can't tell where names come from.</p></div></div>
+  <p class="foot-l">Python Pro · Module 14 · Project structure &amp; packaging</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · A real package</p><h2>src layout + pyproject.toml</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:23px">tasky_project/
+├── pyproject.toml     <span class="c"># name, version, deps, commands</span>
+├── src/tasky/
+│   ├── __init__.py    <span class="c"># public API, __version__</span>
+│   ├── __main__.py    <span class="c"># python -m tasky</span>
+│   ├── cli.py         <span class="c"># argparse -&gt; calls store</span>
+│   └── store.py       <span class="c"># the logic (no printing)</span>
+└── tests/test_store.py
+
+[project.scripts]
+tasky = <span class="s">&quot;tasky.cli:main&quot;</span>    <span class="c"># creates the `tasky` command</span></div>
+  <div class="col" style="flex:1"><p class="note"><span class="m">pip install -e .</span>: an <b>editable</b> install; code changes apply instantly.</p><p class="note">Keep <b>logic</b> (store.py) apart from the <b>interface</b> (cli.py): reusable and testable.</p><p class="note">Return a <b>non-zero exit code</b> on failure so scripts and CI can tell.</p><p class="tip">$ tasky add "Record Module 14"   ·   $ tasky done 1   ·   $ python -m tasky list</p></div></div>
+  <p class="foot-l">Python Pro · Module 14 · Project structure &amp; packaging</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 14 · Your turn</p><h2>Build a CLI with argparse</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>Subcommand <span class="m">stats TEXT</span>: words, unique, chars</td></tr><tr><td><b>2</b></td><td>Subcommand <span class="m">top TEXT --n 3</span>: the most common words</td></tr><tr><td><b>3</b></td><td><span class="m">main(argv=None)</span>: testable without a terminal</td></tr><tr><td><b>4</b></td><td>Case-insensitive counting; return exit code 0</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:20px">$ wordtool stats <span class="s">&quot;the cat and the hat&quot;</span>
+words: 5, unique: 4, chars: 19
+
+$ wordtool top <span class="s">&quot;the cat and the hat&quot;</span> --n 1
+the: 2</div>
+      <div class="tip"><b>Starter:</b> exercises/ex14_wordtool_cli.py<br><b>Solution:</b> solutions/ex14_wordtool_cli.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 14 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">15</p>
+    <h1 style="font-size:76px">Type hints &amp; code quality</h1>
+    <p style="font-size:28px;line-height:1.4">Catch bugs before you run anything, and keep code easy to read.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Type hints</span><span>01_type_hints_basics.py</span></div><div><span>Advanced typing</span><span>02_advanced_typing.py</span></div><div><span>mypy catches bugs</span><span>03_mypy_catches_bugs.py</span></div><div><span>ruff &amp; style</span><span>04_ruff_and_style.py</span></div><div><span>Exercise: type it, fix it</span><span>ex15_add_type_hints.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 15</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Type hints</p><h2>Say what your code expects</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Type</th><th>Means</th></tr><tr><td><span class="m">list[int]</span>, <span class="m">dict[str, float]</span></td><td>what's <b>inside</b> a collection</td></tr><tr><td><span class="m">float | None</span></td><td>a float, <b>or None</b> (handle it!)</td></tr><tr><td><span class="m">Literal["info", "error"]</span></td><td>only these exact values</td></tr><tr><td><span class="m">TypedDict</span></td><td>a dict with known keys (JSON)</td></tr><tr><td><span class="m">Callable[[float], float]</span></td><td>a function float → float</td></tr><tr><td><span class="m">TypeVar T</span>: <span class="m">list[T] -> T</span></td><td>generic: str in, str out</td></tr><tr><td><span class="m">Final</span></td><td>a constant</td></tr></table><div class="col" style="width:620px"><div class="code" style="font-size:21px"><span class="k">def</span> find_price(item: str) -&gt; float | <span class="k">None</span>:
+    <span class="k">return</span> prices.get(item)</div><p class="note">Python does <b>not</b> check hints at runtime. Your editor and <b>mypy</b> do.</p></div></div>
+  <p class="foot-l">Python Pro · Module 15 · Type hints &amp; code quality</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · mypy</p><h2>3 hidden crashes, found in one second</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px"><span class="k">def</span> plan_of(user_id: int) -&gt; str:
+    user = find_user(user_id)        <span class="c"># dict | None</span>
+    <span class="k">return</span> user.get(<span class="s">&quot;plan&quot;</span>, <span class="s">&quot;free&quot;</span>)  <span class="c"># crashes for unknown ids</span>
+
+<span class="k">def</span> label(count: int) -&gt; str:
+    <span class="k">if</span> count &gt; 100:
+        <span class="k">return</span> <span class="s">&quot;Orders: &quot;</span> + count    <span class="c"># str + int</span>
+
+<span class="k">def</span> bill(total: float) -&gt; <span class="k">None</span>:
+    send_invoice(total)              <span class="c"># expects an email str</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>$ mypy 03_mypy_catches_bugs.py</b></p><p class="note"><span class="m">Item "None" ... has no attribute "get"</span></p><p class="note"><span class="m">Unsupported operand types for + ("str" and "int")</span></p><p class="note"><span class="m">Argument 1 ... incompatible type "float"; expected "str"</span></p><p class="tip">The code runs fine with today's test data. mypy finds the crashes <b>before</b> production does.</p></div></div>
+  <p class="foot-l">Python Pro · Module 15 · Type hints &amp; code quality</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · ruff</p><h2>Lint for bugs, format for consistency</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:24px"><span class="k">import</span> os, sys                      <span class="c"># E401 + F401 unused</span>
+<span class="k">def</span> messy_total( items ,discount = <span class="k">None</span> ):
+    <span class="k">for</span> i <span class="k">in</span> range(len(items)):
+        <span class="k">if</span> items[i][<span class="s">&quot;price&quot;</span>] == <span class="k">None</span>:   <span class="c"># E711</span>
+            continue
+    <span class="k">try</span>: ...
+    <span class="k">except</span>:                         <span class="c"># E722 bare except</span>
+        <span class="k">return</span> 0
+
+$ ruff check file.py      <span class="c"># list problems</span>
+$ ruff check --fix        <span class="c"># fix the safe ones</span>
+$ ruff format             <span class="c"># rewrite the layout</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>Linter</b>: likely bugs and bad patterns. <b>Formatter</b>: layout only.</p><p class="note">Configure once in <span class="m">pyproject.toml</span> or <span class="m">ruff.toml</span>.</p><p class="note">Tools can't name things for you: <span class="m">unpaid_invoices</span>, not <span class="m">lst2</span>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 15 · Type hints &amp; code quality</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 15 · Your turn</p><h2>Type it, let mypy find the bug</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>Add hints to every function, with a <b>TypedDict</b> for orders</td></tr><tr><td><b>2</b></td><td>Run <span class="m">mypy --strict</span></td></tr><tr><td><b>3</b></td><td>Fix the real bug mypy reports</td></tr><tr><td><b>4</b></td><td>Checks AND mypy --strict must pass</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">$ mypy --strict ex15_add_type_hints.py
+error: Value of type <span class="s">&quot;Order | None&quot;</span>
+       <span class="k">is</span> <span class="k">not</span> indexable
+<span class="c"># report([]) would crash!</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex15_add_type_hints.py<br><b>Solution:</b> solutions/ex15_add_type_hints.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 15 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">16</p>
+    <h1 style="font-size:76px">Testing with pytest</h1>
+    <p style="font-size:28px;line-height:1.4">Prove your code works, and keep it working when it changes.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>pytest basics</span><span>test_01_basics.py</span></div><div><span>Fixtures &amp; parametrize</span><span>test_02_fixtures_and_parametrize.py</span></div><div><span>Fakes, mocks &amp; monkeypatch</span><span>test_03_mocking.py</span></div><div><span>TDD</span><span>test_04_tdd.py</span></div><div><span>Exercise: tests that catch bugs</span><span>ex16_test_password.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 16</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · pytest basics</p><h2>Plain assert, nothing else to learn</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px"><span class="k">def</span> test_discount_takes_percentage_off():
+    price = 100.0                        <span class="c"># arrange</span>
+    result = apply_discount(price, 20)   <span class="c"># act</span>
+    assert result == 80.0                <span class="c"># assert</span>
+
+<span class="k">def</span> test_over_100_is_rejected():
+    <span class="k">with</span> pytest.raises(ValueError, match=<span class="s">&quot;between 0 and 100&quot;</span>):
+        apply_discount(10, 150)
+
+<span class="k">def</span> test_floats():
+    assert 0.1 + 0.2 == pytest.approx(0.3)</div>
+  <div class="col" style="flex:1"><p class="note">pytest runs files <span class="m">test_*.py</span> and functions <span class="m">test_*</span>.</p><p class="note">A failed assert shows <b>both values</b>: <span class="m">assert 6.0 == 7</span>.</p><p class="note">Test the <b>edges</b>: 0, empty, the limit, invalid input.</p><p class="tip">$ pytest 16_testing -v   →   31 passed</p></div></div>
+  <p class="foot-l">Python Pro · Module 16 · Testing with pytest</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Fixtures &amp; parametrize</p><h2>Reusable setup, many cases</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px">@pytest.fixture                       <span class="c"># in conftest.py: shared</span>
+<span class="k">def</span> sample_cart():
+    <span class="k">return</span> {<span class="s">&quot;book&quot;</span>: (12.5, 2), <span class="s">&quot;pen&quot;</span>: (1.2, 3)}
+
+<span class="k">def</span> test_total(sample_cart):          <span class="c"># asked for by NAME</span>
+    assert cart_total(sample_cart) == pytest.approx(28.6)
+
+@pytest.mark.parametrize((<span class="s">&quot;price&quot;</span>, <span class="s">&quot;pct&quot;</span>, <span class="s">&quot;expected&quot;</span>), [
+    (100, 10, 90.0),
+    (19.99, 50, 9.99),               <span class="c"># floats!</span>
+])
+<span class="k">def</span> test_cases(price, pct, expected):
+    assert apply_discount(price, pct) == expected</div>
+  <div class="col" style="flex:1"><p class="note">A fixture is built <b>fresh for every test</b>, so tests can't affect each other.</p><p class="note"><span class="m">tmp_path</span>: a built-in fixture, a temp folder per test.</p><p class="note">Each parameter set is reported as its <b>own</b> test.</p></div></div>
+  <p class="foot-l">Python Pro · Module 16 · Testing with pytest</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Mocks &amp; TDD</p><h2>No network in unit tests · red → green → refactor</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:18px"><span class="k">def</span> describe_weather(city, fetch=fetch_json): ...
+
+<span class="k">def</span> test_hot_city():
+    fake = Mock(return_value={<span class="s">&quot;temp_c&quot;</span>: 31.4})
+    assert describe_weather(<span class="s">&quot;Mumbai&quot;</span>, fetch=fake) == <span class="s">&quot;Mumbai: 31°C, hot&quot;</span>
+    fake.assert_called_once()
+
+<span class="k">def</span> test_api_down():
+    fake = Mock(side_effect=TimeoutError(<span class="s">&quot;down&quot;</span>))
+    <span class="k">with</span> pytest.raises(TimeoutError):
+        describe_weather(<span class="s">&quot;Oslo&quot;</span>, fetch=fake)</div>
+  <div class="col" style="flex:1"><p class="note">Real APIs are slow, need a network, and change: tests become <b>flaky</b>.</p><p class="note"><b>Inject</b> the dependency, or <span class="m">monkeypatch</span> it for one test.</p><p class="note"><b>TDD</b>: write a failing test → make it pass → refactor. <span class="m">slugify()</span> was built that way.</p></div></div>
+  <p class="foot-l">Python Pro · Module 16 · Testing with pytest</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 16 · Your turn</p><h2>Write tests that catch bugs</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">is_strong_password()</span> is correct: test every rule</td></tr><tr><td><b>2</b></td><td>8+ chars · upper · lower · digit · no spaces · TypeError</td></tr><tr><td><b>3</b></td><td>Each test breaks <b>only one</b> rule</td></tr><tr><td><b>4</b></td><td>Your tests must catch <b>6/6</b> planted bugs</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">$ python ex16_test_password.py
+Your tests caught 6/6 bugs.
+All checks passed!</div>
+      <div class="tip"><b>Starter:</b> exercises/ex16_test_password.py<br><b>Solution:</b> solutions/ex16_test_password.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 16 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">17</p>
+    <h1 style="font-size:80px">Concurrency</h1>
+    <p style="font-size:28px;line-height:1.4">Threads for waiting, processes for calculating, asyncio for thousands of tasks.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Threads</span><span>01_threads.py</span></div><div><span>Processes</span><span>02_processes.py</span></div><div><span>asyncio</span><span>03_asyncio_basics.py</span></div><div><span>Demo: price checker</span><span>04_demo_price_checker.py</span></div><div><span>Exercise: parallel downloads</span><span>ex17_parallel_downloads.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 17</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Choosing</p><h2>Waiting or calculating?</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Work</th><th>Example</th><th>Use</th><th>Measured</th></tr><tr><td><b>I/O-bound</b> (waiting)</td><td>downloads, DB, files</td><td><b>threads</b> or <b>asyncio</b></td><td>4.0 s → <b>0.5 s</b></td></tr><tr><td><b>CPU-bound</b> (calculating)</td><td>maths, images, parsing</td><td><b>processes</b></td><td>5.1 s → <b>2.1 s</b></td></tr><tr><td>CPU-bound with threads</td><td></td><td>❌ the GIL</td><td>5.1 s → <b>6.1 s</b></td></tr></table><div class="col" style="width:700px"><div class="code" style="font-size:20px"><span class="k">with</span> ThreadPoolExecutor(8) <span class="k">as</span> pool:
+    results = list(pool.map(download, files))
+
+<span class="k">if</span> __name__ == <span class="s">&quot;__main__&quot;</span>:     <span class="c"># required!</span>
+    <span class="k">with</span> ProcessPoolExecutor() <span class="k">as</span> pool:
+        totals = list(pool.map(count_primes, jobs))</div><p class="note">The <b>GIL</b> lets one thread run Python at a time per process. Separate processes each have their own.</p></div></div>
+  <p class="foot-l">Python Pro · Module 17 · Concurrency</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Threads</p><h2>Shared data needs a lock</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:25px">counter = 0
+lock = threading.Lock()
+
+<span class="k">def</span> safe_add(n):
+    <span class="k">global</span> counter
+    <span class="k">for</span> _ <span class="k">in</span> range(n):
+        <span class="k">with</span> lock:             <span class="c"># one thread at a time</span>
+            counter += 1
+
+<span class="c"># 4 threads x 1000:</span>
+<span class="c">#   without the lock: 1204   &lt;- updates lost!</span>
+<span class="c">#   with the lock:    4000</span></div>
+  <div class="col" style="flex:1"><p class="note">A <b>race condition</b>: two threads read, both add 1, both write. One update is lost.</p><p class="note"><span class="m">with lock:</span> makes the read-modify-write happen as one step.</p><p class="note">Simplest of all: <b>don't share</b>. Return results from the pool instead.</p></div></div>
+  <p class="foot-l">Python Pro · Module 17 · Concurrency</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · asyncio</p><h2>Thousands of waiting tasks on one thread</h2></div>
+  <div class="row"><div class="code" style="width:1000px;font-size:18px"><span class="k">async</span> <span class="k">def</span> fetch(name, s):
+    <span class="k">await</span> asyncio.sleep(s)        <span class="c"># pause, let others run</span>
+    <span class="k">return</span> name
+
+<span class="k">async</span> <span class="k">def</span> main():
+    results = <span class="k">await</span> asyncio.gather(fetch(<span class="s">&quot;x&quot;</span>, 1), fetch(<span class="s">&quot;y&quot;</span>, 1))   <span class="c"># ~1 s</span>
+    <span class="k">await</span> asyncio.wait_for(fetch(<span class="s">&quot;slow&quot;</span>, 5), timeout=0.5)         <span class="c"># TimeoutError</span>
+    limit = asyncio.Semaphore(10)                                 <span class="c"># max 10 at once</span>
+
+asyncio.run(main())</div>
+  <div class="col" style="flex:1"><p class="note">Switches happen <b>only at await</b>, so race conditions are rarer.</p><p class="note"><span class="m">gather</span> = run concurrently · <span class="m">wait_for</span> = timeout · <span class="m">Semaphore</span> = limit.</p><p class="tip">⚠️ One blocking call (<span class="m" style="background:#fff3c4">time.sleep</span>, <span class="m" style="background:#fff3c4">requests.get</span>) freezes the whole loop.</p></div></div>
+  <p class="foot-l">Python Pro · Module 17 · Concurrency</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 17 · Your turn</p><h2>Parallel downloads</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>10 downloads × 0.3 s in <b>&lt; 1 s</b> with a <b>ThreadPoolExecutor</b></td></tr><tr><td><b>2</b></td><td>The same with <b>asyncio.gather</b></td></tr><tr><td><b>3</b></td><td>Count words with a <b>ProcessPoolExecutor</b></td></tr><tr><td><b>4</b></td><td>Keep the results in input order</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px">$ python ex17_parallel_downloads.py
+threads: 0.31 s, asyncio: 0.31 s
+All checks passed!</div>
+      <div class="tip"><b>Starter:</b> exercises/ex17_parallel_downloads.py<br><b>Solution:</b> solutions/ex17_parallel_downloads.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 17 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">18</p>
+    <h1 style="font-size:76px">Data, APIs &amp; databases</h1>
+    <p style="font-size:28px;line-height:1.4">Files, web APIs, SQL, and your own REST API with FastAPI.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Files, CSV &amp; JSON</span><span>01_files_csv_json.py</span></div><div><span>Calling web APIs</span><span>02_http_requests.py</span></div><div><span>SQLite</span><span>03_sqlite.py</span></div><div><span>Your own REST API</span><span>04_fastapi_app.py</span></div><div><span>Exercise: a notes database</span><span>ex18_notes_repository.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 18</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Web APIs</p><h2>Call an API safely</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:24px"><span class="k">try</span>:
+    resp = requests.get(
+        <span class="s">&quot;https://api.github.com/search/repositories&quot;</span>,
+        params={<span class="s">&quot;q&quot;</span>: <span class="s">&quot;language:python&quot;</span>, <span class="s">&quot;per_page&quot;</span>: 3},
+        timeout=10)                  <span class="c"># ALWAYS</span>
+    resp.raise_for_status()          <span class="c"># 4xx/5xx -&gt; error</span>
+    data = resp.json()
+<span class="k">except</span> requests.Timeout:
+    ...
+<span class="k">except</span> requests.RequestException:   <span class="c"># offline, DNS, HTTP</span>
+    ...</div>
+  <div class="col" style="flex:1"><p class="note"><span class="m">params=</span> encodes query values correctly; never glue strings.</p><p class="note">Tokens live in <b>environment variables</b>, never in the code.</p><p class="note"><span class="m">pathlib</span> + <span class="m">csv.DictReader</span> + <span class="m">json</span> for files: lesson 01.</p></div></div>
+  <p class="foot-l">Python Pro · Module 18 · Data, APIs &amp; databases</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · SQLite</p><h2>SQL with ? parameters and transactions</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:21px">conn.execute(<span class="s">&quot;SELECT * FROM products WHERE name = ?&quot;</span>, (name,))
+
+user_input = <span class="s">&quot;x&#x27; OR &#x27;1&#x27;=&#x27;1&quot;</span>
+<span class="s">f&quot;... WHERE name = &#x27;{user_input}&#x27;&quot;</span>   <span class="c"># matches 3 rows: INJECTION</span>
+<span class="s">&quot;... WHERE name = ?&quot;</span>, (user_input,)  <span class="c"># matches 0 rows: safe</span>
+
+<span class="k">with</span> conn:                            <span class="c"># all or nothing</span>
+    conn.execute(<span class="s">&quot;UPDATE products SET stock = stock - 1 ...&quot;</span>)
+    conn.execute(<span class="s">&quot;INSERT ... duplicate name&quot;</span>)   <span class="c"># IntegrityError</span>
+<span class="c"># -&gt; the UPDATE was rolled back too</span></div>
+  <div class="col" style="flex:1"><p class="note">SQLite: a full SQL database in <b>one file</b>, built into Python.</p><p class="note"><span class="m">conn.row_factory = sqlite3.Row</span> → <span class="m">row["name"]</span>.</p><p class="note">The same ideas work for PostgreSQL and MySQL.</p></div></div>
+  <p class="foot-l">Python Pro · Module 18 · Data, APIs &amp; databases</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · FastAPI</p><h2>Type hints become a validated web API</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:24px"><span class="k">class</span> TodoIn(BaseModel):
+    title: str = Field(min_length=1, max_length=100)
+
+@app.post(<span class="s">&quot;/todos&quot;</span>, status_code=201)
+<span class="k">def</span> create_todo(todo: TodoIn) -&gt; Todo: ...
+
+@app.get(<span class="s">&quot;/todos/{todo_id}&quot;</span>)
+<span class="k">def</span> read_todo(todo_id: int) -&gt; Todo:   <span class="c"># 404 if missing</span>
+    ...
+
+<span class="c"># POST {&quot;title&quot;: &quot;&quot;}  -&gt; 422 (validated for you)</span>
+<span class="c"># $ uvicorn 04_fastapi_app:app --reload  -&gt; /docs</span></div>
+  <div class="col" style="flex:1"><p class="note"><b>pydantic</b> models validate the JSON body automatically.</p><p class="note">Status codes: <b>201</b> created · <b>204</b> no content · <b>404</b> not found · <b>422</b> invalid.</p><p class="note"><span class="m">TestClient</span> calls the API in tests without a server.</p></div></div>
+  <p class="foot-l">Python Pro · Module 18 · Data, APIs &amp; databases</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 18 · Your turn</p><h2>A notes database</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">NotesRepository(path)</span> creates the table</td></tr><tr><td><b>2</b></td><td><span class="m">add / get / search / delete / count</span></td></tr><tr><td><b>3</b></td><td>Tags stored as <b>JSON</b> text</td></tr><tr><td><b>4</b></td><td>Only <b>?</b> parameters: the injection check must pass</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:17px">repo = NotesRepository(<span class="s">&quot;:memory:&quot;</span>)
+nid = repo.add(<span class="s">&quot;Shopping&quot;</span>, <span class="s">&quot;milk&quot;</span>, tags=[<span class="s">&quot;home&quot;</span>])
+repo.search(<span class="s">&quot;MILK&quot;</span>)    <span class="c"># case-insensitive</span>
+repo.search(<span class="s">&quot;x&#x27; OR &#x27;1&#x27;=&#x27;1&quot;</span>)   <span class="c"># []</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex18_notes_repository.py<br><b>Solution:</b> solutions/ex18_notes_repository.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 18 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">19</p>
+    <h1 style="font-size:76px">Performance &amp; internals</h1>
+    <p style="font-size:28px;line-height:1.4">Understand what Python does under the hood, then measure before you optimise.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>The memory model</span><span>01_memory_model.py</span></div><div><span>Measure first</span><span>02_measure_first.py</span></div><div><span>Speed tricks that matter</span><span>03_speed_tricks.py</span></div><div><span>Memory tricks</span><span>04_memory_tricks.py</span></div><div><span>Exercise: make it fast</span><span>ex19_make_it_fast.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 19</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · The memory model</p><h2>Names point to objects</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:22px">a = [1, 2, 3]
+b = a              <span class="c"># 2 names, 1 object</span>
+b.append(4)        <span class="c"># a sees it too</span>
+
+x = 10; y = x
+y += 1             <span class="c"># ints are immutable: y -&gt; NEW object</span>
+
+<span class="k">def</span> add(lst): lst.append(1)   <span class="c"># the object is passed,</span>
+add(a)                         <span class="c"># so the caller&#x27;s list changes</span>
+
+int(<span class="s">&quot;1000&quot;</span>) <span class="k">is</span> int(<span class="s">&quot;1000&quot;</span>)     <span class="c"># False: use == for values</span></div>
+  <div class="col" style="flex:1"><p class="note">Every object has an <b>identity</b> (id), a <b>type</b> and a <b>value</b>.</p><p class="note"><b>Reference counting</b>: freed the moment the count hits 0; <span class="m">gc</span> cleans up cycles.</p><p class="note">Use <span class="m">is</span> only for <span class="m">None</span>, <span class="m">True</span>, <span class="m">False</span>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 19 · Performance &amp; internals</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson · Speed</p><h2>Measure first, then fix the biggest thing</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Fix</th><th>Measured speed-up</th></tr><tr><td>Better data structure: list <span class="m">in</span> → set/dict</td><td><b>309×</b></td></tr><tr><td>Cache a slow pure function: <span class="m">@lru_cache</span></td><td><b>91×</b></td></tr><tr><td><span class="m">"".join()</span> instead of <span class="m">+=</span> in a loop</td><td><b>22×</b></td></tr><tr><td>Built-ins (<span class="m">sum</span>, <span class="m">sorted</span>, <span class="m">max</span>) instead of loops</td><td><b>4×</b></td></tr><tr><td>Compute once, outside the loop</td><td><b>3×</b></td></tr><tr><td><span class="m">__slots__</span> on millions of objects</td><td>24 → 17.6 MB</td></tr></table><div class="col" style="width:700px"><div class="code" style="font-size:21px">$ python -m cProfile -s cumtime app.py
+
+ncalls  cumtime  function
+     1    0.222  report
+     1    0.172  slow_unique_customers  &lt;- here!</div><p class="note"><b>timeit</b> compares snippets · <b>cProfile</b> finds slow functions · <b>tracemalloc</b> finds memory-hungry lines.</p></div></div>
+  <p class="foot-l">Python Pro · Module 19 · Performance &amp; internals</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 19 · Your turn</p><h2>Make it fast</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td><span class="m">find_duplicates</span>: O(n²) → O(n) with <b>Counter</b></td></tr><tr><td><b>2</b></td><td><span class="m">common_customers</span>: use <b>set</b> intersection</td></tr><tr><td><b>3</b></td><td><span class="m">fib(300)</span>: stop recomputing with <b>lru_cache</b></td></tr><tr><td><b>4</b></td><td>Each must fit a <b>0.1 s</b> budget</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px"><span class="c"># before</span>
+find_duplicates(big)   <span class="c"># 1.28 s</span>
+<span class="c"># after</span>
+find_duplicates(big)   <span class="c"># 0.004 s</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex19_make_it_fast.py<br><b>Solution:</b> solutions/ex19_make_it_fast.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 19 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">20</p>
+    <h1 style="font-size:80px">Capstone project</h1>
+    <p style="font-size:28px;line-height:1.4">budget: a tested, typed, packaged expense tracker with a CLI and a REST API.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>The project</span><span>budget_project/</span></div><div><span>Architecture</span><span>budget_project/README.md</span></div><div><span>Tests</span><span>budget_project/tests/</span></div><div><span>Challenges</span><span>ex20_capstone_challenges.md</span></div><div><span>Final exam</span><span>20_capstone/QUIZ.md</span></div></div>
+  <p class="foot-l">Python Pro · Module 20</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Capstone · Architecture</p><h2>Clean layers: each talks only to the one below</h2></div>
+  <div class="row"><div class="code" style="width:900px;font-size:23px">  cli.py  (argparse)          api.py  (FastAPI)
+        \                        /
+         ▼                      ▼
+        service.py   business rules · validation · alerts
+               │  depends on a Protocol, <span class="k">not</span> on SQLite
+               ▼
+        repository.py   the ONLY place <span class="k">with</span> SQL
+               │
+               ▼
+            SQLite</div>
+  <div class="col" style="flex:1"><p class="note">The <b>service</b> doesn't know whether it's called from a terminal or over HTTP.</p><p class="note">Tests inject an <b>in-memory</b> repository: fast and isolated.</p><p class="note"><span class="m">pytest</span> · <span class="m">mypy --strict</span> · <span class="m">ruff</span>: all green.</p></div></div>
+  <p class="foot-l">Python Pro · Module 20 · Capstone</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Capstone · Where every module shows up</p><h2>Everything you learned, in one project</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Module</th><th>In budget</th></tr><tr><td>08 Pythonic · 09 Data structures</td><td>comprehensions, <span class="m">sorted(key=)</span>, frozen dataclass, defaultdict</td></tr><tr><td>10 Functions · 12 OOP</td><td>FastAPI dependencies, Protocol + dependency injection</td></tr><tr><td>13 Errors &amp; logging</td><td><span class="m">BudgetError</span>, <span class="m">raise ... from</span>, <span class="m">getLogger(__name__)</span></td></tr><tr><td>14 Packaging</td><td>src layout, <span class="m">pyproject.toml</span>, the <span class="m">budget</span> command</td></tr><tr><td>15 Typing · 16 Testing</td><td>mypy --strict, ruff, 9 tests with fixtures + TestClient</td></tr><tr><td>18 Data &amp; APIs</td><td>SQLite repository, FastAPI with pydantic</td></tr></table><div class="col" style="width:640px"><div class="code" style="font-size:22px">$ budget add 320 food <span class="s">&quot;groceries&quot;</span>
+$ budget summary --month 2026-11
+2026-11: total 1315.50
+  rent    900.00
+  food    415.50  &lt;- over budget!</div></div></div>
+  <p class="foot-l">Python Pro · Module 20 · Capstone</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 20 · Your turn</p><h2>Capstone challenges</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>⭐ <span class="m">budget list</span> and a transport limit</td></tr><tr><td><b>2</b></td><td>⭐⭐ CSV export · filtered <span class="m">GET /expenses</span> · limits from JSON</td></tr><tr><td><b>3</b></td><td>⭐⭐⭐ recurring expenses (generators) · currency + lru_cache</td></tr><tr><td><b>4</b></td><td>⭐⭐⭐ a second repository behind the same Protocol</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:22px"><span class="c"># for EVERY challenge:</span>
+<span class="c"># 1. write the test first</span>
+<span class="c"># 2. make it pass</span>
+<span class="c"># 3. keep pytest, mypy, ruff green</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex20_capstone_challenges.md</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 20 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="justify-content:center;gap:30px">
+  <p class="num">YOU MADE IT</p>
+  <h1>From Foundations to Pro 🎓</h1>
+  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exam</b> in 20_capstone/QUIZ.md, build the capstone challenges, and share your project on LinkedIn.</p>
+  <div style="display:flex;flex-direction:column;gap:14px;font-size:30px;margin-top:20px">
+    <span>🎥 youtube.com/@CodeMitVishal</span><span>⭐ github.com/CodeMitVishal/python-pro</span><span>☕ buymeacoffee.com/codemitvishal</span>
+  </div>
+  <p class="foot-l">Python Pro · Thank you!</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+<!-- GENERATED:END -->
 </body></html>
