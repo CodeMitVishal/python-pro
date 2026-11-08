@@ -1,6 +1,6 @@
 # Module 25 · Django + Django REST Framework
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-25.pdf) · [Interview Q&A](INTERVIEW.md)
 
 The batteries-included framework: models and migrations, the admin, views and templates, and a REST API with DRF, in a real project.
 
@@ -29,6 +29,9 @@ Add a Review model, admin, serializer validation, an average rating and a filter
 - Solution: [`solutions/ex25_django_reviews/`](../solutions/ex25_django_reviews/)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 25 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 25 quiz](QUIZ.md). The answer key is at the bottom.
 

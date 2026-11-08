@@ -1,6 +1,6 @@
 # Module 26 · WebSockets, background tasks & caching
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-26.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Make apps feel instant: push live updates over WebSockets, move slow work to the background, and cache with Redis.
 
@@ -28,6 +28,9 @@ Cache-aside with an X-Cache header, invalidation, and WebSocket price pushes.
 - Solution: [`solutions/ex26_live_prices.py`](../solutions/ex26_live_prices.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 26 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 26 quiz](QUIZ.md). The answer key is at the bottom.
 

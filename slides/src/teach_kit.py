@@ -214,3 +214,13 @@ if __name__ == "__main__":
         if line and not line.startswith(("collect", "test session")):
             print(line)
 """
+
+
+def snippet(mod, eyebrow, h2, code, steps=(), code_w=1000):
+    """A file or config to read (YAML, Dockerfile, TOML): code on the left, numbered notes on the right."""
+    st = "".join(f'<div class="step"><span>{i}</span><p>{s}</p></div>' for i, s in enumerate(steps, 1))
+    return f"""<section>{head(eyebrow, h2, "code")}
+  <div class="row">
+    <div class="code" style="width:{code_w}px;font-size:{fit(code, code_w, 28)}px">{hl(code)}</div>
+    <div class="steps" style="flex:1">{st}</div>
+  </div>{foot(mod)}</section>"""

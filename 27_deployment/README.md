@@ -1,6 +1,6 @@
 # Module 27 · Docker, CI/CD & deploying to Azure
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-27.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Ship it: a 12-factor service, a production Dockerfile, docker compose, a GitHub Actions pipeline, and Azure Container Apps.
 
@@ -31,6 +31,9 @@ Turn a working-but-dangerous Dockerfile into a production one (9 checks).
 - Solution: [`solutions/ex27_Dockerfile`](../solutions/ex27_Dockerfile)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 27 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 27 quiz](QUIZ.md). The answer key is at the bottom.
 

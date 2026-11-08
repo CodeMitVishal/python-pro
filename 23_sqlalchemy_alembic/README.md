@@ -1,6 +1,6 @@
 # Module 23 · SQLAlchemy 2.0 & Alembic
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-23.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Work with real databases through an ORM: typed models, relationships, the N+1 problem, sessions in FastAPI, and versioned schema migrations.
 
@@ -30,6 +30,9 @@ Users, posts and tags (many-to-many), queries, and no N+1.
 - Solution: [`solutions/ex23_blog_orm.py`](../solutions/ex23_blog_orm.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 23 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 23 quiz](QUIZ.md). The answer key is at the bottom.
 

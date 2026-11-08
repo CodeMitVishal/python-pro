@@ -1,5 +1,5 @@
 """Slides · Module 14 · Project structure & packaging"""
-from teach_kit import code_out, cover, interview, job, mistake, picture, recap, trace, why
+from teach_kit import snippet, code_out, cover, interview, job, mistake, picture, recap, trace, why
 
 M = "Module 14 · Project structure &amp; packaging"
 SLIDES = [
@@ -87,9 +87,8 @@ print(args.cmd, args.title, args.priority)''',
         ["Checks on every commit", "pre-commit", "<span class=\"m\">pre-commit install</span> (ruff, mypy)"]],
        "One rule: <b>never pip install into the system Python</b>. One venv per project."),
 
- code_out(M, "pyproject.toml", "One file describes the project", '''
-print(open("pyproject.toml").read())''',
-     setup='''open("pyproject.toml", "w").write("""[project]
+ snippet(M, "pyproject.toml", "One file describes the project", '''
+[project]
 name = "tasky"
 version = "1.0.0"
 requires-python = ">=3.10"
@@ -99,8 +98,7 @@ dependencies = ["rich>=13"]
 tasky = "tasky.cli:main"      # creates a 'tasky' command
 
 [project.optional-dependencies]
-dev = ["pytest", "mypy", "ruff"]
-""")''',
+dev = ["pytest", "mypy", "ruff"]''',
      steps=["<b>[project.scripts]</b>: pip creates a real <b>tasky</b> command.",
             "Dev tools: <b>pip install -e \".[dev]\"</b>."]),
 

@@ -1,6 +1,6 @@
 # Module 24 · Authentication & security
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-24.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Log users in safely and defend your app: password hashing, JWTs, OAuth2 login with roles, and the OWASP basics.
 
@@ -29,6 +29,9 @@ Hashing, JWT create/verify, and role-protected endpoints.
 - Solution: [`solutions/ex24_auth_toolkit.py`](../solutions/ex24_auth_toolkit.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 24 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 24 quiz](QUIZ.md). The answer key is at the bottom.
 

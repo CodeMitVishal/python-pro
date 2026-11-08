@@ -1,6 +1,6 @@
 # Module 22 · FastAPI in depth
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-22.pdf) · [Interview Q&A](INTERVIEW.md)
 
 Build APIs the way production teams do: pydantic validation, routers, dependency injection, auth dependencies, error handlers, middleware, CORS, settings and async.
 
@@ -29,6 +29,9 @@ Router, API-key dependency, pagination, validation and a custom 404 handler.
 - Solution: [`solutions/ex22_fastapi_library_api.py`](../solutions/ex22_fastapi_library_api.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 22 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 22 quiz](QUIZ.md). The answer key is at the bottom.
 

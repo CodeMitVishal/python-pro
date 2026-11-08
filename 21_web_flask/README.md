@@ -1,6 +1,6 @@
 # Module 21 · HTTP fundamentals, Flask & Jinja2
 
-[← Back to the course](../README.md) · [Slides](../slides/python-pro-slides.pdf)
+[← Back to the course](../README.md) · [Slides](../slides/modules/Module-21.pdf) · [Interview Q&A](INTERVIEW.md)
 
 How the web really works (HTTP as plain text), then server-rendered pages with Flask: routes, JSON, templates, forms, sessions, and XSS protection.
 
@@ -28,6 +28,9 @@ HTML pages + a JSON API, validation, flash messages, escaping.
 - Solution: [`solutions/ex21_flask_guestbook.py`](../solutions/ex21_flask_guestbook.py)
 
 ## Knowledge check
+
+Preparing for interviews? Read the [Module 21 interview questions](INTERVIEW.md): short answers you can say out loud.
+
 
 Test yourself with the [Module 21 quiz](QUIZ.md). The answer key is at the bottom.
 
