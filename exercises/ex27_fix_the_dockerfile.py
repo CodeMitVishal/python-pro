@@ -20,8 +20,8 @@ CHECKS = [
     ("does not use the 'latest' tag",
      lambda d: ":latest" not in d and not re.search(r"^FROM\s+python\s*$", d, re.M)),
     ("copies requirements.txt and installs BEFORE copying the code (layer caching)",
-     lambda d: "requirements.txt" in d and "pip install" in d
-     and d.find("pip install") < d.find("COPY app")),
+     lambda d: ("requirements.txt" in d or "pyproject.toml" in d) and "pip install" in d
+     and ("COPY app" not in d or d.find("pip install") < d.find("COPY app"))),
     ("pip install uses --no-cache-dir (smaller image)",
      lambda d: "--no-cache-dir" in d),
     ("runs as a non-root user (USER ...)",
