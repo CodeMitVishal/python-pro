@@ -1,0 +1,36 @@
+# Local "production-like" stack:  docker compose up --build
+# The API, a PostgreSQL database and Redis, wired together on one private network.
+services:
+  api:
+    build:
+      context: .
+      args:
+        APP_VERSION: "1.0.0-compose"
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: compose
+      APP_DATABASE_URL: postgresql+psycopg://shop:${POSTGRES_PASSWORD:-devpass}@db:5432/shop
+      REDIS_URL: redis://cache:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devpass}   # from your shell or a .env file
+      POSTGRES_DB: shop
+    volumes:
+      - pgdata:/var/lib/postgresql/data                  # data survives container restarts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shop"]
+      interval: 5s
+      retries: 10
+
+  cache:
+    image: redis:7-alpine
+
+volumes:
+  pgdata:

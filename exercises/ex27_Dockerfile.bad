@@ -1,0 +1,8 @@
+FROM python
+WORKDIR /srv
+COPY . .
+RUN pip install -r requirements.txt
+ENV DEBUG=1
+ENV DB_PASSWORD=supersecret123
+EXPOSE 8000
+CMD uvicorn app.main:app --reload --host 127.0.0.1 --port 8000

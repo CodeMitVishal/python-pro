@@ -1,0 +1,5 @@
+# Pinned versions = the same build every time (regenerate with: pip freeze > requirements.txt)
+fastapi==0.162.2
+uvicorn[standard]==0.54.0
+pydantic-settings==2.16.2
+gunicorn==26.2.0

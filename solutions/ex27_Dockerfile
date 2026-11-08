@@ -1,0 +1,21 @@
+# Solution · Exercise 27: the bad Dockerfile, fixed.
+# What changed and why:
+#  - FROM python            -> python:3.12-slim   (pinned + ~10x smaller; "latest" can change under you)
+#  - COPY . . then install  -> requirements first  (code changes no longer re-install every package)
+#  - pip --no-cache-dir                            (no pip cache inside the image)
+#  - USER appuser                                  (never run as root)
+#  - DB_PASSWORD removed                           (secrets come from the platform at runtime)
+#  - DEBUG / --reload removed                      (development-only settings)
+#  - HEALTHCHECK added                             (the platform can restart a hung container)
+#  - exec-form CMD, 0.0.0.0                        (signals reach the server; reachable from outside)
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+RUN useradd --create-home --uid 1000 appuser
+WORKDIR /srv
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app ./app
+USER appuser
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=3s CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/live')"
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

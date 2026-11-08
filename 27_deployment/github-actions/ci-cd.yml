@@ -1,0 +1,60 @@
+# GitHub Actions pipeline for the 27_deployment service.
+# To use it in YOUR repo, copy it to .github/workflows/ci-cd.yml (it's kept here,
+# outside .github/, so it doesn't run in the course repo itself).
+#
+# On every push / pull request:  lint -> type check -> test
+# On push to main:               build the image -> push to Azure Container Registry
+#                                -> deploy to Azure Container Apps
+# Azure login uses OpenID Connect (no passwords stored in GitHub). Repo settings need:
+#   variables: AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID, ACR_NAME, RESOURCE_GROUP
+name: ci-cd
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  id-token: write          # needed for the passwordless Azure login (OIDC)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 27_deployment
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest httpx ruff mypy
+      - run: ruff check app tests
+      - run: mypy app --ignore-missing-imports
+      - run: pytest -q
+
+  deploy:
+    needs: test                      # only if every test passed
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: production          # optional manual approval gate in GitHub
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Build and push the image (tagged with the commit sha)
+        run: |
+          az acr build --registry ${{ vars.ACR_NAME }} \
+            --image hello-service:${{ github.sha }} \
+            --build-arg APP_VERSION=${{ github.sha }} \
+            27_deployment
+      - name: Deploy to Azure Container Apps
+        run: |
+          az containerapp update --name hello-service \
+            --resource-group ${{ vars.RESOURCE_GROUP }} \
+            --image ${{ vars.ACR_NAME }}.azurecr.io/hello-service:${{ github.sha }}
