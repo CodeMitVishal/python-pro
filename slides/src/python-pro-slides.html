@@ -1927,9 +1927,10 @@ print(response.usage.input_tokens, response.usage.output_tokens)
 
 <span class="k">def</span> get_llm():
     <span class="k">return</span> get_client()             <span class="c"># real SDK in production</span>
+LLM = Annotated[Any, Depends(get_llm)]
 
 @app.post(<span class="s">&quot;/ask&quot;</span>, response_model=AskOut)
-<span class="k">def</span> ask(body: AskIn, llm=Depends(get_llm)):
+<span class="k">def</span> ask(body: AskIn, llm: LLM):
     <span class="k">return</span> run_agent(llm, body.question)   <span class="c"># max_steps, tokens used</span>
 
 <span class="c"># tests: fast, free, repeatable</span>

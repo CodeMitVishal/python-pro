@@ -19,7 +19,6 @@ import re
 from collections import Counter
 
 import numpy as np
-
 from llm_client import MODEL, get_client, last_user_text, text_of
 
 DOCS = {
@@ -103,7 +102,7 @@ def rag_brain(system, messages, tools):
     prompt = last_user_text(messages)
     question = set(tokens(prompt.split("Question:")[-1]))
     best, best_overlap = "I don't know.", 0
-    for src, text in re.findall(r'<doc source="([^"]+)">(.*?)</doc>', prompt, re.S):
+    for src, text in re.findall(r'<doc source="([^"]+)">(.*?)</doc>', prompt, re.DOTALL):
         for sentence in re.split(r"(?<=\.)\s+", text):
             overlap = len(question & set(tokens(sentence)))
             if overlap > best_overlap:

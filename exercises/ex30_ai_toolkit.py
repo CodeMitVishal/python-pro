@@ -21,7 +21,7 @@ Run it to check your work:
 
 Stuck? Compare with solutions/ex30_ai_toolkit.py
 """
-import re
+import re  # noqa: F401 - you will need it for redact()
 
 PRICES = {"claude-opus-5-5": (4.00, 20.00), "claude-haiku-5-5": (0.10, 0.50)}
 MODEL = "claude-opus-5-5"

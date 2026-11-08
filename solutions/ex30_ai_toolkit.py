@@ -51,7 +51,7 @@ def run_tool_loop(client, question, tools, registry, max_steps=5):
             try:
                 output = registry[block.name](**block.input)   # KeyError for an unknown tool
                 results.append({"type": "tool_result", "tool_use_id": block.id, "content": str(output)})
-            except Exception as e:                            # the model sees the error and can recover
+            except Exception as e:  # noqa: BLE001 - ANY tool error goes back to the model
                 results.append({"type": "tool_result", "tool_use_id": block.id,
                                 "content": f"error: {e!r}", "is_error": True})
         messages.append({"role": "user", "content": results})  # ALL results in ONE message

@@ -15,9 +15,8 @@ import json
 import re
 from typing import Literal
 
-from pydantic import BaseModel, Field, ValidationError
-
 from llm_client import MODEL, get_client, last_user_text, text_of, tool_results
+from pydantic import BaseModel, Field, ValidationError
 
 
 # ======================== PART A: structured output ===========================================
@@ -126,7 +125,7 @@ def run_agent(client, question: str, max_steps: int = 5) -> str:
             try:
                 output = REGISTRY[block.name](**block.input)
                 results.append({"type": "tool_result", "tool_use_id": block.id, "content": json.dumps(output)})
-            except Exception as e:                                 # tell the model, don't crash
+            except Exception as e:  # noqa: BLE001 - ANY tool error goes back to the model
                 results.append({"type": "tool_result", "tool_use_id": block.id,
                                 "content": f"error: {e}", "is_error": True})
         messages.append({"role": "user", "content": results})      # ALL results in ONE message

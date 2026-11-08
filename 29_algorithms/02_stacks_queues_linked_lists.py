@@ -19,9 +19,8 @@ def is_balanced(text: str) -> bool:
     for ch in text:
         if ch in "([{":
             stack.append(ch)                      # push an opener
-        elif ch in pairs:
-            if not stack or stack.pop() != pairs[ch]:   # pop must match
-                return False
+        elif ch in pairs and (not stack or stack.pop() != pairs[ch]):   # pop must match
+            return False
     return not stack                              # everything opened was closed
 
 
@@ -29,8 +28,9 @@ for expr in ["(a[1] + b) * {c}", "(]", "((x)"]:
     print(f"{expr!r:<20} balanced: {is_balanced(expr)}")
 
 undo: list[str] = []
-for action in ["type 'Hi'", "bold", "type '!'"]:
-    undo.append(action)
+undo.append("type 'Hi'")                          # push every action you do
+undo.append("bold")
+undo.append("type '!'")
 print("undo:", undo.pop(), "| then:", undo.pop())   # last action first
 
 # --- 2. Queue with deque: append + popleft are O(1) (list.pop(0) is O(n)!) ---------------------------

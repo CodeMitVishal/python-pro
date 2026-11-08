@@ -17,13 +17,13 @@ Serve it:      cd 30_ai_with_python  then  uvicorn 04_agent_api:app --reload   (
 """
 import json
 import re
+from typing import Annotated, Any
 
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.testclient import TestClient
-from pydantic import BaseModel, Field
-
 from llm_client import MODEL, get_client, last_user_text, text_of, tool_results
+from pydantic import BaseModel, Field
 
 # --- The agent's tools --------------------------------------------------------------------------
 ORDERS = {"A-1042": {"status": "delivered", "price_eur": 49.0},
@@ -113,18 +113,21 @@ def get_llm():
     return get_client(shop_brain)
 
 
+LLM = Annotated[Any, Depends(get_llm)]              # reusable "inject the LLM client" type
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "model": MODEL}
 
 
 @app.post("/ask", response_model=AskOut)
-def ask(body: AskIn, llm=Depends(get_llm)):
+def ask(body: AskIn, llm: LLM):
     return run_agent(llm, body.question)
 
 
 @app.post("/ask/stream")
-def ask_stream(body: AskIn, llm=Depends(get_llm)):
+def ask_stream(body: AskIn, llm: LLM):
     def generate():                                  # FastAPI sends each yield as it comes
         with llm.messages.stream(model=MODEL, max_tokens=2000, system=SYSTEM,
                                  messages=[{"role": "user", "content": body.question}]) as stream:

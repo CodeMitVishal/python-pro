@@ -129,9 +129,10 @@ class AskIn(BaseModel):
 
 def get_llm():
     return get_client()             # real SDK in production
+LLM = Annotated[Any, Depends(get_llm)]
 
 @app.post("/ask", response_model=AskOut)
-def ask(body: AskIn, llm=Depends(get_llm)):
+def ask(body: AskIn, llm: LLM):
     return run_agent(llm, body.question)   # max_steps, tokens used
 
 # tests: fast, free, repeatable

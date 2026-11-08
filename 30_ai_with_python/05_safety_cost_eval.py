@@ -56,7 +56,7 @@ for block in response.content:
         print("   our code answers:          ", guarded_refund(**block.input))
 
 INJECTION_HINTS = re.compile(r"ignore (all )?(previous|prior) instructions|you are now|system prompt",
-                             re.I)
+                             re.IGNORECASE)
 print("   heuristic flag on the review: ", bool(INJECTION_HINTS.search(REVIEW)))
 print("""   Defences, strongest first:
      a) least privilege: a summariser gets NO refund tool at all

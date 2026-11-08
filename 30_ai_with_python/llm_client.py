@@ -19,8 +19,9 @@ from __future__ import annotations
 import json
 import os
 import time
+from collections.abc import Callable
 from types import SimpleNamespace
-from typing import Any, Callable
+from typing import Any
 
 MODEL = os.getenv("LLM_MODEL", "claude-opus-5-5")     # current default Claude model
 
@@ -34,7 +35,7 @@ Brain = Callable[[str, list, list], Any]
 def get_client(fake_brain: Brain | None = None):
     """Real SDK client when USE_REAL_LLM=1, otherwise the offline FakeClient."""
     if os.getenv("USE_REAL_LLM") == "1":
-        import anthropic                                    # imported only when needed
+        import anthropic  # imported only when needed
         if os.getenv("LLM_PROVIDER") == "foundry":
             return anthropic.AnthropicFoundry(
                 api_key=os.environ["ANTHROPIC_FOUNDRY_API_KEY"],
@@ -118,7 +119,7 @@ class _FakeMessages:
         message.parsed_output = output_format.model_validate_json(text_of(message))
         return message
 
-    def stream(self, **kwargs) -> "_FakeStream":
+    def stream(self, **kwargs) -> _FakeStream:
         return _FakeStream(self.create(**kwargs))
 
 

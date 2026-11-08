@@ -10,7 +10,7 @@ Two styles:
 
 Run it:  python 29_algorithms/05_dynamic_programming.py
 """
-from functools import lru_cache
+from functools import cache
 
 
 # --- 1. Coin change: fewest coins to pay an amount --------------------------------------------
@@ -28,7 +28,7 @@ print("greedy fails with [1, 3, 4] for 6:   ", min_coins([1, 3, 4], 6), "(3+3, n
 
 
 # --- 2. Edit distance: how many edits turn one word into another (spell checkers, diff tools) ---------
-@lru_cache(maxsize=None)
+@cache
 def edit_distance(a: str, b: str) -> int:
     if not a:
         return len(b)

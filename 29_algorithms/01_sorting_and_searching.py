@@ -9,6 +9,7 @@ Run it:  python 29_algorithms/01_sorting_and_searching.py
 import bisect
 import random
 import timeit
+from functools import partial
 
 
 # --- 1. Bubble sort: O(n²), compare neighbours, swap, repeat --------------------------------
@@ -69,7 +70,7 @@ random.seed(1)
 big = [random.randint(0, 10_000) for _ in range(2_000)]
 print("\nSorting 2,000 numbers:")
 for sort in (bubble_sort, insertion_sort, merge_sort, quick_sort, sorted):
-    t = timeit.timeit(lambda: sort(big), number=3) / 3
+    t = timeit.timeit(partial(sort, big), number=3) / 3     # partial binds THIS sort now
     print(f"  {sort.__name__:<15} {t * 1000:8.2f} ms")
 
 # --- 5. Stable sorting: equal keys keep their original order ----------------------------------------------
