@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Python Pro</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+<style>
+@page { size: 1920px 1080px; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #121826; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+section { position: relative; width: 1920px; height: 1080px; overflow: hidden; break-after: page;
+  background: #F6F4EE; color: #3F4859; font-family: 'Space Grotesk', Arial, sans-serif;
+  padding: 100px 128px 140px; display: flex; flex-direction: column; gap: 44px; }
+section:last-child { break-after: auto; }
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #2F5E9E; }
+h2 { font-size: 60px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; color: #121826; margin-top: 10px; }
+.row { display: flex; gap: 48px; align-items: flex-start; }
+.col { display: flex; flex-direction: column; gap: 22px; }
+.code { background: #1C2436; border-radius: 20px; padding: 28px 36px; font-family: 'Roboto Mono', monospace;
+  font-size: 27px; line-height: 1.5; color: #E6E9F0; white-space: pre; }
+.k { color: #F2C14E; } .s { color: #8EC5FF; } .c { color: #8A93A6; } .g { color: #7EE2A8; }
+.note { border-left: 4px solid #2F5E9E; padding: 4px 0 4px 22px; font-size: 29px; line-height: 1.4; }
+.note b, .card b, td b { color: #121826; }
+.m { font-family: 'Roboto Mono', monospace; font-size: .88em; background: #ECE8DC; padding: 1px 8px; border-radius: 6px; color: #121826; }
+.card { background: #FFFDF8; border: 1px solid #E3DFD3; border-radius: 18px; padding: 26px 30px; display: flex; flex-direction: column; gap: 10px; }
+.card h3 { font-size: 30px; color: #121826; }
+.card p { font-size: 27px; line-height: 1.4; }
+.tag { align-self: flex-start; font-size: 20px; font-weight: 700; letter-spacing: 2px; padding: 5px 14px; border-radius: 999px; background: #121826; color: #F2C14E; }
+.tip { background: #F2C14E; color: #121826; border-radius: 16px; padding: 18px 26px; font-size: 27px; line-height: 1.4; }
+table { border-collapse: collapse; font-size: 27px; width: 100%; }
+th { text-align: left; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #6B7385; padding: 8px 14px; border-bottom: 2px solid #DCD7CA; }
+td { padding: 10px 14px; border-bottom: 1px solid #E3DFD3; vertical-align: top; }
+.foot-l { position: absolute; left: 128px; bottom: 56px; font-size: 22px; color: #6B7385; }
+.foot-r { position: absolute; right: 128px; bottom: 56px; font-size: 22px; color: #2F5E9E; }
+/* dark slides */
+section.dark { background: #121826; color: #C9D2E3; }
+section.dark h1 { font-size: 92px; line-height: 1.02; color: #fff; letter-spacing: -2px; }
+section.dark .foot-l { color: #6B7385; } section.dark .foot-r { color: #8EC5FF; }
+.num { font-size: 30px; font-weight: 700; letter-spacing: 4px; color: #F2C14E; }
+.big { font-size: 160px; font-weight: 700; color: #F2C14E; line-height: .9; }
+.toc { display: flex; flex-direction: column; gap: 4px; }
+.toc div { display: flex; justify-content: space-between; gap: 40px; font-size: 27px; padding: 12px 0; border-bottom: 1px solid #2A3550; }
+.toc span:last-child { font-family: 'Roboto Mono', monospace; font-size: 22px; color: #8EC5FF; }
+.pill { display: inline-block; font-size: 22px; padding: 6px 16px; border-radius: 999px; border: 2px solid #2F5E9E; color: #2F5E9E; font-weight: 700; margin-right: 8px; }
+svg text { font-family: 'Space Grotesk', Arial, sans-serif; }
+svg .mono { font-family: 'Roboto Mono', monospace; }
+</style></head><body>
+
+<!-- ============ COVER ============ -->
+<section class="dark" style="justify-content:center;gap:28px">
+  <p class="num">CODEMITVISHAL · FREE COURSE</p>
+  <h1>Python Pro</h1>
+  <p style="font-size:40px;color:#E6E9F0;max-width:1300px;line-height:1.3">From Python Foundations to <b style="color:#7EE2A8">professional</b> Python: clean code, data structures, OOP, testing, packaging, concurrency and real projects.</p>
+  <div style="display:flex;gap:60px;margin-top:30px">
+    <div><p class="big" style="font-size:96px">13</p><p style="font-size:24px">modules</p></div>
+    <div><p class="big" style="font-size:96px">∞</p><p style="font-size:24px">runnable examples</p></div>
+    <div><p class="big" style="font-size:96px">0 €</p><p style="font-size:24px">always free</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Prerequisite: Python Foundations (Modules 1–7)</p>
+  <p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section>
+  <div><p class="eyebrow">Course map</p><h2>From foundations to pro, in 13 modules</h2></div>
+  <div class="row" style="gap:40px">
+    <table style="flex:1">
+      <tr><th>#</th><th>Module</th><th>You'll be able to…</th></tr>
+      <tr><td><b>08</b></td><td><b>Pythonic code</b></td><td>write short, idiomatic Python</td></tr>
+      <tr><td><b>09</b></td><td><b>Data structures deep dive</b></td><td>pick the right structure (Big-O)</td></tr>
+      <tr><td><b>10</b></td><td><b>Advanced functions</b></td><td>write closures and decorators</td></tr>
+      <tr><td><b>11</b></td><td><b>Iterators &amp; generators</b></td><td>process data lazily</td></tr>
+      <tr><td><b>12</b></td><td><b>Advanced OOP</b></td><td>design clean classes (SOLID)</td></tr>
+      <tr><td><b>13</b></td><td><b>Errors, context managers, logging</b></td><td>fail safely, log clearly</td></tr>
+      <tr><td><b>14</b></td><td><b>Project structure &amp; packaging</b></td><td>ship an installable CLI</td></tr>
+    </table>
+    <table style="flex:1">
+      <tr><th>#</th><th>Module</th><th>You'll be able to…</th></tr>
+      <tr><td><b>15</b></td><td><b>Type hints &amp; code quality</b></td><td>catch bugs before running</td></tr>
+      <tr><td><b>16</b></td><td><b>Testing with pytest</b></td><td>prove your code works</td></tr>
+      <tr><td><b>17</b></td><td><b>Concurrency</b></td><td>use threads, processes, asyncio</td></tr>
+      <tr><td><b>18</b></td><td><b>Data, APIs &amp; databases</b></td><td>build a REST API with a DB</td></tr>
+      <tr><td><b>19</b></td><td><b>Performance &amp; internals</b></td><td>profile and speed things up</td></tr>
+      <tr><td><b>20</b></td><td><b>Capstone project</b></td><td>build it all, end to end</td></tr>
+      <tr><td></td><td colspan="2" style="color:#6B7385">Every module: slides · runnable code · exercise + solution · quiz</td></tr>
+    </table>
+  </div>
+  <p class="foot-l">Python Pro · Course map</p>
+  <p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- ============ MODULE 8 TITLE ============ -->
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">08</p>
+    <h1 style="font-size:80px">Pythonic code</h1>
+    <p style="font-size:28px;line-height:1.4">Same results, half the code. Write Python the way experienced Python developers do.</p>
+  </div>
+  <div style="flex:1" class="toc">
+    <p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p>
+    <div><span>Comprehensions</span><span>01_comprehensions.py</span></div>
+    <div><span>Unpacking</span><span>02_unpacking.py</span></div>
+    <div><span>Looping like a pro</span><span>03_looping_like_a_pro.py</span></div>
+    <div><span>Truthiness &amp; the walrus :=</span><span>04_truthiness_and_walrus.py</span></div>
+    <div><span>Strings like a pro</span><span>05_strings_like_a_pro.py</span></div>
+    <div><span>Demo: grade report</span><span>06_demo_grade_report.py</span></div>
+    <div><span>Exercise: refactor to Pythonic</span><span>ex08_refactor_to_pythonic.py</span></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.1 comprehensions -->
+<section>
+  <div><p class="eyebrow">Lesson · Comprehensions</p><h2>Build a list in one readable line</h2></div>
+  <svg width="1664" height="150" viewBox="0 0 1664 150">
+    <rect x="0" y="10" width="1664" height="96" rx="18" fill="#1C2436"/>
+    <text x="60" y="72" class="mono" font-size="40" fill="#E6E9F0">[ <tspan fill="#7EE2A8">p * 1.19</tspan>   <tspan fill="#F2C14E">for</tspan> <tspan fill="#8EC5FF">p</tspan> <tspan fill="#F2C14E">in</tspan> <tspan fill="#8EC5FF">prices</tspan>   <tspan fill="#F2C14E">if</tspan> <tspan fill="#F4A6B6">p &lt; 20</tspan> ]</text>
+    <text x="150" y="140" font-size="24" fill="#2B8A5E" font-weight="700">① what to keep</text>
+    <text x="560" y="140" font-size="24" fill="#2F5E9E" font-weight="700">② the loop</text>
+    <text x="1000" y="140" font-size="24" fill="#C0476B" font-weight="700">③ optional filter</text>
+  </svg>
+  <div class="row">
+    <div class="code" style="width:760px"><span class="c"># the old way: 4 lines</span>
+with_tax = []
+<span class="k">for</span> p <span class="k">in</span> prices:
+    with_tax.append(p * 1.19)
+
+<span class="c"># Pythonic: 1 line</span>
+with_tax = [p * 1.19 <span class="k">for</span> p <span class="k">in</span> prices]</div>
+    <div class="col" style="flex:1">
+      <table>
+        <tr><th>Kind</th><th>Syntax</th></tr>
+        <tr><td><b>list</b></td><td><span class="m">[x for x in xs]</span></td></tr>
+        <tr><td><b>dict</b></td><td><span class="m">{k: v for k, v in pairs}</span></td></tr>
+        <tr><td><b>set</b></td><td><span class="m">{x.lower() for x in xs}</span></td></tr>
+        <tr><td><b>generator</b></td><td><span class="m">sum(x for x in xs)</span></td></tr>
+      </table>
+      <p class="note"><b>if/else before for</b> chooses a value. <b>if after for</b> filters.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.2 unpacking -->
+<section>
+  <div><p class="eyebrow">Lesson · Unpacking</p><h2>Pull values out and into names, in one step</h2></div>
+  <div class="row">
+    <div class="code" style="width:860px">x, y = (3, 7)                <span class="c"># basic</span>
+a, b = b, a                  <span class="c"># swap, no temp</span>
+first, *middle, last = nums  <span class="c"># * = "the rest"</span>
+name, _, city = record       <span class="c"># _ = ignore</span>
+
+area(*[4, 5])                <span class="c"># list -> args</span>
+area(**{<span class="s">"width"</span>: 2, <span class="s">"height"</span>: 9})
+
+merged = [*odds, *evens]
+settings = defaults | user   <span class="c"># later keys win</span></div>
+    <div class="col" style="flex:1">
+      <svg width="700" height="230" viewBox="0 0 700 230">
+        <text x="0" y="28" font-size="22" font-weight="700" fill="#2F5E9E" letter-spacing="2">first, *middle, last = [10, 20, 30, 40, 50]</text>
+        <g class="mono" font-size="30">
+          <rect x="0" y="60" width="110" height="64" rx="12" fill="#121826"/><text x="55" y="102" text-anchor="middle" fill="#F2C14E">10</text>
+          <rect x="130" y="60" width="380" height="64" rx="12" fill="#2F5E9E"/><text x="320" y="102" text-anchor="middle" fill="#fff">20   30   40</text>
+          <rect x="530" y="60" width="110" height="64" rx="12" fill="#121826"/><text x="585" y="102" text-anchor="middle" fill="#F2C14E">50</text>
+        </g>
+        <text x="55" y="165" text-anchor="middle" font-size="26" fill="#121826" font-weight="700">first</text>
+        <text x="320" y="165" text-anchor="middle" font-size="26" fill="#121826" font-weight="700">middle = [20, 30, 40]</text>
+        <text x="585" y="165" text-anchor="middle" font-size="26" fill="#121826" font-weight="700">last</text>
+      </svg>
+      <p class="note">The number of names must match the number of values, <b>unless</b> one name has a <span class="m">*</span>.</p>
+      <p class="note"><span class="m">*</span> spreads a list into arguments, <span class="m">**</span> spreads a dict into keyword arguments.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.3 looping -->
+<section>
+  <div><p class="eyebrow">Lesson · Looping like a pro</p><h2>Stop writing range(len(...))</h2></div>
+  <div class="row">
+    <table style="flex:1.15">
+      <tr><th>Instead of…</th><th>Write</th></tr>
+      <tr><td><span class="m">for i in range(len(xs)): xs[i]</span></td><td><span class="m">for i, x in enumerate(xs, start=1)</span></td></tr>
+      <tr><td>Two lists with one index</td><td><span class="m">for a, b in zip(xs, ys)</span></td></tr>
+      <tr><td>A custom sort function</td><td><span class="m">sorted(xs, key=len, reverse=True)</span></td></tr>
+      <tr><td>A flag + loop + break</td><td><span class="m">any(x &lt; 0 for x in xs)</span></td></tr>
+      <tr><td>"Is every item OK?" loop</td><td><span class="m">all(x &gt;= 50 for x in xs)</span></td></tr>
+      <tr><td>Track the biggest by hand</td><td><span class="m">max(pairs, key=lambda p: p[1])</span></td></tr>
+      <tr><td><span class="m">for k in d: d[k]</span></td><td><span class="m">for k, v in d.items()</span></td></tr>
+    </table>
+    <div class="col" style="flex:.85">
+      <div class="code" style="font-size:23px"><span class="k">for</span> s <span class="k">in</span> scores:
+    <span class="k">if</span> s &lt; 50:
+        print(<span class="s">"fail found"</span>)
+        <span class="k">break</span>
+<span class="k">else</span>:
+    print(<span class="s">"all passed"</span>)</div>
+      <p class="note"><b>for … else:</b> the <span class="m">else</span> runs only if the loop finished <b>without</b> <span class="m">break</span>.</p>
+      <p class="note"><span class="m">zip</span> stops at the shortest list. Add <span class="m">strict=True</span> to catch length bugs.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.4 truthiness -->
+<section>
+  <div><p class="eyebrow">Lesson · Truthiness &amp; walrus</p><h2>Short, clear conditions</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1">
+      <div class="card"><span class="tag">FALSY</span><p style="font-family:'Roboto Mono';font-size:28px;color:#121826">0  0.0  ""  []  {}  set()  None  False</p><p>Everything else is truthy, even <span class="m">"0"</span> and <span class="m">[0]</span>.</p></div>
+      <table>
+        <tr><th>Instead of…</th><th>Write</th></tr>
+        <tr><td><span class="m">if len(cart) == 0:</span></td><td><span class="m">if not cart:</span></td></tr>
+        <tr><td><span class="m">if x == None:</span></td><td><span class="m">if x is None:</span></td></tr>
+        <tr><td><span class="m">x &gt;= 50 and x &lt; 80</span></td><td><span class="m">50 &lt;= x &lt; 80</span></td></tr>
+        <tr><td>if/else to pick a default</td><td><span class="m">name or "Guest"</span></td></tr>
+      </table>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="code" style="font-size:24px"><span class="c"># walrus := assigns AND returns</span>
+<span class="k">while</span> (line := input()) != <span class="s">"quit"</span>:
+    print(line.upper())
+
+<span class="k">if</span> (n := len(data)) &gt; 3:
+    print(f<span class="s">"long list: {n} items"</span>)</div>
+      <p class="tip">⚠️ <span class="m" style="background:#fff3c4">count or 10</span> turns a real <b>0</b> into 10, because 0 is falsy. Use <span class="m" style="background:#fff3c4">10 if count is None else count</span>.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.5 strings -->
+<section>
+  <div><p class="eyebrow">Lesson · Strings like a pro</p><h2>f-strings format, align and even debug</h2></div>
+  <div class="row">
+    <table style="flex:1">
+      <tr><th>Spec</th><th>Example</th><th>Result</th></tr>
+      <tr><td><span class="m">.2f</span></td><td><span class="m">f"{1234.5678:.2f}"</span></td><td><b>1234.57</b></td></tr>
+      <tr><td><span class="m">,.2f</span></td><td><span class="m">f"{1234.5:,.2f}"</span></td><td><b>1,234.50</b></td></tr>
+      <tr><td><span class="m">.1%</span></td><td><span class="m">f"{0.4567:.1%}"</span></td><td><b>45.7%</b></td></tr>
+      <tr><td><span class="m">05d</span></td><td><span class="m">f"{42:05d}"</span></td><td><b>00042</b></td></tr>
+      <tr><td><span class="m">&lt;10 / &gt;10</span></td><td><span class="m">f"{name:&lt;10}|"</span></td><td><b>left / right align</b></td></tr>
+      <tr><td><span class="m">=</span></td><td><span class="m">f"{user=}"</span></td><td><b>user='Vishal'</b></td></tr>
+    </table>
+    <div class="col" style="flex:.9">
+      <div class="code" style="font-size:24px"><span class="s">" "</span>.join([<span class="s">"learn"</span>, <span class="s">"python"</span>])
+<span class="c"># 'learn python'</span>
+
+name, age, city = line.split(<span class="s">","</span>)
+<span class="c"># split + unpack in one go</span></div>
+      <p class="note">Strings are <b>immutable</b>: every method returns a <b>new</b> string.</p>
+      <p class="note">Build big text with a list and <span class="m">"".join()</span>, not <span class="m">+=</span> in a loop.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8.6 demo -->
+<section>
+  <div><p class="eyebrow">Demo · Grade report</p><h2>Everything from Module 8 in one program</h2></div>
+  <div class="row">
+    <div class="code" style="width:960px;font-size:22px"><span class="k">for</span> line <span class="k">in</span> raw.splitlines():
+    name, *marks = line.split(<span class="s">","</span>)          <span class="c"># unpacking</span>
+    students[name] = [int(m) <span class="k">for</span> m <span class="k">in</span> marks]  <span class="c"># list comp</span>
+
+averages = {n: sum(m) / len(m)                 <span class="c"># dict comp</span>
+            <span class="k">for</span> n, m <span class="k">in</span> students.items()}
+ranking = sorted(averages.items(),
+                 key=<span class="k">lambda</span> p: p[1], reverse=<span class="k">True</span>)
+
+<span class="k">for</span> place, (name, avg) <span class="k">in</span> enumerate(ranking, 1):
+    result = <span class="s">"PASS"</span> <span class="k">if</span> avg &gt;= 50 <span class="k">else</span> <span class="s">"FAIL"</span>
+    print(f<span class="s">"{place:&lt;3}{name:&lt;10}{avg:&gt;6.1f}  {result}"</span>)
+
+print(all(a &gt;= 50 <span class="k">for</span> a <span class="k">in</span> averages.values()))</div>
+    <div class="col" style="flex:1">
+      <p class="eyebrow" style="font-size:20px">Output</p>
+      <div class="code" style="background:#E8E4D8;color:#121826;font-size:22px">#  Name         Avg  Result
+1  Vishal      91.3  PASS
+2  Li          85.3  PASS
+3  Raj         70.7  PASS
+4  Sam         45.0  FAIL
+
+Everyone passed?  False</div>
+      <p class="note">Run it: <span class="m">python 08_pythonic_code/06_demo_grade_report.py</span></p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Pythonic code</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 8 exercise -->
+<section>
+  <div><p class="eyebrow">Exercise 8 · Your turn</p><h2>Refactor 9 functions to Pythonic code</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1">
+      <p style="font-size:30px;font-weight:700;color:#121826">The task</p>
+      <p class="note">Each function works, but it's written the long way. Rewrite each one with the <b>Module 8 tool that fits</b>. Keep the names and results the same.</p>
+      <p class="note"><span class="m">money()</span> also has a bug: <span class="m">1234.5</span> must become <b>€1,234.50</b>.</p>
+      <p class="note">Run the file: all built-in checks must pass.</p>
+      <p style="font-size:26px;margin-top:6px"><span class="pill">comprehension</span><span class="pill">enumerate</span><span class="pill">zip</span><span class="pill">any</span><span class="pill">max(key=)</span><span class="pill">or</span><span class="pill">join</span></p>
+    </div>
+    <div class="col" style="width:620px">
+      <div class="code" style="font-size:22px"><span class="c"># before</span>
+result = []
+<span class="k">for</span> n <span class="k">in</span> numbers:
+    <span class="k">if</span> n % 2 == 0:
+        result.append(n * n)
+
+<span class="c"># after</span>
+[n * n <span class="k">for</span> n <span class="k">in</span> numbers <span class="k">if</span> n % 2 == 0]</div>
+      <div class="tip"><b>Starter:</b> exercises/ex08_refactor_to_pythonic.py<br><b>Solution:</b> solutions/ex08_refactor_to_pythonic.py</div>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 8 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- ============ MODULE 9 TITLE ============ -->
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">09</p>
+    <h1 style="font-size:76px">Data structures deep dive</h1>
+    <p style="font-size:28px;line-height:1.4">How lists, dicts and sets work inside, and how to pick the right one so your code stays fast.</p>
+  </div>
+  <div style="flex:1" class="toc">
+    <p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p>
+    <div><span>Big-O: why it matters</span><span>01_big_o.py</span></div>
+    <div><span>Lists &amp; tuples under the hood</span><span>02_lists_and_tuples.py</span></div>
+    <div><span>Dicts, sets &amp; hashing</span><span>03_dicts_and_sets.py</span></div>
+    <div><span>The collections module</span><span>04_collections.py</span></div>
+    <div><span>dataclasses</span><span>05_dataclasses.py</span></div>
+    <div><span>Demo: log analyzer</span><span>06_demo_log_analyzer.py</span></div>
+    <div><span>Exercise: library tracker</span><span>ex09_library_tracker.py</span></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.1 big-o -->
+<section>
+  <div><p class="eyebrow">Lesson · Big-O</p><h2>How does the work grow when the data grows?</h2></div>
+  <div class="row">
+    <svg width="820" height="560" viewBox="0 0 820 560">
+      <line x1="80" y1="480" x2="790" y2="480" stroke="#3F4859" stroke-width="3"/>
+      <line x1="80" y1="480" x2="80" y2="30" stroke="#3F4859" stroke-width="3"/>
+      <text x="430" y="530" text-anchor="middle" font-size="24" fill="#6B7385">number of items (n) →</text>
+      <text x="40" y="260" font-size="24" fill="#6B7385" transform="rotate(-90 40 260)" text-anchor="middle">time →</text>
+      <path d="M80 470 L790 470" stroke="#2B8A5E" stroke-width="7" fill="none"/>
+      <path d="M80 480 L790 140" stroke="#2F5E9E" stroke-width="7" fill="none"/>
+      <path d="M80 480 Q 400 470 520 40" stroke="#C0476B" stroke-width="7" fill="none"/>
+      <text x="600" y="455" font-size="28" font-weight="700" fill="#2B8A5E">O(1) constant</text>
+      <text x="250" y="300" font-size="28" font-weight="700" fill="#2F5E9E">O(n) linear</text>
+      <text x="540" y="70" font-size="28" font-weight="700" fill="#C0476B">O(n²) quadratic</text>
+    </svg>
+    <div class="col" style="flex:1">
+      <table>
+        <tr><th>Operation</th><th>list</th><th>dict / set</th></tr>
+        <tr><td><span class="m">x in …</span></td><td style="color:#C0476B"><b style="color:#C0476B">O(n)</b></td><td><b style="color:#2B8A5E">O(1)</b></td></tr>
+        <tr><td>read by index / key</td><td><b style="color:#2B8A5E">O(1)</b></td><td><b style="color:#2B8A5E">O(1)</b></td></tr>
+        <tr><td>add at the end</td><td><b style="color:#2B8A5E">O(1)</b></td><td><b style="color:#2B8A5E">O(1)</b></td></tr>
+        <tr><td>insert at the front</td><td><b style="color:#C0476B">O(n)</b></td><td>–</td></tr>
+      </table>
+      <p style="font-size:22px;font-weight:700;color:#6B7385;letter-spacing:2px">MEASURED: "is the last item in here?" × 200</p>
+      <div class="code" style="font-size:22px">    1,000 items | list:    1 ms | set: 0.01 ms
+  100,000 items | list:  176 ms | set: 0.02 ms
+1,000,000 items | list: 2304 ms | set: 0.01 ms</div>
+      <p class="tip">Checking membership a lot? Convert to a <b>set</b> once.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.2 lists & tuples -->
+<section>
+  <div><p class="eyebrow">Lesson · Lists &amp; tuples under the hood</p><h2>A list is a row of references, with spare room</h2></div>
+  <div class="row">
+    <div class="col" style="width:900px">
+      <svg width="900" height="300" viewBox="0 0 900 300">
+        <text x="0" y="26" font-size="22" font-weight="700" fill="#2F5E9E" letter-spacing="2">a = [10, 20, 30]   (capacity 4)</text>
+        <g>
+          <rect x="0" y="50" width="120" height="80" rx="10" fill="#1C2436"/><rect x="130" y="50" width="120" height="80" rx="10" fill="#1C2436"/>
+          <rect x="260" y="50" width="120" height="80" rx="10" fill="#1C2436"/><rect x="390" y="50" width="120" height="80" rx="10" fill="none" stroke="#8A93A6" stroke-width="3" stroke-dasharray="8 6"/>
+          <text x="450" y="98" text-anchor="middle" font-size="20" fill="#6B7385">spare</text>
+          <circle cx="60" cy="90" r="9" fill="#F2C14E"/><circle cx="190" cy="90" r="9" fill="#F2C14E"/><circle cx="320" cy="90" r="9" fill="#F2C14E"/>
+        </g>
+        <g class="mono" font-size="28" fill="#121826">
+          <rect x="10" y="200" width="100" height="60" rx="10" fill="#FFFDF8" stroke="#2F5E9E" stroke-width="3"/><text x="60" y="240" text-anchor="middle">10</text>
+          <rect x="140" y="200" width="100" height="60" rx="10" fill="#FFFDF8" stroke="#2F5E9E" stroke-width="3"/><text x="190" y="240" text-anchor="middle">20</text>
+          <rect x="270" y="200" width="100" height="60" rx="10" fill="#FFFDF8" stroke="#2F5E9E" stroke-width="3"/><text x="320" y="240" text-anchor="middle">30</text>
+        </g>
+        <path d="M60 99 L60 196 M190 99 L190 196 M320 99 L320 196" stroke="#2F5E9E" stroke-width="4"/>
+        <text x="550" y="80" font-size="22" fill="#3F4859"><tspan x="550" dy="0">append → spare slot: <tspan font-weight="700" fill="#2B8A5E">fast</tspan></tspan><tspan x="550" dy="40">insert(0, x) → shift all: <tspan font-weight="700" fill="#C0476B">slow</tspan></tspan><tspan x="550" dy="40">each slot = a reference</tspan></text>
+      </svg>
+      <div class="code" style="font-size:22px">b = a          <span class="c"># same list, 2 names</span>
+c = a.copy()   <span class="c"># new outer list (shallow)</span>
+d = copy.deepcopy(grid)  <span class="c"># copies inner lists too</span></div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="card"><span class="tag">LIST</span><p>Changeable. Grows and shrinks. Use for <b>collections of similar items</b>.</p></div>
+      <div class="card"><span class="tag">TUPLE</span><p>Read-only and lighter (56 vs 72 bytes for 2 items). <b>Hashable</b>, so it can be a dict key. Use for <b>fixed records</b>: <span class="m">(x, y)</span>, RGB, DB rows.</p></div>
+      <p class="tip">⚠️ A shallow copy shares the inner lists. Nested data? Use <b>copy.deepcopy</b>.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.3 dicts & sets -->
+<section>
+  <div><p class="eyebrow">Lesson · Dicts, sets &amp; hashing</p><h2>Dicts don't search. They jump straight to the answer.</h2></div>
+  <div class="row">
+    <svg width="900" height="400" viewBox="0 0 900 400">
+      <rect x="0" y="150" width="190" height="70" rx="12" fill="#FFFDF8" stroke="#2F5E9E" stroke-width="3"/>
+      <text x="95" y="194" text-anchor="middle" class="mono" font-size="26" fill="#121826">"pears"</text>
+      <path d="M190 185 L270 185" stroke="#2F5E9E" stroke-width="4"/><polygon points="270,175 290,185 270,195" fill="#2F5E9E"/>
+      <rect x="290" y="140" width="190" height="90" rx="14" fill="#121826"/>
+      <text x="385" y="180" text-anchor="middle" class="mono" font-size="26" fill="#F2C14E">hash()</text>
+      <text x="385" y="212" text-anchor="middle" font-size="20" fill="#A9B3C7">→ slot 2</text>
+      <path d="M480 185 L560 185" stroke="#2F5E9E" stroke-width="4"/>
+      <g class="mono" font-size="22">
+        <rect x="580" y="20" width="300" height="64" rx="10" fill="#FFFDF8" stroke="#E3DFD3" stroke-width="2"/><text x="600" y="60" fill="#6B7385">0  "apples" → 5</text>
+        <rect x="580" y="94" width="300" height="64" rx="10" fill="#FFFDF8" stroke="#E3DFD3" stroke-width="2"/><text x="600" y="134" fill="#6B7385">1  (empty)</text>
+        <rect x="580" y="168" width="300" height="64" rx="10" fill="#E7EEF8" stroke="#2F5E9E" stroke-width="4"/><text x="600" y="208" fill="#121826" font-weight="700">2  "pears" → 2</text>
+        <rect x="580" y="242" width="300" height="64" rx="10" fill="#FFFDF8" stroke="#E3DFD3" stroke-width="2"/><text x="600" y="282" fill="#6B7385">3  "kiwis" → 9</text>
+      </g>
+      <polygon points="560,175 578,200 560,195" fill="#2F5E9E"/>
+      <text x="0" y="360" font-size="24" fill="#3F4859">One calculation, no matter how many keys → <tspan font-weight="700" fill="#2B8A5E">O(1)</tspan></text>
+    </svg>
+    <div class="col" style="flex:1">
+      <p class="note">Keys must be <b>hashable</b> = immutable: <span class="m">str</span> <span class="m">int</span> <span class="m">tuple</span> <span class="m">frozenset</span>. Not list, dict or set.</p>
+      <table>
+        <tr><th>Set op</th><th>Means</th></tr>
+        <tr><td><span class="m">a | b</span></td><td>in either (union)</td></tr>
+        <tr><td><span class="m">a &amp; b</span></td><td>in both (intersection)</td></tr>
+        <tr><td><span class="m">a - b</span></td><td>only in a (difference)</td></tr>
+        <tr><td><span class="m">a ^ b</span></td><td>in exactly one</td></tr>
+      </table>
+      <p class="note">Dicts keep <b>insertion order</b>. Dedupe and keep order: <span class="m">list(dict.fromkeys(xs))</span></p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.4 collections -->
+<section>
+  <div><p class="eyebrow">Lesson · collections</p><h2>Four containers that delete boilerplate</h2></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+    <div class="card"><span class="tag">COUNTER</span><h3>Count anything</h3><div class="code" style="font-size:22px;padding:18px 24px">Counter(words).most_common(2)
+<span class="c"># [('the', 3), ('and', 2)]</span></div></div>
+    <div class="card"><span class="tag">DEFAULTDICT</span><h3>No more "if key not in dict"</h3><div class="code" style="font-size:22px;padding:18px 24px">by_team = defaultdict(list)
+by_team[team].append(name)</div></div>
+    <div class="card"><span class="tag">DEQUE</span><h3>Fast at both ends · keep the last N</h3><div class="code" style="font-size:22px;padding:18px 24px">recent = deque(maxlen=3)
+recent.append(page)  <span class="c"># oldest drops off</span></div></div>
+    <div class="card"><span class="tag">NAMEDTUPLE</span><h3>A tuple with field names</h3><div class="code" style="font-size:22px;padding:18px 24px">Point = namedtuple(<span class="s">"Point"</span>, [<span class="s">"x"</span>, <span class="s">"y"</span>])
+Point(3, 7).x   <span class="c"># 3</span></div></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.5 dataclasses -->
+<section>
+  <div><p class="eyebrow">Lesson · dataclasses</p><h2>Classes for data, without the boilerplate</h2></div>
+  <div class="row">
+    <div class="code" style="width:880px;font-size:24px">@dataclass
+<span class="k">class</span> Product:
+    name: str
+    price: float
+    qty: int = 0                           <span class="c"># default</span>
+    tags: list = field(default_factory=list)
+
+    <span class="k">def</span> total(self) -&gt; float:
+        <span class="k">return</span> self.price * self.qty
+
+Product(<span class="s">"Laptop"</span>, 899.0, 2)
+<span class="c"># Product(name='Laptop', price=899.0, qty=2, tags=[])</span></div>
+    <div class="col" style="flex:1">
+      <div class="card"><span class="tag">YOU GET FOR FREE</span><p><b>__init__</b> · <b>__repr__</b> · <b>__eq__</b>, built from the fields.</p></div>
+      <div class="card"><span class="tag">OPTIONS</span><p><span class="m">frozen=True</span> → read-only and hashable<br><span class="m">order=True</span> → sortable by the fields<br><span class="m">asdict(obj)</span> → plain dict (great for JSON)</p></div>
+      <p class="tip">⚠️ Never <span class="m" style="background:#fff3c4">tags: list = []</span>. Every object would share one list. Use <b>field(default_factory=list)</b>.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9.6 demo -->
+<section>
+  <div><p class="eyebrow">Demo · Log analyzer</p><h2>One question, one right data structure</h2></div>
+  <div class="row">
+    <table style="flex:1">
+      <tr><th>Question</th><th>Tool</th></tr>
+      <tr><td>One clean record per log line?</td><td><b>@dataclass Entry</b></td></tr>
+      <tr><td>Most popular pages?</td><td><b>Counter</b> → <span class="m">most_common(3)</span></td></tr>
+      <tr><td>Which pages did each user visit?</td><td><b>defaultdict(set)</b></td></tr>
+      <tr><td>How many unique visitors?</td><td><b>set</b> comprehension</td></tr>
+      <tr><td>The last 3 server errors?</td><td><b>deque(maxlen=3)</b></td></tr>
+    </table>
+    <div class="col" style="width:620px">
+      <p class="eyebrow" style="font-size:20px">Output</p>
+      <div class="code" style="background:#E8E4D8;color:#121826;font-size:21px">Top pages:
+  /home  4 hits
+  /cart  3 hits
+  /shop  2 hits
+
+Unique visitors: 4
+
+Last 3 server errors:
+  10:04 /cart (raj)
+  10:07 /cart (vishal)
+  10:09 /cart (li)</div>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<!-- 9 exercise -->
+<section>
+  <div><p class="eyebrow">Exercise 9 · Your turn</p><h2>Build a library tracker</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1">
+      <p style="font-size:30px;font-weight:700;color:#121826">The task: fill in 6 TODOs</p>
+      <table>
+        <tr><td><b>1</b></td><td>Make <span class="m">Book</span> a <b>dataclass</b> (isbn, title, author)</td></tr>
+        <tr><td><b>2</b></td><td><span class="m">build_index</span>: a <b>dict</b> isbn → Book (O(1) lookups)</td></tr>
+        <tr><td><b>3</b></td><td><span class="m">most_borrowed</span>: top n with <b>Counter</b></td></tr>
+        <tr><td><b>4</b></td><td><span class="m">titles_by_author</span>: <b>defaultdict(list)</b></td></tr>
+        <tr><td><b>5</b></td><td><span class="m">unique_borrowers</span>: a <b>set</b></td></tr>
+        <tr><td><b>6</b></td><td><span class="m">ReturnLog</span>: the last 3 returns with <b>deque(maxlen=3)</b></td></tr>
+      </table>
+    </div>
+    <div class="col" style="width:560px">
+      <div class="code" style="font-size:21px">$ python exercises/
+    ex09_library_tracker.py
+All checks passed!</div>
+      <div class="tip"><b>Starter:</b> exercises/ex09_library_tracker.py<br><b>Solution:</b> solutions/ex09_library_tracker.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p>
+    </div>
+  </div>
+  <p class="foot-l">Python Pro · Module 9 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+</body></html>
