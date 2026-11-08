@@ -1,0 +1,63 @@
+"""Module 23 · Alembic: version control for your database schema
+
+  pip install alembic
+
+Your code changes, so your tables must change too, on every developer laptop,
+the test server and production, without losing data. create_all() can't do that:
+it only creates missing tables. Alembic keeps numbered MIGRATION scripts:
+
+  migrations/versions/0001_create_authors_and_books.py   upgrade() / downgrade()
+  migrations/versions/0002_add_created_at_to_books.py    (revises 0001)
+
+The database stores which revision it's at (table alembic_version), so
+`alembic upgrade head` applies exactly the missing steps.
+
+This demo runs the same commands from Python on a temporary database.
+Normally you type them in a terminal inside 23_sqlalchemy_alembic/:
+    alembic upgrade head      alembic downgrade -1      alembic history
+
+Run it:  python 23_sqlalchemy_alembic/04_alembic_migrations.py
+"""
+import tempfile
+from pathlib import Path
+
+from alembic import command
+from alembic.config import Config
+from sqlalchemy import create_engine, inspect, text
+
+here = Path(__file__).parent
+db_path = Path(tempfile.mkdtemp()) / "shop.db"
+engine = create_engine(f"sqlite:///{db_path}")
+
+cfg = Config(str(here / "alembic.ini"))
+cfg.set_main_option("script_location", str(here / "migrations"))
+cfg.set_main_option("sqlalchemy.url", f"sqlite:///{db_path}")
+
+
+def show(label):
+    insp = inspect(engine)
+    tables = [t for t in insp.get_table_names() if t != "alembic_version"]
+    cols = [c["name"] for c in insp.get_columns("books")] if "books" in tables else []
+    with engine.connect() as conn:
+        version = conn.execute(text("SELECT version_num FROM alembic_version")).scalar() \
+            if "alembic_version" in insp.get_table_names() else None
+    print(f"{label:<24} version={version}  tables={tables}  books columns={cols}")
+
+
+show("empty database")
+
+command.upgrade(cfg, "0001")
+show("after upgrade 0001")
+with engine.begin() as conn:              # add data BEFORE the next migration
+    conn.execute(text("INSERT INTO authors (name) VALUES ('Vishal')"))
+    conn.execute(text("INSERT INTO books (title, price, author_id) VALUES ('Python Pro', 0, 1)"))
+
+command.upgrade(cfg, "head")              # "head" = the newest migration
+show("after upgrade head")
+with engine.connect() as conn:
+    row = conn.execute(text("SELECT title, created_at FROM books")).one()
+    print(f"{'data survived':<24} {row.title!r}, created_at filled in: {row.created_at is not None}")
+
+command.downgrade(cfg, "-1")              # undo the last step
+show("after downgrade -1")
+engine.dispose()
