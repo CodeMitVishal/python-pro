@@ -13,6 +13,7 @@ Fail safely and leave a clear trail: custom exception families, guaranteed clean
 | logging | [`03_logging.py`](03_logging.py) | levels, formats, handlers, `log.exception()` |
 | Demo: robust order importer | [`04_demo_order_importer.py`](04_demo_order_importer.py) | skip bad rows, or roll back the whole batch |
 | ExitStack & exception groups | [`05_exitstack_and_groups.py`](05_exitstack_and_groups.py) | many context managers at once, `except*` |
+| Debugging like a pro | [`06_debugging_like_a_pro.py`](06_debugging_like_a_pro.py) | `pdb`/`breakpoint()`, post-mortem, `faulthandler`, VS Code launch.json |
 
 ```bash
 python 13_errors_context_logging/01_exception_hierarchy.py

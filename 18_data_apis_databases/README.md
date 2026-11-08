@@ -14,6 +14,7 @@ Work with real data: files, CSV and JSON, web APIs, SQL databases, and your own 
 | Your own REST API | [`04_fastapi_app.py`](04_fastapi_app.py) | FastAPI + pydantic + SQLite, tested with `TestClient` |
 | Dates & time zones | [`05_dates_and_timezones.py`](05_dates_and_timezones.py) | UTC, `zoneinfo`, DST, ISO 8601 |
 | pickle vs JSON | [`06_pickle_vs_json.py`](06_pickle_vs_json.py) | why untrusted pickles run code |
+| Text & bytes | [`07_text_and_bytes.py`](07_text_and_bytes.py) | UTF-8, encode/decode, mojibake, Unicode normalisation |
 
 Install the libraries:
 

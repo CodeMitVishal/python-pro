@@ -18,7 +18,7 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 | | |
 |---|---|
-| 📊 **Slides** | 74 slides with diagrams and cheat-sheet tables: [`slides/python-pro-slides.pdf`](slides/python-pro-slides.pdf) |
+| 📊 **Slides** | 126 slides with diagrams and cheat-sheet tables: [`slides/python-pro-slides.pdf`](slides/python-pro-slides.pdf) |
 | 💻 **Runnable lessons** | One small file per idea, commented line by line, with the expected output |
 | 🧪 **Exercise + solution** | A starter file with built-in checks, and a worked solution |
 | 🧩 **Quiz** | Test yourself; every answer tells you which lesson to revisit |
@@ -53,6 +53,13 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 | 26 | [WebSockets, background tasks & caching](26_realtime_tasks_caching/README.md) | push live updates, run jobs, cache with Redis | ✅ Ready |
 | 27 | [Docker, CI/CD & Azure](27_deployment/README.md) | containerise, test in CI, deploy to Azure | ✅ Ready |
 | 28 | [Web capstone: taskboard](28_web_capstone/README.md) | ship a secure, tested, real-time API | ✅ Ready |
+
+### 🧠 Interviews & AI track
+
+| # | Module | You'll be able to… | Status |
+|---|---|---|---|
+| 29 | [Algorithms & data structures](29_algorithms/README.md) | solve classic interview problems in O(n log n) or better | ✅ Ready |
+| 30 | [AI with Python](30_ai_with_python/README.md) | build LLM features: tools, RAG, agents behind FastAPI | ✅ Ready |
 
 ## How to study
 
@@ -93,7 +100,7 @@ your code.
 ## Rebuild the slides
 
 The slide source is [`slides/src/python-pro-slides.html`](slides/src/python-pro-slides.html).
-Modules 8–9 are written by hand; Modules 10–20 are generated from compact data by
+Modules 8–9 are written by hand; Modules 10–30 are generated from compact data by
 [`slides/src/build_module_slides.py`](slides/src/build_module_slides.py):
 
 ```bash

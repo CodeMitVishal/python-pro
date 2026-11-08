@@ -30,7 +30,7 @@ uvicorn taskboard.main:app --reload
 
 Take the [web development final exam](QUIZ.md): 15 questions across Modules 21–28.
 
-🎉 **That's the end of Python Pro!** From Foundations to a deployed, secure, tested web API.
+**Next up:** [Module 29 · Algorithms & data structures](../29_algorithms/README.md) →
 
 ---
 

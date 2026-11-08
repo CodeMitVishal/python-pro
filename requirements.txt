@@ -19,3 +19,4 @@ django>=5             # 25
 djangorestframework   # 25
 fakeredis>=2          # 26
 tzdata                # 18 time zones on Windows
+anthropic>=2          # 30 (optional: only for USE_REAL_LLM=1)

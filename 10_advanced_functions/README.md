@@ -14,6 +14,7 @@ Functions are objects. Learn to pass them around, make them remember (closures) 
 | Decorators | [`04_decorators.py`](04_decorators.py) | build `@timer` and `@retry(times=3)` step by step |
 | functools | [`05_functools.py`](05_functools.py) | `lru_cache`, `reduce`, `singledispatch` |
 | Demo: resilient API client | [`06_demo_api_client.py`](06_demo_api_client.py) | stacked decorators: log, cache, retry |
+| Recursion | [`07_recursion.py`](07_recursion.py) | base case, call stack, memoisation, `RecursionError` |
 
 ```bash
 python 10_advanced_functions/01_args_and_kwargs.py

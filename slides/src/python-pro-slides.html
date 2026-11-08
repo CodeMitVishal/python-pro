@@ -1796,11 +1796,177 @@ $ ruff check  All checks passed!</div></div></div>
   <p class="foot-l">Python Pro · Module 28 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
 </section>
 
+<section>
+  <div><p class="eyebrow">Bonus · Recursion, debugging, text &amp; bytes</p><h2>Three skills every pro needs</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Lesson</th><th>Key idea</th></tr><tr><td><b>10 · 07_recursion.py</b></td><td>base case + smaller problem; the call stack; <span class="m">@lru_cache</span> turns fib(30) from 2.7M calls into 31</td></tr><tr><td><b>13 · 06_debugging_like_a_pro.py</b></td><td><span class="m">breakpoint()</span>, pdb commands, post-mortem, <span class="m">faulthandler</span>, VS Code launch.json</td></tr><tr><td><b>18 · 07_text_and_bytes.py</b></td><td><span class="m">str</span> is text, <span class="m">bytes</span> is data; always <span class="m">encoding="utf-8"</span>; mojibake; NFC</td></tr></table><div class="col" style="width:640px"><div class="code" style="font-size:18px"><span class="k">def</span> total_size(folder):
+    <span class="k">if</span> folder.is_file():          <span class="c"># base case</span>
+        <span class="k">return</span> folder.size
+    <span class="k">return</span> sum(total_size(c)      <span class="c"># smaller problem</span>
+               <span class="k">for</span> c <span class="k">in</span> folder.children)
+
+(Pdb) n  s  c  p total  w  q</div></div></div>
+  <p class="foot-l">Python Pro · Bonus lessons · Modules 10, 13, 18</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">29</p>
+    <h1 style="font-size:76px">Algorithms &amp; data structures</h1>
+    <p style="font-size:28px;line-height:1.4">The classics behind every coding interview, timed so you see Big-O.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Sorting &amp; searching</span><span>01_sorting_and_searching.py</span></div><div><span>Stacks, queues, linked lists</span><span>02_stacks_queues_linked_lists.py</span></div><div><span>Trees</span><span>03_trees.py</span></div><div><span>Graphs</span><span>04_graphs.py</span></div><div><span>Dynamic programming</span><span>05_dynamic_programming.py</span></div><div><span>Problem-solving patterns</span><span>06_problem_solving_patterns.py</span></div><div><span>Exercise: interview problems</span><span>ex29_interview_problems.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 29</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lessons 01-03 · Cheat sheet</p><h2>Pick the algorithm by its Big-O</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Algorithm / structure</th><th>Time</th><th>Remember</th></tr><tr><td><b>bubble / insertion sort</b></td><td>O(n²)</td><td>fine for tiny or almost-sorted data</td></tr><tr><td><b>merge sort</b> · <span class="m">sorted()</span></td><td>O(n log n)</td><td>stable; Python's Timsort is merge-based</td></tr><tr><td><b>quick sort</b></td><td>O(n log n) avg</td><td>O(n²) on a bad pivot</td></tr><tr><td><b>binary search</b></td><td>O(log n)</td><td>data must be <b>sorted</b>; <span class="m">bisect</span></td></tr><tr><td><b>stack</b> (list) · <b>queue</b> (deque)</td><td>O(1) push/pop</td><td>undo, brackets · BFS, jobs</td></tr><tr><td><b>BST</b></td><td>O(log n) … O(n)</td><td>in-order = sorted; sorted inserts make it a list</td></tr></table><div class="col" style="width:620px"><p class="tip">Measure, don't guess: the lesson times bubble vs merge sort on 2,000 numbers.</p></div></div>
+  <p class="foot-l">Python Pro · Module 29 · Algorithms &amp; data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 04 · Graphs</p><h2>Dijkstra: cheapest route with a heap</h2></div>
+  <div class="row"><div class="code" style="width:980px;font-size:21px"><span class="k">def</span> dijkstra(graph, start):
+    best = {start: 0}
+    heap = [(0, start)]                    <span class="c"># (distance, city)</span>
+    <span class="k">while</span> heap:
+        dist, city = heapq.heappop(heap)   <span class="c"># closest unfinished city</span>
+        <span class="k">if</span> dist &gt; best.get(city, inf):
+            continue                       <span class="c"># outdated entry</span>
+        <span class="k">for</span> nxt, km <span class="k">in</span> graph[city].items():
+            <span class="k">if</span> dist + km &lt; best.get(nxt, inf):
+                best[nxt] = dist + km
+                heapq.heappush(heap, (dist + km, nxt))
+    <span class="k">return</span> best</div>
+  <div class="col" style="flex:1"><p class="note"><b>BFS</b> (queue): fewest hops when every edge counts the same.</p><p class="note"><b>DFS</b> (stack): explore everything, find cycles.</p><p class="note"><b>Topological sort</b>: a valid order for tasks with dependencies.</p></div></div>
+  <p class="foot-l">Python Pro · Module 29 · Algorithms &amp; data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lessons 05-06 · Patterns</p><h2>Most interview problems are one of these</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Pattern</th><th>Signal in the question</th><th>Example</th></tr><tr><td><b>Hash map</b></td><td>"have I seen …?", pairs, counts</td><td>two sum O(n), anagrams</td></tr><tr><td><b>Two pointers</b></td><td>sorted data, both ends</td><td>palindrome, pair sum</td></tr><tr><td><b>Sliding window</b></td><td>longest / best sub-array or substring</td><td>longest unique substring</td></tr><tr><td><b>Prefix sums</b></td><td>many range-sum questions</td><td>sales of days i..j in O(1)</td></tr><tr><td><b>BFS / DFS</b></td><td>grid, network, connected parts</td><td>count islands</td></tr><tr><td><b>Dynamic programming</b></td><td>overlapping subproblems, "fewest / most ways"</td><td>coin change, edit distance</td></tr></table><div class="col" style="width:620px"><p class="tip">Process: restate → brute force → find the pattern → code → edge cases → state Big-O.</p></div></div>
+  <p class="foot-l">Python Pro · Module 29 · Algorithms &amp; data structures</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 29 · Your turn</p><h2>Six classic interview problems</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>two_sum in O(n)</td></tr><tr><td><b>2</b></td><td>valid_brackets with a stack</td></tr><tr><td><b>3</b></td><td>merge_intervals · longest_unique_substring</td></tr><tr><td><b>4</b></td><td>count_islands (BFS) · min_coins (DP)</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:17px">$ python exercises/ex29_interview_problems.py
+AssertionError            <span class="c"># until you solve it</span>
+
+$ python solutions/ex29_interview_problems.py
+All checks passed!        <span class="c"># incl. a 1 s time limit</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex29_interview_problems.py<br><b>Solution:</b> solutions/ex29_interview_problems.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 29 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section class="dark" style="flex-direction:row;align-items:center;gap:100px">
+  <div style="width:640px;display:flex;flex-direction:column;gap:20px">
+    <p class="num">MODULE</p><p class="big">30</p>
+    <h1 style="font-size:80px">AI with Python</h1>
+    <p style="font-size:28px;line-height:1.4">LLM APIs, tools, RAG and agents behind FastAPI: safe, cheap and tested.</p>
+  </div>
+  <div style="flex:1" class="toc"><p class="num" style="font-size:22px;margin-bottom:10px">IN THIS MODULE</p><div><span>Shared client (offline or real)</span><span>llm_client.py</span></div><div><span>LLM API basics</span><span>01_llm_api_basics.py</span></div><div><span>Structured output &amp; tools</span><span>02_structured_output_and_tools.py</span></div><div><span>Embeddings &amp; RAG</span><span>03_embeddings_and_rag.py</span></div><div><span>Agent behind an API</span><span>04_agent_api.py</span></div><div><span>Safety, cost &amp; evals</span><span>05_safety_cost_eval.py</span></div><div><span>Exercise: AI toolkit</span><span>ex30_ai_toolkit.py</span></div></div>
+  <p class="foot-l">Python Pro · Module 30</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 01 · LLM API basics</p><h2>One endpoint: messages in, a message out</h2></div>
+  <div class="row"><div class="code" style="width:1000px;font-size:22px">client = anthropic.Anthropic()          <span class="c"># reads ANTHROPIC_API_KEY</span>
+response = client.messages.create(
+    model=<span class="s">&quot;claude-opus-5-5&quot;</span>,
+    max_tokens=1000,
+    system=<span class="s">&quot;You are a concise Python tutor.&quot;</span>,
+    messages=[{<span class="s">&quot;role&quot;</span>: <span class="s">&quot;user&quot;</span>, <span class="s">&quot;content&quot;</span>: <span class="s">&quot;What is a generator?&quot;</span>}],
+)
+<span class="k">if</span> response.stop_reason == <span class="s">&quot;max_tokens&quot;</span>: ...   <span class="c"># cut off!</span>
+text = <span class="s">&quot;&quot;</span>.join(b.text <span class="k">for</span> b <span class="k">in</span> response.content <span class="k">if</span> b.type == <span class="s">&quot;text&quot;</span>)
+print(response.usage.input_tokens, response.usage.output_tokens)
+
+<span class="k">with</span> client.messages.stream(...) <span class="k">as</span> stream:     <span class="c"># word by word</span>
+    <span class="k">for</span> chunk <span class="k">in</span> stream.text_stream: print(chunk, end=<span class="s">&quot;&quot;</span>)</div>
+  <div class="col" style="flex:1"><p class="note">The API is <b>stateless</b>: resend the history every turn.</p><p class="note"><span class="m">content</span> is a list of blocks: text, thinking, tool_use.</p><p class="note">Steer with the <b>system prompt</b> and <span class="m">effort</span>; current models reject <span class="m">temperature</span>.</p><p class="tip">Every lesson runs <b>offline</b> with a fake client. <span class="m">USE_REAL_LLM=1</span> switches to Claude (or Azure Foundry).</p></div></div>
+  <p class="foot-l">Python Pro · Module 30 · AI with Python</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 02 · Tools</p><h2>The agent loop: the model asks, your code acts</h2></div>
+  <div class="row"><div class="code" style="width:1000px;font-size:21px">messages = [{<span class="s">&quot;role&quot;</span>: <span class="s">&quot;user&quot;</span>, <span class="s">&quot;content&quot;</span>: question}]
+<span class="k">for</span> step <span class="k">in</span> range(max_steps):
+    r = client.messages.create(model=MODEL, max_tokens=4000,
+                               tools=TOOLS, messages=messages)
+    <span class="k">if</span> r.stop_reason != <span class="s">&quot;tool_use&quot;</span>:
+        <span class="k">return</span> text_of(r)                      <span class="c"># final answer</span>
+    messages.append({<span class="s">&quot;role&quot;</span>: <span class="s">&quot;assistant&quot;</span>, <span class="s">&quot;content&quot;</span>: r.content})
+    results = []
+    <span class="k">for</span> b <span class="k">in</span> r.content:
+        <span class="k">if</span> b.type == <span class="s">&quot;tool_use&quot;</span>:
+            <span class="k">try</span>:    out = REGISTRY[b.name](**b.input)
+            <span class="k">except</span> Exception <span class="k">as</span> e:
+                out, err = <span class="s">f&quot;error: {e}&quot;</span>, <span class="k">True</span>   <span class="c"># is_error=True</span>
+            results.append({<span class="s">&quot;type&quot;</span>: <span class="s">&quot;tool_result&quot;</span>,
+                            <span class="s">&quot;tool_use_id&quot;</span>: b.id, <span class="s">&quot;content&quot;</span>: str(out)})
+    messages.append({<span class="s">&quot;role&quot;</span>: <span class="s">&quot;user&quot;</span>, <span class="s">&quot;content&quot;</span>: results})</div>
+  <div class="col" style="flex:1"><p class="note">Tools = name + description + <b>JSON schema</b>; <span class="m">strict: true</span> keeps arguments valid.</p><p class="note"><b>Structured output:</b> <span class="m">client.messages.parse(output_format=Ticket)</span> → a validated pydantic object.</p><p class="note">Send <b>all</b> tool results back in <b>one</b> message.</p></div></div>
+  <p class="foot-l">Python Pro · Module 30 · AI with Python</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 03 · Embeddings &amp; RAG</p><h2>Answer from YOUR documents, with sources</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Step</th><th>What happens</th><th>In the lesson</th></tr><tr><td><b>1 Chunk</b></td><td>split docs into small overlapping pieces</td><td>2-sentence windows</td></tr><tr><td><b>2 Embed</b></td><td>text → vector of numbers</td><td>TF-IDF with numpy (real: Voyage, OpenAI…)</td></tr><tr><td><b>3 Store</b></td><td>keep the vectors</td><td>a matrix (prod: pgvector, Azure AI Search)</td></tr><tr><td><b>4 Retrieve</b></td><td>cosine similarity, top-k</td><td><span class="m">matrix @ embed(q)</span></td></tr><tr><td><b>5 Generate</b></td><td>send ONLY those chunks + the question</td><td>"cite [returns.md] or say I don't know"</td></tr></table><div class="col" style="width:620px"><p class="tip">No relevant chunk? Answer "I don't know" <b>without</b> calling the LLM: cheaper and honest.</p></div></div>
+  <p class="foot-l">Python Pro · Module 30 · AI with Python</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 04 · Agent behind an API</p><h2>FastAPI + the LLM as a dependency</h2></div>
+  <div class="row"><div class="code" style="width:980px;font-size:22px"><span class="k">class</span> AskIn(BaseModel):
+    question: str = Field(min_length=3, max_length=500)
+
+<span class="k">def</span> get_llm():
+    <span class="k">return</span> get_client()             <span class="c"># real SDK in production</span>
+
+@app.post(<span class="s">&quot;/ask&quot;</span>, response_model=AskOut)
+<span class="k">def</span> ask(body: AskIn, llm=Depends(get_llm)):
+    <span class="k">return</span> run_agent(llm, body.question)   <span class="c"># max_steps, tokens used</span>
+
+<span class="c"># tests: fast, free, repeatable</span>
+app.dependency_overrides[get_llm] = <span class="k">lambda</span>: FakeClient(...)</div>
+  <div class="col" style="flex:1"><p class="note">Limit input size and <b>agent steps</b>; return 504 if it loops.</p><p class="note">Report <b>token usage</b> per request: log it, bill it.</p><p class="note"><span class="m">/ask/stream</span>: <span class="m">StreamingResponse</span> over <span class="m">stream.text_stream</span>.</p></div></div>
+  <p class="foot-l">Python Pro · Module 30 · AI with Python</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Lesson 05 · Ship it safely</p><h2>Injection, privacy, cost, evals</h2></div>
+  <div class="row"><table style="flex:1"><tr><th>Risk</th><th>Do this</th></tr><tr><td><b>Prompt injection</b></td><td>least privilege tools; limits &amp; approvals in <b>code</b>; untrusted text in tags = data</td></tr><tr><td><b>Privacy</b></td><td>redact emails, IBANs, phones <b>before</b> the API call</td></tr><tr><td><b>Cost</b></td><td>tokens in × price + tokens out × price; budgets; smaller model for easy routes; caching; Batch API</td></tr><tr><td><b>Quality</b></td><td>an <b>eval set</b>: questions + checks, run on every prompt or model change</td></tr><tr><td><b>Refusals</b></td><td>check <span class="m">stop_reason == "refusal"</span>; server-side fallbacks</td></tr></table><div class="col" style="width:640px"><div class="code" style="font-size:20px">3,000 <span class="k">in</span> + 400 out, 10k chats/day, 30 days
+opus-5-5   0.0200 USD/chat -&gt; 6,000 USD/month
+sonnet-5-5 0.0100 USD/chat -&gt; 3,000 USD/month
+haiku-5-5  0.0005 USD/chat -&gt;   150 USD/month</div></div></div>
+  <p class="foot-l">Python Pro · Module 30 · AI with Python</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Exercise 30 · Your turn</p><h2>Your AI toolkit</h2></div>
+  <div class="row">
+    <div class="col" style="flex:1"><p style="font-size:30px;font-weight:700;color:#121826">The task</p><table><tr><td><b>1</b></td><td>chunk_words · cosine · top_k</td></tr><tr><td><b>2</b></td><td>cost_usd from a price table</td></tr><tr><td><b>3</b></td><td>redact emails and phone numbers</td></tr><tr><td><b>4</b></td><td>run_tool_loop: errors, all results in one message, max_steps</td></tr></table></div>
+    <div class="col" style="width:600px"><div class="code" style="font-size:18px">$ python exercises/ex30_ai_toolkit.py
+AssertionError            <span class="c"># until you solve it</span>
+
+$ python solutions/ex30_ai_toolkit.py
+All checks passed!        <span class="c"># no API key needed</span></div>
+      <div class="tip"><b>Starter:</b> exercises/ex30_ai_toolkit.py<br><b>Solution:</b> solutions/ex30_ai_toolkit.py</div>
+      <p class="note">Done? Open a <b>Pull Request</b> and I'll review your code.</p></div>
+  </div>
+  <p class="foot-l">Python Pro · Module 30 · Exercise</p><p class="foot-r">github.com/CodeMitVishal/python-pro</p>
+</section>
+
 <section class="dark" style="justify-content:center;gap:30px">
   <img src="channel-icon.png" alt="CodeMitVishal logo" style="width:150px;height:150px">
   <p class="num">YOU MADE IT</p>
-  <h1>From Foundations to Pro, and the Web 🎓</h1>
-  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, and share it on LinkedIn.</p>
+  <h1>From Foundations to Pro, the Web and AI</h1>
+  <p style="font-size:34px;color:#E6E9F0;max-width:1400px;line-height:1.4">Take the <b style="color:#F2C14E">final exams</b> in 20_capstone and 28_web_capstone, deploy taskboard, build an AI agent, and share it on LinkedIn.</p>
   <div style="display:flex;flex-direction:column;gap:14px;font-size:30px;margin-top:20px">
     <span>🎥 youtube.com/@CodeMitVishal</span><span>⭐ github.com/CodeMitVishal/python-pro</span><span>☕ buymeacoffee.com/codemitvishal</span>
   </div>
