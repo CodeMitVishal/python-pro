@@ -1,0 +1,5 @@
+body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; color: #1c2436; }
+nav a { font-weight: 700; text-decoration: none; color: #2f5e9e; }
+.flash { background: #fff3c4; padding: .5rem 1rem; border-radius: 8px; }
+.review { color: #6b7385; }
+input, button { padding: .4rem .6rem; margin-right: .3rem; }

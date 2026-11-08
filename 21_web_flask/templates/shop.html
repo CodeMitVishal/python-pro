@@ -1,0 +1,27 @@
+{% extends "base.html" %}                 {# reuse the layout, fill in the blocks #}
+
+{% block title %}Books ({{ books|length }}){% endblock %}
+
+{% block content %}
+  <h1>Hello, {{ user or "guest" }}!</h1>
+
+  {% if books %}
+    <ul>
+    {% for book in books %}
+      <li>{{ loop.index }}. {{ book.title|title }}: {{ "%.2f"|format(book.price) }} EUR
+          {% if book.price < 20 %}<strong>bargain</strong>{% endif %}</li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No books yet.</p>
+  {% endif %}
+
+  {# a review typed by a user: Jinja ESCAPES it, so <script> becomes harmless text #}
+  <p class="review">Latest review: {{ review }}</p>
+
+  <form method="post" action="{{ url_for('add_book') }}">
+    <input name="title" placeholder="Title">
+    <input name="price" placeholder="Price">
+    <button>Add book</button>
+  </form>
+{% endblock %}
