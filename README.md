@@ -26,41 +26,41 @@ New to Python? Start with **[Python Foundations](https://github.com/CodeMitVisha
 
 ## Course map
 
-| # | Module | You'll be able to… | Status |
-|---|---|---|---|
-| 08 | [Pythonic code](08_pythonic_code/README.md) | write short, idiomatic Python | ✅ Ready |
-| 09 | [Data structures deep dive](09_data_structures/README.md) | pick the right structure, understand Big-O | ✅ Ready |
-| 10 | [Advanced functions](10_advanced_functions/README.md) | write closures and decorators | ✅ Ready |
-| 11 | [Iterators & generators](11_iterators_generators/README.md) | process big data lazily | ✅ Ready |
-| 12 | [Advanced OOP](12_advanced_oop/README.md) | design clean classes (dunders, ABCs, SOLID) | ✅ Ready |
-| 13 | [Errors, context managers & logging](13_errors_context_logging/README.md) | fail safely and log clearly | ✅ Ready |
-| 14 | [Project structure & packaging](14_packaging/README.md) | ship an installable command-line tool | ✅ Ready |
-| 15 | [Type hints & code quality](15_typing_quality/README.md) | catch bugs before you run the code | ✅ Ready |
-| 16 | [Testing with pytest](16_testing/README.md) | prove your code works | ✅ Ready |
-| 17 | [Concurrency](17_concurrency/README.md) | use threads, processes and asyncio | ✅ Ready |
-| 18 | [Data, APIs & databases](18_data_apis_databases/README.md) | build a REST API backed by a database | ✅ Ready |
-| 19 | [Performance & internals](19_performance_internals/README.md) | profile and speed up real code | ✅ Ready |
-| 20 | [Capstone project](20_capstone/README.md) | build a full project, end to end | ✅ Ready |
+| # | Module | You'll be able to… |
+|---|---|---|
+| 08 | [Pythonic code](08_pythonic_code/README.md) | write short, idiomatic Python |
+| 09 | [Data structures deep dive](09_data_structures/README.md) | pick the right structure, understand Big-O |
+| 10 | [Advanced functions](10_advanced_functions/README.md) | write closures and decorators |
+| 11 | [Iterators & generators](11_iterators_generators/README.md) | process big data lazily |
+| 12 | [Advanced OOP](12_advanced_oop/README.md) | design clean classes (dunders, ABCs, SOLID) |
+| 13 | [Errors, context managers & logging](13_errors_context_logging/README.md) | fail safely and log clearly |
+| 14 | [Project structure & packaging](14_packaging/README.md) | ship an installable command-line tool |
+| 15 | [Type hints & code quality](15_typing_quality/README.md) | catch bugs before you run the code |
+| 16 | [Testing with pytest](16_testing/README.md) | prove your code works |
+| 17 | [Concurrency](17_concurrency/README.md) | use threads, processes and asyncio |
+| 18 | [Data, APIs & databases](18_data_apis_databases/README.md) | build a REST API backed by a database |
+| 19 | [Performance & internals](19_performance_internals/README.md) | profile and speed up real code |
+| 20 | [Capstone project](20_capstone/README.md) | build a full project, end to end |
 
 ### 🌐 Web development track
 
-| # | Module | You'll be able to… | Status |
-|---|---|---|---|
-| 21 | [HTTP, Flask & Jinja2](21_web_flask/README.md) | understand HTTP; build server-rendered pages | ✅ Ready |
-| 22 | [FastAPI in depth](22_fastapi_in_depth/README.md) | design production APIs with validation and DI | ✅ Ready |
-| 23 | [SQLAlchemy 2.0 & Alembic](23_sqlalchemy_alembic/README.md) | use an ORM, avoid N+1, migrate schemas | ✅ Ready |
-| 24 | [Authentication & security](24_auth_security/README.md) | hash passwords, issue JWTs, stop OWASP bugs | ✅ Ready |
-| 25 | [Django + DRF](25_django/README.md) | build Django apps with an admin and REST API | ✅ Ready |
-| 26 | [WebSockets, background tasks & caching](26_realtime_tasks_caching/README.md) | push live updates, run jobs, cache with Redis | ✅ Ready |
-| 27 | [Docker, CI/CD & Azure](27_deployment/README.md) | containerise, test in CI, deploy to Azure | ✅ Ready |
-| 28 | [Web capstone: taskboard](28_web_capstone/README.md) | ship a secure, tested, real-time API | ✅ Ready |
+| # | Module | You'll be able to… |
+|---|---|---|
+| 21 | [HTTP, Flask & Jinja2](21_web_flask/README.md) | understand HTTP; build server-rendered pages |
+| 22 | [FastAPI in depth](22_fastapi_in_depth/README.md) | design production APIs with validation and DI |
+| 23 | [SQLAlchemy 2.0 & Alembic](23_sqlalchemy_alembic/README.md) | use an ORM, avoid N+1, migrate schemas |
+| 24 | [Authentication & security](24_auth_security/README.md) | hash passwords, issue JWTs, stop OWASP bugs |
+| 25 | [Django + DRF](25_django/README.md) | build Django apps with an admin and REST API |
+| 26 | [WebSockets, background tasks & caching](26_realtime_tasks_caching/README.md) | push live updates, run jobs, cache with Redis |
+| 27 | [Docker, CI/CD & Azure](27_deployment/README.md) | containerise, test in CI, deploy to Azure |
+| 28 | [Web capstone: taskboard](28_web_capstone/README.md) | ship a secure, tested, real-time API |
 
 ### 🧠 Interviews & AI track
 
-| # | Module | You'll be able to… | Status |
-|---|---|---|---|
-| 29 | [Algorithms & data structures](29_algorithms/README.md) | solve classic interview problems in O(n log n) or better | ✅ Ready |
-| 30 | [AI with Python](30_ai_with_python/README.md) | build LLM features: tools, RAG, agents behind FastAPI | ✅ Ready |
+| # | Module | You'll be able to… |
+|---|---|---|
+| 29 | [Algorithms & data structures](29_algorithms/README.md) | solve classic interview problems in O(n log n) or better |
+| 30 | [AI with Python](30_ai_with_python/README.md) | build LLM features: tools, RAG, agents behind FastAPI |
 
 ## How to study
 
