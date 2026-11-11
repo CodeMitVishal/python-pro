@@ -23,3 +23,6 @@ tasks.json
 *.sqlite3
 .hypothesis/
 .coverage
+
+# Maintainer-only build tooling (kept locally, not part of the course)
+/slides/src/

@@ -105,22 +105,6 @@ Getting ready for a Python or web developer interview? Start with
 runnable [SQL practice](interview_prep/sql_practice.py), the [Git workflow](interview_prep/git_workflow.md)
 and [system design basics](interview_prep/system_design_basics.md).
 
-## Rebuild the slides
-
-Each module's slides are compact Python data in [`slides/src/modules/`](slides/src/modules/) (`m08.py` … `m30.py`),
-drawn with the layouts in [`slides/src/teach_kit.py`](slides/src/teach_kit.py). The build **runs every code example**,
-so the OUTPUT boxes always show real output, and it flags any text that doesn't fit on a slide.
-
-```bash
-python slides/src/build_course.py
-```
-
-```bash
-python slides/src/build_course.py 10 11
-```
-
-The first command rebuilds every module PDF plus the full course PDF. The second rebuilds only Modules 10 and 11, which is faster while editing.
-
 ## Support the channel
 
 If this course helps you:
